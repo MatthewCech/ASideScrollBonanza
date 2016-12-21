@@ -88,8 +88,8 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Audio\AudioFile.cpp" />
-    <ClCompile Include="Audio\AudioSystem.cpp" />
+    <ClCompile Include="AudioSystem\AudioFile.cpp" />
+    <ClCompile Include="AudioSystem\AudioSystem.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="EventSystem\Delegate.cpp" />
     <ClCompile Include="EventSystem\DelegateGroup.cpp" />
@@ -102,9 +102,9 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Audio\AudioDefines.hpp" />
-    <ClInclude Include="Audio\AudioFile.hpp" />
-    <ClInclude Include="Audio\AudioSystem.hpp" />
+    <ClInclude Include="AudioSystem\AudioDefines.hpp" />
+    <ClInclude Include="AudioSystem\AudioFile.hpp" />
+    <ClInclude Include="AudioSystem\AudioSystem.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="EventSystem\Delegate.hpp" />
     <ClInclude Include="EventSystem\DelegateGlobalFunction.hpp" />

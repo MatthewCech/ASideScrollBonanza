@@ -9,6 +9,6 @@ namespace ASSB
 	{
 	public:
 		SoundEmitterComponent();
-		SoundEmitterComponent
+		// SoundEmitterComponent
 	};
 }

@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Audio">
-      <UniqueIdentifier>{68327aae-de3a-4649-8109-3cecbf485a2d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Audio">
-      <UniqueIdentifier>{6315322a-02a7-47b5-9650-f2a035a80e62}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Template Files">
       <UniqueIdentifier>{248083d1-3596-454c-bbcc-22ac588697e0}</UniqueIdentifier>
     </Filter>
@@ -34,6 +28,12 @@
     <Filter Include="Template Files\EventSystem">
       <UniqueIdentifier>{3fea76b3-ae94-4ebd-b9fb-12b20a0a12ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\AudioSystem">
+      <UniqueIdentifier>{68327aae-de3a-4649-8109-3cecbf485a2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AudioSystem">
+      <UniqueIdentifier>{6315322a-02a7-47b5-9650-f2a035a80e62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -44,12 +44,6 @@
     </ClCompile>
     <ClCompile Include="GameEngine\TransformComponent.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Audio\AudioFile.cpp">
-      <Filter>Source Files\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Audio\AudioSystem.cpp">
-      <Filter>Source Files\Audio</Filter>
     </ClCompile>
     <ClCompile Include="EventSystem\Delegate.cpp">
       <Filter>Source Files\EventSystem</Filter>
@@ -72,6 +66,12 @@
     <ClCompile Include="Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AudioSystem\AudioFile.cpp">
+      <Filter>Source Files\AudioSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioSystem\AudioSystem.cpp">
+      <Filter>Source Files\AudioSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\GameEngine.h">
@@ -79,15 +79,6 @@
     </ClInclude>
     <ClInclude Include="GameEngine\ComponentHandle.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio\AudioDefines.hpp">
-      <Filter>Header Files\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio\AudioFile.hpp">
-      <Filter>Header Files\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio\AudioSystem.hpp">
-      <Filter>Header Files\Audio</Filter>
     </ClInclude>
     <ClInclude Include="SoundEmitterComponent.hpp">
       <Filter>Header Files\Components</Filter>
@@ -127,6 +118,15 @@
     </ClInclude>
     <ClInclude Include="Globals.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSystem\AudioDefines.hpp">
+      <Filter>Header Files\AudioSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSystem\AudioFile.hpp">
+      <Filter>Header Files\AudioSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSystem\AudioSystem.hpp">
+      <Filter>Header Files\AudioSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
