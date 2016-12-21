@@ -25,6 +25,7 @@ int main()
 				run = false;
 		}
 
+		Engine.UpdateCamera();
 		Engine.Loop();
 	}
 
