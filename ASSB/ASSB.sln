@@ -4,33 +4,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ASSB", "ASSB\ASSB.vcxproj", "{0DBD7B69-7C50-4983-A948-BD13B83059BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C7CEA306-41E6-4207-AAA1-FC5C7464212A} = {C7CEA306-41E6-4207-AAA1-FC5C7464212A}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphics", "..\Graphics\Graphics\Graphics\Graphics.vcxproj", "{C7CEA306-41E6-4207-AAA1-FC5C7464212A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0DBD7B69-7C50-4983-A948-BD13B83059BD}.Debug|x64.ActiveCfg = Debug|x64
 		{0DBD7B69-7C50-4983-A948-BD13B83059BD}.Debug|x64.Build.0 = Debug|x64
-		{0DBD7B69-7C50-4983-A948-BD13B83059BD}.Debug|x86.ActiveCfg = Debug|Win32
-		{0DBD7B69-7C50-4983-A948-BD13B83059BD}.Debug|x86.Build.0 = Debug|Win32
 		{0DBD7B69-7C50-4983-A948-BD13B83059BD}.Release|x64.ActiveCfg = Release|x64
 		{0DBD7B69-7C50-4983-A948-BD13B83059BD}.Release|x64.Build.0 = Release|x64
-		{0DBD7B69-7C50-4983-A948-BD13B83059BD}.Release|x86.ActiveCfg = Release|Win32
-		{0DBD7B69-7C50-4983-A948-BD13B83059BD}.Release|x86.Build.0 = Release|Win32
 		{C7CEA306-41E6-4207-AAA1-FC5C7464212A}.Debug|x64.ActiveCfg = Debug|x64
 		{C7CEA306-41E6-4207-AAA1-FC5C7464212A}.Debug|x64.Build.0 = Debug|x64
-		{C7CEA306-41E6-4207-AAA1-FC5C7464212A}.Debug|x86.ActiveCfg = Debug|Win32
-		{C7CEA306-41E6-4207-AAA1-FC5C7464212A}.Debug|x86.Build.0 = Debug|Win32
 		{C7CEA306-41E6-4207-AAA1-FC5C7464212A}.Release|x64.ActiveCfg = Release|x64
 		{C7CEA306-41E6-4207-AAA1-FC5C7464212A}.Release|x64.Build.0 = Release|x64
-		{C7CEA306-41E6-4207-AAA1-FC5C7464212A}.Release|x86.ActiveCfg = Release|Win32
-		{C7CEA306-41E6-4207-AAA1-FC5C7464212A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
