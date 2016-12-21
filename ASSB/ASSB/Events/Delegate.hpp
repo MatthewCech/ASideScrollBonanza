@@ -3,6 +3,7 @@
 #include "OEvent.hpp"
 
 
+
 namespace OEvent
 {
   // An abstract class designed to act as a template for different types of delegates,

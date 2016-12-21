@@ -2,6 +2,7 @@
 #include "Delegate.hpp"
 
 
+
 namespace OEvent
 {
   class DelegateGroupMember
