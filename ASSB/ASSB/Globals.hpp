@@ -2,8 +2,12 @@
 #include "EventSystem\EventSystem.hpp"
 
 
+
 namespace ASSB
 {
-	// Global Variables
-	static EventSystem::EventSystem EventSystemInstance = EventSystem::EventSystem();
+	namespace Globals
+	{
+		// Global Variables
+		static EventSystem::EventSystem EventSystemInstance = EventSystem::EventSystem();
+	}
 }
