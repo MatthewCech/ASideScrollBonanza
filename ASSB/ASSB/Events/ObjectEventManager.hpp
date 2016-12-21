@@ -25,6 +25,8 @@ namespace OEvent
     // Variables
     std::vector<O_ID> connections_;
     EventSystem &eventSystem_;
+
+	ObjectEventManager& operator=(const ObjectEventManager& other) = delete;
   };
 }
 
