@@ -5,7 +5,7 @@
 
 
 
-namespace OEvent
+namespace Events
 {
   class EventSystem
   {

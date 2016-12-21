@@ -2,7 +2,7 @@
 
 
 
-namespace OEvent
+namespace Events
 {
   // Constructor to create a delegate
   Delegate::Delegate()

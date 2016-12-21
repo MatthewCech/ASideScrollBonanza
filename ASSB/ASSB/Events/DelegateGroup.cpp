@@ -2,7 +2,7 @@
 
 
 
-namespace OEvent
+namespace Events
 {
   // Running Unique ID Static initialization
   O_ID DelegateGroup::runningUID_ = 0;
@@ -40,7 +40,7 @@ namespace OEvent
 
   // Dispatch the event e to all active delegates in the group.
   // Returns the number of delegates the event was dispatchedo to.
-  int DelegateGroup::Dispatch(OEvent *e)
+  int DelegateGroup::Dispatch(Event *e)
   {
     int numDispatched{ 0 };
     for (unsigned int i{ 0 }; i < delegates_.size(); ++i)

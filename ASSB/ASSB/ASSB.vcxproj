@@ -84,7 +84,6 @@
     <ClCompile Include="Events\Event.cpp" />
     <ClCompile Include="Events\EventSystem.cpp" />
     <ClCompile Include="Events\ObjectEventManager.cpp" />
-    <ClCompile Include="Events\OEvent.cpp" />
     <ClCompile Include="GameEngine\GameEngine.cpp" />
     <ClCompile Include="GameEngine\TransformComponent.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -98,7 +97,7 @@
     <ClInclude Include="Events\EventSystem.hpp" />
     <ClInclude Include="Events\ObjectEventManager.hpp" />
     <ClInclude Include="Events\ODefines.hpp" />
-    <ClInclude Include="Events\OEvent.hpp" />
+    <ClInclude Include="Events\Event.hpp" />
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
     <ClInclude Include="GameEngine\TransformComponent.h" />

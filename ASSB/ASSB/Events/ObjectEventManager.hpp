@@ -4,7 +4,7 @@
 #include "EventSystem.hpp"
 
 
-namespace OEvent
+namespace Events
 {
   // Handles connecting and disconnecting of events based on their IDs.
   // This service is provided for objects only, and is not something that 

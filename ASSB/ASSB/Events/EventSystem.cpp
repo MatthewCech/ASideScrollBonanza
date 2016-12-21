@@ -2,7 +2,7 @@
 
 
 
-namespace OEvent
+namespace Events
 {
   // Constructor
   EventSystem::EventSystem()

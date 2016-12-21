@@ -1,10 +1,10 @@
 #pragma once
 #include "ODefines.hpp"
-#include "OEvent.hpp"
+#include "Event.hpp"
 
 
 
-namespace OEvent
+namespace Events
 {
   // An abstract class designed to act as a template for different types of delegates,
   // allowing them all to be manipulated together.
@@ -16,6 +16,6 @@ namespace OEvent
     virtual ~Delegate();
 
     // Abstract Functions
-    virtual void Call(OEvent *e) MU_ABSTRACT;
+    virtual void Call(Event *e) MU_ABSTRACT;
   };
 }

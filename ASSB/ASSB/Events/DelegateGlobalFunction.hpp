@@ -1,10 +1,10 @@
 #pragma once
 #include "Delegate.hpp"
-#include "OEvent.hpp"
+#include "Event.hpp"
 
 
 
-namespace OEvent
+namespace Events
 {
   // A derived delegate for specifically handling class member functions.
   template <typename EventType>
@@ -18,7 +18,7 @@ namespace OEvent
     DelegateGlobalFunction(Function func);
 
     // Member functions
-    void Call(OEvent *e);
+    void Call(Event *e);
 
   private:
     // Variables

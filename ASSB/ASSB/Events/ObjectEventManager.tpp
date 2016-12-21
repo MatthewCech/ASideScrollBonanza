@@ -1,4 +1,4 @@
-namespace OEvent
+namespace Events
 {
   // Connects to the event system and automatically stores the delegate ID.
   template <typename Caller, typename EventType>

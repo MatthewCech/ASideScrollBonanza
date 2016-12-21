@@ -1,4 +1,4 @@
-namespace OEvent
+namespace Events
 {
   // Constructor, takes the member function and 'this' such that it can be called later.
   template <typename EventType>
@@ -11,7 +11,7 @@ namespace OEvent
   // Calls the function specified in the constructor on the object from the constructor, with event e.
   // E is cast to a pointer of the type of the event being passed.
   template <typename EventType>
-  void DelegateGlobalFunction<typename EventType>::Call(OEvent *e)
+  void DelegateGlobalFunction<typename EventType>::Call(Event *e)
   {
     function_(dynamic_cast<EventType *>(e));
   }

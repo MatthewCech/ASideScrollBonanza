@@ -3,7 +3,7 @@
 
 
 
-namespace OEvent
+namespace Events
 {
   // Register for a member function event.
   // Caller is implicit when registering.

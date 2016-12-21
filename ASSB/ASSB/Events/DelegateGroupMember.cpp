@@ -2,7 +2,7 @@
 
 
 
-namespace OEvent
+namespace Events
 {
   // Non-default constructor. Takes an allocated delegate object, d, and associates it with 
   // a unique ID that is provided.

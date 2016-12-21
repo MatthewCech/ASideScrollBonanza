@@ -3,11 +3,11 @@
 #include <utility>
 #include "DelegateGroupMember.hpp"
 #include "ODefines.hpp"
-#include "OEvent.hpp"
+#include "Event.hpp"
 
 
 
-namespace OEvent
+namespace Events
 {
   class DelegateGroup
   {
@@ -18,7 +18,7 @@ namespace OEvent
 	  // Member Functions
     O_ID Add(Delegate *d);
     void Remove(O_ID);
-    int Dispatch(OEvent *e);
+    int Dispatch(Event *e);
     void CleanRemoved();
 
   private:

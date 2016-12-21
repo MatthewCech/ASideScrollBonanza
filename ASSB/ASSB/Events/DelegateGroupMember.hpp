@@ -3,7 +3,7 @@
 
 
 
-namespace OEvent
+namespace Events
 {
   class DelegateGroupMember
   {

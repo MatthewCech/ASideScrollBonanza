@@ -30,16 +30,10 @@
     <ClCompile Include="Events\DelegateGroupMember.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="Events\Event.cpp">
-      <Filter>Source Files\Events</Filter>
-    </ClCompile>
     <ClCompile Include="Events\EventSystem.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
     <ClCompile Include="Events\ObjectEventManager.cpp">
-      <Filter>Source Files\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="Events\OEvent.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
     <ClCompile Include="GameEngine\GameEngine.cpp">
@@ -47,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="GameEngine\TransformComponent.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Events\Event.cpp">
+      <Filter>Source Files\Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +71,6 @@
     <ClInclude Include="Events\ODefines.hpp">
       <Filter>Source Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="Events\OEvent.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngine\GameEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -85,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="GameEngine\TransformComponent.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\Event.hpp">
+      <Filter>Source Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
