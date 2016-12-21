@@ -32,7 +32,7 @@ namespace ASSB
 		Square->Create(VertexShader);
 	}
 
-	ObjectID GameEngine::GetIdOf(const std::string name)
+	Globals::ObjectID GameEngine::GetIdOf(const std::string name)
 	{
 		//check if it exists
 		if (GameObjects.find(name) == GameObjects.end())
@@ -58,10 +58,10 @@ namespace ASSB
 
 		for (auto iterator : GameObjects)
 		{
-			ObjectID id = iterator.second;
-			TransformComponent& trans = Transforms[id];
-			auto position = trans.GetPosition();
-			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ 1,1,1 }, { 0,0 }, trans.GetRotation(), { position.X, position.Y, position.Z });
+			Globals::ObjectID id = iterator.second;
+			ComponentHandle<TransformComponent> comp = GetComponent<TransformComponent>(id);
+			auto position = comp->GetPosition();
+			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ 1,1,1 }, { 0,0 }, comp->GetRotation(), { position.X, position.Y, position.Z });
 
 			Transform.Use();
 

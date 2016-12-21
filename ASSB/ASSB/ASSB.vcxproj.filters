@@ -143,5 +143,6 @@
       <Filter>Template Files\EventSystem</Filter>
     </None>
     <None Include="GameEngine\ComponentHandle.tpp" />
+    <None Include="GameEngine\GameEngine.tpp" />
   </ItemGroup>
 </Project>

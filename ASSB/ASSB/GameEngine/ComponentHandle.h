@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_map>
+#include "Globals.hpp"
 
 namespace ASSB
 {
@@ -7,14 +8,18 @@ namespace ASSB
 	class ComponentHandle
 	{
 	public:
-		ComponentHandle(unsigned long long objectId, std::unordered_map<unsigned long long, T>& map);
+		ComponentHandle(Globals::ObjectID objectId, std::unordered_map<Globals::ObjectID, T>& map);
 
 		operator bool();
-		const T& operator->() const;
-		T& operator->();
+		const T* operator->() const;
+		T* operator->();
+		const T& operator*() const;
+		T& operator*();
 	private:
-		std::unordered_map<unsigned long long, T>& Map;
-		unsigned long long Id;
+		std::unordered_map<Globals::ObjectID, T>& Map;
+		Globals::ObjectID Id;
+
+		ComponentHandle& operator=(const ComponentHandle& other);
 	};
 }
 

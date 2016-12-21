@@ -7,26 +7,26 @@
 #include "Graphics/Camera.h"
 #include "Graphics/Shaders/Shader.h"
 #include "ComponentHandle.h"
+#include "Globals.hpp"
 
 
 namespace ASSB
 {
-	typedef unsigned long long ObjectID;
 
 	class GameEngine
 	{
 	public:
 		GameEngine(Graphics::Window& window);
 
-		ObjectID GetIdOf(const std::string name);
+		Globals::ObjectID GetIdOf(const std::string name);
 		void UpdateCamera();
 
 		template <typename T>
-		ComponentHandle<T> GetComponent(ObjectID id);
+		ComponentHandle<T> GetComponent(Globals::ObjectID id);
 
 		void Loop();
 	private:
-		ObjectID NextID;
+		Globals::ObjectID NextID;
 		bool Running;
 		Graphics::GraphicsEngine Graphics;
 		Graphics::Window& Window;
@@ -35,8 +35,8 @@ namespace ASSB
 		Graphics::Camera Camera;
 		Graphics::Shader PixelShader;
 		Graphics::Shader VertexShader;
-		std::unordered_map<std::string, ObjectID> GameObjects;
-		std::unordered_map<ObjectID, TransformComponent> Transforms;
+		std::unordered_map<std::string, Globals::ObjectID> GameObjects;
+		std::unordered_map<Globals::ObjectID, TransformComponent> Transforms;
 		
 
 		GameEngine(const ASSB::GameEngine& other) = delete;
@@ -44,3 +44,5 @@ namespace ASSB
 		GameEngine& operator=(const GameEngine& other) = delete;
 	};
 }
+
+#include "GameEngine.tpp"

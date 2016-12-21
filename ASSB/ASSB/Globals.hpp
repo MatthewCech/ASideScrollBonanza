@@ -9,5 +9,6 @@ namespace ASSB
 	{
 		// Global Variables
 		static EventSystem::EventSystem EventSystemInstance = EventSystem::EventSystem();
+		typedef unsigned long long ObjectID;
 	}
 }
