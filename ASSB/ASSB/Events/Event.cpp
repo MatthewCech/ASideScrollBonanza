@@ -7,7 +7,7 @@ namespace Events
   // Constructor
   Event::Event()
   {
-    //D_PRINT("Got here");
+    D_PRINT("Got here");
   }
 
 
