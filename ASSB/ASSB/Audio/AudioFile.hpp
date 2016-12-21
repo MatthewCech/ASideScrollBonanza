@@ -15,8 +15,7 @@ FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2015.
 #include <unordered_map>
 
 
-
-namespace NumpadSupreme
+namespace Audio
 {
   class AudioSystem;
 

@@ -15,7 +15,7 @@ FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2015.
 #pragma warning(pop)
 
 
-namespace NumpadSupreme
+namespace Audio
 {
   // Static Variable Init
   APUnique AudioSystem::AudioSystemIDIncrement = 0;

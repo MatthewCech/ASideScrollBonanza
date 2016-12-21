@@ -21,7 +21,7 @@ FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2015.
  // OS and Compiler-Specific //
 //////////////////////////////
 #if defined (DEBUG) | (_DEBUG)
-  #define AP_DEBUG // As in, ascii-player debug
+  #define AUDIO_DEBUG
 #endif
 
 
@@ -53,10 +53,9 @@ enum AudioDataStyle
  // Fun witchcr-- I mean macros //
 /////////////////////////////////
 // Debug Printing
-#ifdef AP_DEBUG
-  #define AP_DEBUG_PRINT_VAL 1
+#ifdef AUDIO_DEBUG
+  #define DEBUG_PRINT(x) do{ std::cout << x << std::endl; } while (0)
 #else
-  #define AP_DEBUG_PRINT_VAL 0
+  #define DEBUG_PRINT(x) 
 #endif
-#define DEBUG_PRINT(x) do{ if(AP_DEBUG_PRINT_VAL) { std::cout << x << std::endl; } } while (0)
 

@@ -12,7 +12,7 @@ FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2015.
 #include "AudioFile.hpp"
 
 
-namespace NumpadSupreme
+namespace Audio
 {
   // Static init.
   APUnique AudioFile::uniqueID_ = 0; // ID for lookup in the audio system
