@@ -1,7 +1,7 @@
 #include "Graphics/Window.h"
 #include "GameEngine/GameEngine.h"
 #include "EventSystem/Event.hpp"
-#include "Audio/AudioSystem.hpp"
+#include "AudioSystem/AudioSystem.hpp"
 
 
 
@@ -13,11 +13,11 @@ int main()
 	// Events thing
 	EventSystem::Event e;
 
-	// Test audio system
-	Audio::AudioSystem a(10);
-	Audio::AudioFile af{ "../../../Assets/Audio/Confirm1.wav" };
-	a.PreloadFile(af);
-	a.PlayFile(af, true);
+  // Test audio system
+  AudioSystem::AudioSystem a(10);
+	AudioSystem::AudioFile af{ "../../../Assets/Audio/Confirm1.wav" };
+  a.PreloadFile(af);
+  a.PlayFile(af, true);
 
 	bool run = true;
 	MSG msg;
