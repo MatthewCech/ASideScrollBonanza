@@ -30,7 +30,7 @@ namespace ASSB
 			ObjectID id = iterator.second;
 			TransformComponent& trans = Transforms[id];
 			auto position = trans.GetPosition();
-			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ 1,1,1 }, { 0,0 }, trans.GetRotation, { position.X, position.Y, position.Z });
+			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ 1,1,1 }, { 0,0 }, trans.GetRotation(), { position.X, position.Y, position.Z });
 
 			Transform.Use();
 		}
