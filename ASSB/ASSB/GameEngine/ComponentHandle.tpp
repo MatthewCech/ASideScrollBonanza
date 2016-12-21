@@ -17,24 +17,27 @@ namespace ASSB
 	template<typename T>
 	inline const T * ComponentHandle<T>::operator->() const
 	{
-		return &Map[Id];
+		return &Map.at(Id);
 	}
 
 	template<typename T>
 	T * ComponentHandle<T>::operator->()
 	{
-		return &Map[Id];
+		return &Map.at(Id);
 	}
+
 	template<typename T>
 	const T& ComponentHandle<T>::operator*() const
 	{
-		return Map[Id];
+		return Map.at(Id);
 	}
+
 	template<typename T>
 	T& ComponentHandle<T>::operator*()
 	{
-		return Map[Id];
+		return Map.at(Id);
 	}
+
 	template<typename T>
 	ComponentHandle<T> & ComponentHandle<T>::operator=(const ComponentHandle & other)
 	{
