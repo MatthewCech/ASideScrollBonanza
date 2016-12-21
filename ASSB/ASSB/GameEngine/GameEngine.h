@@ -6,6 +6,7 @@
 #include "Graphics/Mesh.h"
 #include "Graphics/Camera.h"
 #include "Graphics/Shaders/Shader.h"
+#include "ComponentHandle.h"
 
 
 namespace ASSB
@@ -19,6 +20,9 @@ namespace ASSB
 
 		ObjectID GetIdOf(const std::string name);
 		void UpdateCamera();
+
+		template <typename T>
+		ComponentHandle<T> GetComponent(ObjectID id);
 
 		void Loop();
 	private:
