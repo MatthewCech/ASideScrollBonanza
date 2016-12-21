@@ -1,7 +1,6 @@
 #include "Graphics/Window.h"
 #include "GameEngine/GameEngine.h"
-#include "EventSystem/Event.hpp"
-#include "AudioSystem/AudioSystem.hpp"
+#include "Globals.hpp"
 
 
 
@@ -14,10 +13,11 @@ int main()
 	EventSystem::Event e;
 
   // Test audio system
-  AudioSystem::AudioSystem a(10);
-	AudioSystem::AudioFile af{ "../../../Assets/Audio/Confirm1.wav" };
-  a.PreloadFile(af);
-  a.PlayFile(af, true);
+	// Globals "../../../Assets/Audio/Confirm1.wav" };
+	ASSB::Globals::AudioMapperInstance.Associate(
+		"Confirm1", "../../../Assets/Audio/Confirm1.wav");
+  // a.PreloadFile(af);
+  // a.PlayFile(af, true);
 
 	bool run = true;
 	MSG msg;
