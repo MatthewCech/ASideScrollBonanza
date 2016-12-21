@@ -8,7 +8,8 @@ int main()
 
 	while (GetMessage(&msg, nullptr, 0, 0))
 	{
-
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
 	}
 
 	return 0;
