@@ -12,6 +12,7 @@ namespace ASSB
 		// Constructor / Destructor
 		Component();
 		virtual ~Component();
+
 	private:
 		Component &operator=(const Component &rhs) = delete;
 	};

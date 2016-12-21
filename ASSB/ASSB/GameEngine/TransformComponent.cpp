@@ -1,11 +1,37 @@
 #include "TransformComponent.h"
 
+
+
 namespace ASSB
 {
+	// Default constructor 
 	TransformComponent::TransformComponent() : Position(), ScaleX(0), ScaleY(0), Rotation(0)
-	{
+	{  }
 
+
+	// Copy constructor
+	TransformComponent::TransformComponent(const TransformComponent &rhs)
+		: Position(rhs.Position)
+		, ScaleX(rhs.ScaleX)
+		, ScaleY(rhs.ScaleY)
+		, Rotation(rhs.Rotation)
+	{  }
+
+
+	// Assignment Operator
+	TransformComponent &TransformComponent::operator=(const TransformComponent &rhs)
+	{
+		if (this != &rhs)
+		{
+			Position = rhs.Position;
+			ScaleX = rhs.ScaleX;
+			ScaleY = rhs.ScaleY;
+			Rotation = rhs.Rotation;
+		}
+
+		return *this;
 	}
+
 
 	Graphics::Vector4 TransformComponent::GetPosition()
 	{
