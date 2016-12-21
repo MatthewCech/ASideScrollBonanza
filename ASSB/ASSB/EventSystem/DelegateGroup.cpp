@@ -2,7 +2,7 @@
 
 
 
-namespace Events
+namespace EventSystem
 {
   // Running Unique ID Static initialization
   O_ID DelegateGroup::runningUID_ = 0;

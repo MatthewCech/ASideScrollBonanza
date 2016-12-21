@@ -1,4 +1,4 @@
-namespace Events
+namespace EventSystem
 {
   // Connects to the event system and automatically stores the delegate ID.
   template <typename Caller, typename EventType>

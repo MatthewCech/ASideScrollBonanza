@@ -1,6 +1,7 @@
 #include "Graphics/Window.h"
 #include "GameEngine/GameEngine.h"
 #include "Events/Event.hpp"
+#include "EventSystem/Event.hpp"
 #include "Audio/AudioSystem.hpp"
 
 
@@ -12,6 +13,7 @@ int main()
 	
   // Events thing
   Events::Event e;
+  EventSystem::Event e;
 
   // Test audio system
   Audio::AudioSystem a(10);

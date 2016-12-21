@@ -1,8 +1,8 @@
 #pragma once
-#include "Events\ODefines.hpp"
+#include "ODefines.hpp"
 
 
-namespace Events
+namespace EventSystem
 {
   // Base class Event, used for grouping all derived event objects.
   class Event

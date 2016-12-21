@@ -13,31 +13,31 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Events">
-      <UniqueIdentifier>{458ebf14-bf14-43c0-9c2a-89584cbd9312}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Audio">
       <UniqueIdentifier>{68327aae-de3a-4649-8109-3cecbf485a2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Audio">
+      <UniqueIdentifier>{6315322a-02a7-47b5-9650-f2a035a80e62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Template Files">
+      <UniqueIdentifier>{248083d1-3596-454c-bbcc-22ac588697e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{8e355378-b598-47cb-99f8-a43ceb755f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EventSystem">
+      <UniqueIdentifier>{5c2d76e3-e76f-4afb-ad6e-cacbcbe4fd79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EventSystem">
+      <UniqueIdentifier>{458ebf14-bf14-43c0-9c2a-89584cbd9312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Template Files\EventSystem">
+      <UniqueIdentifier>{3fea76b3-ae94-4ebd-b9fb-12b20a0a12ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Events\Delegate.cpp">
-      <Filter>Source Files\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="Events\DelegateGroup.cpp">
-      <Filter>Source Files\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="Events\DelegateGroupMember.cpp">
-      <Filter>Source Files\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="Events\EventSystem.cpp">
-      <Filter>Source Files\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="Events\ObjectEventManager.cpp">
-      <Filter>Source Files\Events</Filter>
     </ClCompile>
     <ClCompile Include="GameEngine\GameEngine.cpp">
       <Filter>Source Files</Filter>
@@ -45,75 +45,96 @@
     <ClCompile Include="GameEngine\TransformComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Events\Event.cpp">
-      <Filter>Source Files\Events</Filter>
-    </ClCompile>
     <ClCompile Include="Audio\AudioFile.cpp">
       <Filter>Source Files\Audio</Filter>
     </ClCompile>
     <ClCompile Include="Audio\AudioSystem.cpp">
       <Filter>Source Files\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="EventSystem\Delegate.cpp">
+      <Filter>Source Files\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSystem\DelegateGroup.cpp">
+      <Filter>Source Files\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSystem\DelegateGroupMember.cpp">
+      <Filter>Source Files\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSystem\Event.cpp">
+      <Filter>Source Files\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSystem\EventSystem.cpp">
+      <Filter>Source Files\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSystem\ObjectEventManager.cpp">
+      <Filter>Source Files\EventSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Events\Delegate.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\DelegateGlobalFunction.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\DelegateGroup.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\DelegateGroupMember.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\DelegateMemberFunction.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\EventSystem.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\ObjectEventManager.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\ODefines.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngine\GameEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameEngine\ComponentHandle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngine\TransformComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\Event.hpp">
-      <Filter>Source Files\Events</Filter>
-    </ClInclude>
     <ClInclude Include="Audio\AudioDefines.hpp">
-      <Filter>Source Files\Audio</Filter>
+      <Filter>Header Files\Audio</Filter>
     </ClInclude>
     <ClInclude Include="Audio\AudioFile.hpp">
-      <Filter>Source Files\Audio</Filter>
+      <Filter>Header Files\Audio</Filter>
     </ClInclude>
     <ClInclude Include="Audio\AudioSystem.hpp">
-      <Filter>Source Files\Audio</Filter>
+      <Filter>Header Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEmitterComponent.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\TransformComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem\Delegate.hpp">
+      <Filter>Header Files\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem\DelegateGlobalFunction.hpp">
+      <Filter>Header Files\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem\DelegateGroup.hpp">
+      <Filter>Header Files\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem\DelegateGroupMember.hpp">
+      <Filter>Header Files\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem\DelegateMemberFunction.hpp">
+      <Filter>Header Files\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem\Event.hpp">
+      <Filter>Header Files\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem\EventSystem.hpp">
+      <Filter>Header Files\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem\ObjectEventManager.hpp">
+      <Filter>Header Files\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem\ODefines.hpp">
+      <Filter>Header Files\EventSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Events\DelegateGlobalFunction.tpp">
-      <Filter>Source Files\Events</Filter>
+    <None Include="EventSystem\DelegateGlobalFunction.tpp">
+      <Filter>Template Files\EventSystem</Filter>
     </None>
-    <None Include="Events\DelegateMemberFunction.tpp">
-      <Filter>Source Files\Events</Filter>
+    <None Include="EventSystem\DelegateMemberFunction.tpp">
+      <Filter>Template Files\EventSystem</Filter>
     </None>
-    <None Include="Events\EventSystem.tpp">
-      <Filter>Source Files\Events</Filter>
+    <None Include="EventSystem\EventSystem.tpp">
+      <Filter>Template Files\EventSystem</Filter>
     </None>
-    <None Include="Events\ObjectEventManager.tpp">
-      <Filter>Source Files\Events</Filter>
+    <None Include="EventSystem\ObjectEventManager.tpp">
+      <Filter>Template Files\EventSystem</Filter>
     </None>
   </ItemGroup>
 </Project>

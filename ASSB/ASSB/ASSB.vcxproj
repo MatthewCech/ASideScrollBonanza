@@ -80,12 +80,12 @@
   <ItemGroup>
     <ClCompile Include="Audio\AudioFile.cpp" />
     <ClCompile Include="Audio\AudioSystem.cpp" />
-    <ClCompile Include="Events\Delegate.cpp" />
-    <ClCompile Include="Events\DelegateGroup.cpp" />
-    <ClCompile Include="Events\DelegateGroupMember.cpp" />
-    <ClCompile Include="Events\Event.cpp" />
-    <ClCompile Include="Events\EventSystem.cpp" />
-    <ClCompile Include="Events\ObjectEventManager.cpp" />
+    <ClCompile Include="EventSystem\Delegate.cpp" />
+    <ClCompile Include="EventSystem\DelegateGroup.cpp" />
+    <ClCompile Include="EventSystem\DelegateGroupMember.cpp" />
+    <ClCompile Include="EventSystem\Event.cpp" />
+    <ClCompile Include="EventSystem\EventSystem.cpp" />
+    <ClCompile Include="EventSystem\ObjectEventManager.cpp" />
     <ClCompile Include="GameEngine\GameEngine.cpp" />
     <ClCompile Include="GameEngine\TransformComponent.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -94,24 +94,26 @@
     <ClInclude Include="Audio\AudioDefines.hpp" />
     <ClInclude Include="Audio\AudioFile.hpp" />
     <ClInclude Include="Audio\AudioSystem.hpp" />
-    <ClInclude Include="Events\Delegate.hpp" />
-    <ClInclude Include="Events\DelegateGlobalFunction.hpp" />
-    <ClInclude Include="Events\DelegateGroup.hpp" />
-    <ClInclude Include="Events\DelegateGroupMember.hpp" />
-    <ClInclude Include="Events\DelegateMemberFunction.hpp" />
-    <ClInclude Include="Events\EventSystem.hpp" />
-    <ClInclude Include="Events\ObjectEventManager.hpp" />
-    <ClInclude Include="Events\ODefines.hpp" />
-    <ClInclude Include="Events\Event.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="EventSystem\Delegate.hpp" />
+    <ClInclude Include="EventSystem\DelegateGlobalFunction.hpp" />
+    <ClInclude Include="EventSystem\DelegateGroup.hpp" />
+    <ClInclude Include="EventSystem\DelegateGroupMember.hpp" />
+    <ClInclude Include="EventSystem\DelegateMemberFunction.hpp" />
+    <ClInclude Include="EventSystem\Event.hpp" />
+    <ClInclude Include="EventSystem\EventSystem.hpp" />
+    <ClInclude Include="EventSystem\ObjectEventManager.hpp" />
+    <ClInclude Include="EventSystem\ODefines.hpp" />
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
     <ClInclude Include="GameEngine\TransformComponent.h" />
+    <ClInclude Include="SoundEmitterComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Events\DelegateGlobalFunction.tpp" />
-    <None Include="Events\DelegateMemberFunction.tpp" />
-    <None Include="Events\EventSystem.tpp" />
-    <None Include="Events\ObjectEventManager.tpp" />
+    <None Include="EventSystem\DelegateGlobalFunction.tpp" />
+    <None Include="EventSystem\DelegateMemberFunction.tpp" />
+    <None Include="EventSystem\EventSystem.tpp" />
+    <None Include="EventSystem\ObjectEventManager.tpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

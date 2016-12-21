@@ -1,4 +1,4 @@
-namespace Events
+namespace EventSystem
 {
   // Constructor, takes the member function and 'this' such that it can be called later.
   template <typename EventType>

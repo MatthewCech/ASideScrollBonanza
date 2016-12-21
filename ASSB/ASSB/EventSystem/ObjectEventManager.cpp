@@ -2,7 +2,7 @@
 
 
 
-namespace Events
+namespace EventSystem
 {
   // Constructor takes the event system to manage the connection to as an argument.
   ObjectEventManager::ObjectEventManager(EventSystem &es)

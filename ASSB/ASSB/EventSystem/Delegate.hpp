@@ -4,7 +4,7 @@
 
 
 
-namespace Events
+namespace EventSystem
 {
   // An abstract class designed to act as a template for different types of delegates,
   // allowing them all to be manipulated together.

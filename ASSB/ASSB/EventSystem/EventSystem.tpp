@@ -3,7 +3,7 @@
 
 
 
-namespace Events
+namespace EventSystem
 {
   // Register for a member function event.
   // Caller is implicit when registering.

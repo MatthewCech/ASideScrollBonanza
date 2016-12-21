@@ -3,7 +3,7 @@
 
 
 
-namespace Events
+namespace EventSystem
 {
   class DelegateGroupMember
   {

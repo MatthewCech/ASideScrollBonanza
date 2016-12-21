@@ -2,7 +2,7 @@
 
 
 
-namespace Events
+namespace EventSystem
 {
   // Constructor
   EventSystem::EventSystem()

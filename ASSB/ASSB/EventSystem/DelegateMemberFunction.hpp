@@ -4,7 +4,7 @@
 
 
 
-namespace Events
+namespace EventSystem
 {
   // A derived delegate for specifically handling class member functions.
   template <typename Caller, typename EventType>

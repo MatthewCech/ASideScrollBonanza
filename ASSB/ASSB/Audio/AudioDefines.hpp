@@ -20,10 +20,11 @@ FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2015.
   //////////////////////////////
  // OS and Compiler-Specific //
 //////////////////////////////
+#pragma warning(push, 0)
 #if defined (DEBUG) | (_DEBUG)
   #define AUDIO_DEBUG
 #endif
-
+#pragma warning(pop)
 
   //////////////////////////
  // Types and "Keywords" //

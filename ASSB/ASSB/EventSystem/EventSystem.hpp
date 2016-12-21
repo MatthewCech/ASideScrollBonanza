@@ -5,7 +5,7 @@
 
 
 
-namespace Events
+namespace EventSystem
 {
   class EventSystem
   {
