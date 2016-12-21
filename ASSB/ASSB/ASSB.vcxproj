@@ -133,7 +133,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Events\Delegate.cpp" />
+    <ClCompile Include="Events\DelegateGroup.cpp" />
+    <ClCompile Include="Events\DelegateGroupMember.cpp" />
+    <ClCompile Include="Events\Event.cpp" />
+    <ClCompile Include="Events\EventSystem.cpp" />
+    <ClCompile Include="Events\ObjectEventManager.cpp" />
+    <ClCompile Include="Events\OEvent.cpp" />
     <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Events\Delegate.hpp" />
+    <ClInclude Include="Events\DelegateGlobalFunction.hpp" />
+    <ClInclude Include="Events\DelegateGroup.hpp" />
+    <ClInclude Include="Events\DelegateGroupMember.hpp" />
+    <ClInclude Include="Events\DelegateMemberFunction.hpp" />
+    <ClInclude Include="Events\EventSystem.hpp" />
+    <ClInclude Include="Events\ObjectEventManager.hpp" />
+    <ClInclude Include="Events\ODefines.hpp" />
+    <ClInclude Include="Events\OEvent.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Events\DelegateGlobalFunction.tpp" />
+    <None Include="Events\DelegateMemberFunction.tpp" />
+    <None Include="Events\EventSystem.tpp" />
+    <None Include="Events\ObjectEventManager.tpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
