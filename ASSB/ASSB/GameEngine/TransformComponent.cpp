@@ -2,8 +2,9 @@
 
 namespace ASSB
 {
-	TransformComponent::TransformComponent()
+	TransformComponent::TransformComponent() : Position(), ScaleX(0), ScaleY(0), Rotation(0)
 	{
+
 	}
 
 	Graphics::Vector4 TransformComponent::GetPosition()

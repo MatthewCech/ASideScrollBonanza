@@ -53,12 +53,18 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableSpecificWarnings>4710;4820;4514</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4710;4820;4514;4711</DisableSpecificWarnings>
       <AdditionalIncludeDirectories>$(SolutionDir)..\Graphics\Graphics;$(ProjectDir);$(SolutionDir)..\External\Includes</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(SolutionDir)..\External\Debug\fmodexL64_vc.lib;$(OutDir)Graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>xcopy /y /d "$(ProjectDir)fmodexL64.dll" "$(OutDir)"</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copy Dlls</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -68,7 +74,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableSpecificWarnings>4710;4820;4514</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4710;4820;4514;4711</DisableSpecificWarnings>
       <AdditionalIncludeDirectories>$(SolutionDir)..\Graphics\Graphics;$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -76,6 +82,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>$(SolutionDir)..\External\Release\fmodex64_vc.lib;$(OutDir)Graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>xcopy /y /d "$(ProjectDir)fmodex64.dll" "$(OutDir)"</Command>
+      <Message>Copy Dlls</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Audio\AudioFile.cpp" />
