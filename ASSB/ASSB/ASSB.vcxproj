@@ -59,6 +59,12 @@
     <Link>
       <AdditionalDependencies>$(SolutionDir)..\External\Debug\fmodexL64_vc.lib;$(OutDir)Graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>xcopy /y /d "$(ProjectDir)fmodexL64.dll" "$(OutDir)"</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copy Dlls</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -76,6 +82,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>$(SolutionDir)..\External\Release\fmodex64_vc.lib;$(OutDir)Graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>xcopy /y /d "$(ProjectDir)fmodex64.dll" "$(OutDir)"</Command>
+      <Message>Copy Dlls</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Audio\AudioFile.cpp" />
