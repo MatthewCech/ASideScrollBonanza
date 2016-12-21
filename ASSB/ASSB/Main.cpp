@@ -15,7 +15,7 @@ int main()
 
   // Test audio system
   Audio::AudioSystem a(10);
-  Audio::AudioFile af{ "../../Assets/Audio/Confirm1.wav" };
+  Audio::AudioFile af{ "../../../Assets/Audio/Confirm1.wav" };
   a.PreloadFile(af);
   a.PlayFile(af, true);
 
