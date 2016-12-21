@@ -72,6 +72,9 @@
     <ClCompile Include="AudioSystem\AudioSystem.cpp">
       <Filter>Source Files\AudioSystem</Filter>
     </ClCompile>
+    <ClCompile Include="AudioSystem\AudioMapper.cpp">
+      <Filter>Source Files\AudioSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\GameEngine.h">
@@ -126,6 +129,9 @@
       <Filter>Header Files\AudioSystem</Filter>
     </ClInclude>
     <ClInclude Include="AudioSystem\AudioSystem.hpp">
+      <Filter>Header Files\AudioSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSystem\AudioMapper.hpp">
       <Filter>Header Files\AudioSystem</Filter>
     </ClInclude>
   </ItemGroup>

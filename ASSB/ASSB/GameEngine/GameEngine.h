@@ -1,13 +1,20 @@
 #pragma once
+// General
 #include <unordered_map>
 #include <memory>
+#include "Globals.hpp"
+
+// Graphics
 #include "Graphics/GraphicsEngine.h"
-#include "TransformComponent.h"
 #include "Graphics/Mesh.h"
 #include "Graphics/Camera.h"
 #include "Graphics/Shaders/Shader.h"
+
+// Components
 #include "ComponentHandle.h"
-#include "Globals.hpp"
+#include "TransformComponent.h"
+#include "SoundEmitterComponent.hpp"
+
 
 
 namespace ASSB
@@ -35,9 +42,11 @@ namespace ASSB
 		Graphics::Camera Camera;
 		Graphics::Shader PixelShader;
 		Graphics::Shader VertexShader;
+
+		// Add components here
 		std::unordered_map<std::string, Globals::ObjectID> GameObjects;
 		std::unordered_map<Globals::ObjectID, TransformComponent> Transforms;
-		
+		std::unordered_map<Globals::ObjectID, SoundEmitterComponent> SoundEmitters;
 
 		GameEngine(const ASSB::GameEngine& other) = delete;
 

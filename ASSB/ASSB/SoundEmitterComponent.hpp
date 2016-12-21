@@ -10,5 +10,11 @@ namespace ASSB
 	public:
 		SoundEmitterComponent();
 		// SoundEmitterComponent
+
+	private:
+
+		// Omit
+		SoundEmitterComponent &operator=(const SoundEmitterComponent &rhs) = delete;
+		SoundEmitterComponent(const SoundEmitterComponent *rhs) = delete;
 	};
 }

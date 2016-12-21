@@ -14,9 +14,13 @@ FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2015.
 #include "FMOD/fmod.hpp"
 #pragma warning(pop)
 #include <iostream>
+#include <memory>
 
-
-
+// Forward declaring
+namespace AudioSystem
+{
+	class AudioFile;
+}
   //////////////////////////////
  // OS and Compiler-Specific //
 //////////////////////////////
@@ -34,6 +38,9 @@ using ChannelHandle = FMOD::Channel*;     // Channel handle for FMOD
 using AudioHandle   = FMOD::Sound;        // Sound object handle for FMOD
 using Channelgroup  = FMOD::ChannelGroup; // Channel object handle for FMOD
 using APUnique      = unsigned long long;
+
+// Object Managment
+typedef std::shared_ptr<AudioSystem::AudioFile> AudioFilePtr;
 
 // Defines
 #define DJ_ABSTRACT =0

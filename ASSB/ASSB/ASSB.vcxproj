@@ -89,6 +89,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AudioSystem\AudioFile.cpp" />
+    <ClCompile Include="AudioSystem\AudioMapper.cpp" />
     <ClCompile Include="AudioSystem\AudioSystem.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="EventSystem\Delegate.cpp" />
@@ -104,6 +105,7 @@
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />
     <ClInclude Include="AudioSystem\AudioFile.hpp" />
+    <ClInclude Include="AudioSystem\AudioMapper.hpp" />
     <ClInclude Include="AudioSystem\AudioSystem.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="EventSystem\Delegate.hpp" />
