@@ -90,6 +90,7 @@
   <ItemGroup>
     <ClCompile Include="Audio\AudioFile.cpp" />
     <ClCompile Include="Audio\AudioSystem.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="EventSystem\Delegate.cpp" />
     <ClCompile Include="EventSystem\DelegateGroup.cpp" />
     <ClCompile Include="EventSystem\DelegateGroupMember.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
     <ClInclude Include="GameEngine\TransformComponent.h" />
+    <ClInclude Include="Globals.hpp" />
     <ClInclude Include="SoundEmitterComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
