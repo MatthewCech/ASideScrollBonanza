@@ -7,13 +7,12 @@
 @brief
 Lifted from my ASCIIPlayer project.
 
-Usable under the "Don't be a Jerk" license, included in repo. Please respect
-the individual requests of the authors of the externally included libraries.
-
 FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2015.
 *****************************************************************************/
 #pragma once
+#pragma warning(push, 0)
 #include "FMOD/fmod.hpp"
+#pragma warning(pop)
 #include <iostream>
 
 
@@ -37,7 +36,7 @@ using APUnique      = unsigned long long;
 
 // Defines
 #define DJ_ABSTRACT =0
-
+#define UNUSED(x) (void)(x)
 
   ///////////
  // Enums //

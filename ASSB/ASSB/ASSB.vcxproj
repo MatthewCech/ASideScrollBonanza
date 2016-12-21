@@ -54,10 +54,10 @@
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
       <DisableSpecificWarnings>4710;4820;4514</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\Graphics\Graphics;$(ProjectDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\Graphics\Graphics;$(ProjectDir);$(SolutionDir)..\External\Includes</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(OutDir)Graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)..\External\Debug\fmodexL64_vc.lib;$(OutDir)Graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -74,10 +74,12 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>$(OutDir)Graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)..\External\Release\fmodex64_vc.lib;$(OutDir)Graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Audio\AudioFile.cpp" />
+    <ClCompile Include="Audio\AudioSystem.cpp" />
     <ClCompile Include="Events\Delegate.cpp" />
     <ClCompile Include="Events\DelegateGroup.cpp" />
     <ClCompile Include="Events\DelegateGroupMember.cpp" />
@@ -89,6 +91,9 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Audio\AudioDefines.hpp" />
+    <ClInclude Include="Audio\AudioFile.hpp" />
+    <ClInclude Include="Audio\AudioSystem.hpp" />
     <ClInclude Include="Events\Delegate.hpp" />
     <ClInclude Include="Events\DelegateGlobalFunction.hpp" />
     <ClInclude Include="Events\DelegateGroup.hpp" />

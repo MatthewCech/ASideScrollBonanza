@@ -7,13 +7,12 @@
 @brief
 Lifted from my ASCIIPlayer project.
 
-Usable under the "Don't be a Jerk" license, included in repo. Please respect
-the individual requests of the authors of the externally included libraries.
-
 FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2015.
 *****************************************************************************/
 #include "AudioSystem.hpp"
+#pragma warning(push, 0)
 #include <FMOD\fmod_errors.h>
+#pragma warning(pop)
 
 
 namespace NumpadSupreme
@@ -195,6 +194,9 @@ namespace NumpadSupreme
     (*ch)->isPlaying(&playing);
     if(playing)
       FCheck((*ch)->stop());
+
+    // Because WALL
+    UNUSED(audioFile);
   }
   
 
@@ -242,6 +244,10 @@ namespace NumpadSupreme
   {
     bool status;
     channelHandles_[audioFile.uniqueID_]->isPlaying(&status);
+
+    // Because WALL
+    UNUSED(audioFile);
+
     return status;
   }
 

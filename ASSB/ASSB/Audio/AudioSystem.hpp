@@ -7,16 +7,13 @@
 @brief
 Lifted from my ASCIIPlayer project.
 
-Usable under the "Don't be a Jerk" license, included in repo. Please respect
-the individual requests of the authors of the externally included libraries.
-
 FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2015.
 *****************************************************************************/
 // Handles the backend, playing, loading, and unloading files.
 #pragma once
 #include <unordered_map>
 #include "AudioFile.hpp"
-#include "Defines.hpp"
+#include "AudioDefines.hpp"
 
 
 
