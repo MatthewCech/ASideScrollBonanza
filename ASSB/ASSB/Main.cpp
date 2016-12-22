@@ -2,7 +2,8 @@
 #include "GameEngine/GameEngine.h"
 #include "Components/SoundEmitterComponent.hpp"
 #include "Events/UISelectEvent.hpp"
-#include "FileSystem/AudioPreloader.hpp"
+#include "FileSystem/AudioPreloadingMapper.hpp"
+#include "FileSystem/ImagePreloadingMapper.hpp"
 #include "FileSystem/LevelPreloader.hpp"
 #include "Globals.hpp"
 
@@ -19,11 +20,12 @@ int main()
 	Graphics::Window window(L"OWO");
 	ASSB::GameEngine Engine(window);
 
-	// Level preloading test
+	// Preloading
+	FileSystem::ImagePreloadingMapper::LoadFromFile("../../../Assets/Levels/ImageList.txt");
+	FileSystem::AudioPreloadingMapper::LoadFromFile("../../../Assets/AudioList.txt");
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/LevelTest.txt");
 
-	// AudioSystem and AudioPreloader Test
-	FileSystem::AudioPreloader::LoadFromFile("../../../Assets/AudioList.txt");
+	// Audio system test
 	ASSB::SoundEmitterComponent se("Select1");
 	se.PlayOnEvent<ASSB::UISelectionChangedEvent>();
 	ASSB_ESI_.Dispatch(new ASSB::UISelectionChangedEvent());

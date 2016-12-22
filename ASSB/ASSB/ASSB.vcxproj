@@ -89,7 +89,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AudioSystem\AudioFile.cpp" />
-    <ClCompile Include="AudioSystem\AudioMapper.cpp" />
     <ClCompile Include="AudioSystem\AudioSystem.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\RigidBodyComponent.cpp" />
@@ -102,7 +101,8 @@
     <ClCompile Include="EventSystem\Event.cpp" />
     <ClCompile Include="EventSystem\EventSystem.cpp" />
     <ClCompile Include="EventSystem\ObjectEventManager.cpp" />
-    <ClCompile Include="FileSystem\AudioPreloader.cpp" />
+    <ClCompile Include="FileSystem\ImagePreloadingMapper.cpp" />
+    <ClCompile Include="FileSystem\AudioPreloadingMapper.cpp" />
     <ClCompile Include="FileSystem\File.cpp" />
     <ClCompile Include="FileSystem\LevelPreloader.cpp" />
     <ClCompile Include="GameEngine\GameEngine.cpp" />
@@ -120,7 +120,6 @@
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />
     <ClInclude Include="AudioSystem\AudioFile.hpp" />
-    <ClInclude Include="AudioSystem\AudioMapper.hpp" />
     <ClInclude Include="AudioSystem\AudioSystem.hpp" />
     <ClInclude Include="Components\Component.hpp" />
     <ClInclude Include="Components\RigidBodyComponent.hpp" />
@@ -139,7 +138,8 @@
     <ClInclude Include="Events\KeyboardEvent.hpp" />
     <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="Events\UISelectEvent.hpp" />
-    <ClInclude Include="FileSystem\AudioPreloader.hpp" />
+    <ClInclude Include="FileSystem\ImagePreloadingMapper.hpp" />
+    <ClInclude Include="FileSystem\AudioPreloadingMapper.hpp" />
     <ClInclude Include="FileSystem\File.hpp" />
     <ClInclude Include="FileSystem\LevelPreloader.hpp" />
     <ClInclude Include="GameEngine\ComponentHandle.h" />

@@ -1,8 +1,8 @@
 #include "SoundEmitterComponent.hpp"
 #include "Globals.hpp"
+#include "FileSystem/AudioPreloadingMapper.hpp"
 
 // For testing
-#define SE_AMI_ ASSB::Globals::AudioMapperInstance
 #define SE_ASI_ ASSB::Globals::AudioSystemInstance
 
 
@@ -11,7 +11,7 @@ namespace ASSB
 {
 	// Constructor
 	SoundEmitterComponent::SoundEmitterComponent(std::string tag)
-		: af_(SE_AMI_.Retrieve(tag))
+		: af_(FileSystem::AudioPreloadingMapper::Retrieve(tag))
 	{  }
 
 	
@@ -36,7 +36,7 @@ namespace ASSB
 	void SoundEmitterComponent::SetSource(std::string newTag)
 	{
 		Stop();
-		af_ = SE_AMI_.Retrieve(newTag);
+		af_ = FileSystem::AudioPreloadingMapper::Retrieve(newTag);
 	}
 
 
