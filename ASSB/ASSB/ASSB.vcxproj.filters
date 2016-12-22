@@ -43,6 +43,12 @@
     <Filter Include="Header Files\Events">
       <UniqueIdentifier>{7b154ae1-20ec-4a00-a6e5-ce701041e7e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FileIO">
+      <UniqueIdentifier>{d3697f69-ef44-46a7-9439-311669b61d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileIO">
+      <UniqueIdentifier>{3bf7afff-e141-4700-af4d-0d396e044148}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -89,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="Globals.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO\File.cpp">
+      <Filter>Source Files\FileIO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="Events\UISelectEvent.hpp">
       <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO\File.hpp">
+      <Filter>Header Files\FileIO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
