@@ -1,5 +1,6 @@
 #include "PhysicsSystem.hpp"
 #include "Globals.hpp"
+#include "GameEngine\GameEngine.h"
 
 
 namespace ASSB
@@ -9,8 +10,7 @@ namespace ASSB
 	{
 		UNUSED(g);
 		UNUSED(map);
-	}
-		/*
+
 		//!TODO:Convert to not using full N^2 items in map!
 		for (auto &pair1 : map)
 		{
@@ -49,8 +49,7 @@ namespace ASSB
 		}
 
 	}
-	*/
-		/*
+
 	// Check if two objects are colliding
 	bool PhysicsSystem::isCollidingAABB(GameEngine &g,
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &obj1,
@@ -58,6 +57,11 @@ namespace ASSB
 	{
 		ComponentHandle<TransformComponent> o1t = g.GetComponent<TransformComponent>(obj1.first);
 		ComponentHandle<TransformComponent> o2t = g.GetComponent<TransformComponent>(obj1.first);
+		UNUSED(obj1);
+		UNUSED(obj2);
+		UNUSED(g);
+
+		return false;
 		//if(o1t->GetPosition().X)
 	}
 
@@ -66,7 +70,9 @@ namespace ASSB
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj,
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &staticObj)
 	{
-
+		UNUSED(g);
+		UNUSED(dynamicObj);
+		UNUSED(staticObj);
 	}
 
 	// Misleading qualifiers, not actually const for the Game Objects
@@ -74,7 +80,8 @@ namespace ASSB
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj1,
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj2)
 	{
-	
+		UNUSED(g);
+		UNUSED(dynamicObj1);
+		UNUSED(dynamicObj2);
 	}
-	*/
 }

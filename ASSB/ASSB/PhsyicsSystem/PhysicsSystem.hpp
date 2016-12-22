@@ -15,7 +15,6 @@ namespace ASSB
 		void Update(GameEngine &g, std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map);
 
 	private:
-		/*
 		bool isCollidingAABB(GameEngine &g,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &obj1,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &obj2);
@@ -27,6 +26,5 @@ namespace ASSB
 		void resolveDynamicDynamicAABBCollision(GameEngine &g,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamic1,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamic2);
-			*/
 	};
 }
