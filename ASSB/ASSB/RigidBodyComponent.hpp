@@ -1,25 +1,15 @@
 #pragma once
 #include "Component.hpp"
-//#include "Globals.hpp"
+#include "Graphics\Vector4.h"
 
 
 
 namespace ASSB
 {
-	class ASSBFloat3 
-	{ 
-	public: 
-		ASSBFloat3() : X(0), Y(0), Z(0)
-		{ }
-		float X;
-		float Y;
-		float Z;
-	};
-
 	class RigidBodyComponent : public Component
 	{
 		// frieeeeeend
-		//friend class PhysicsSystem;
+		friend class PhysicsSystem;
 	public:
 		// Consructor
 		RigidBodyComponent(bool isStatic);
@@ -31,15 +21,15 @@ namespace ASSB
 		float GetHeight() const;
 		void SetCollidable(bool isCollidable);
 		bool IsCollidable() const;
-		ASSBFloat3 GetVelocity() const;
-		void SetVelocity(ASSBFloat3 velocity);
+		Graphics::Vector4 GetVelocity() const;
+		void SetVelocity(Graphics::Vector4 velocity);
 
 	private:
 		bool static_;
 		bool collidable_;
 		float width_;
 		float height_;
-		ASSBFloat3 velocity_;
+		Graphics::Vector4 velocity_;
 
 		RigidBodyComponent(const RigidBodyComponent &rhs) = delete;
 		RigidBodyComponent *operator=(const RigidBodyComponent &rhs) = delete;

@@ -1,19 +1,18 @@
 #pragma once
-//#include "RigidBodyComponent.hpp"
+#include "RigidBodyComponent.hpp"
 #include <unordered_map>
 #include <utility>
-//#include "Globals.hpp"
+#include "Globals.hpp"
 
 
 
 namespace ASSB
 {
-	//class GameEngine;
-	class ObjectID;
+	class GameEngine;
 	class PhysicsSystem
 	{
 	public:
-		void Update(std::unordered_map<const ObjectID, int> &map);
+		void Update(GameEngine &g, std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map);
 
 	private:
 		/*

@@ -43,12 +43,12 @@ namespace ASSB
 		return collidable_;
 	}
 
-	ASSBFloat3  RigidBodyComponent::GetVelocity() const
+	Graphics::Vector4  RigidBodyComponent::GetVelocity() const
 	{
 		return velocity_;
 	}
 
-	void RigidBodyComponent::SetVelocity(ASSBFloat3 velocity)
+	void RigidBodyComponent::SetVelocity(Graphics::Vector4 velocity)
 	{
 		velocity_ = velocity;
 	}

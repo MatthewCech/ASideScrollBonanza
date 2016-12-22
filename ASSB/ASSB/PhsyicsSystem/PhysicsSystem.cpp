@@ -1,13 +1,14 @@
 #include "PhysicsSystem.hpp"
-
+#include "Globals.hpp"
 
 
 namespace ASSB
 {
-	/*
-	void PhysicsSystem::Update(//GameEngine &g,
-		std::unordered_map<const ASSB::Globals::ObjectID, int> &map)
+	void PhysicsSystem::Update(GameEngine &g,
+		std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map)
 	{
+		UNUSED(g);
+		UNUSED(map);
 	}
 		/*
 		//!TODO:Convert to not using full N^2 items in map!
