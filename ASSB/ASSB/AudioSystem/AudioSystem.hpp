@@ -36,7 +36,7 @@ namespace AudioSystem
 
     // Basic Play/Pause
     AudioFile *AudioSystem::PreloadFile(const std::string filepath);
-    void PlayFile(AudioFile &audioFile, bool playing = false);
+    void PlayFile(AudioFile &audioFile, bool playing = true);
     void SetPaused(AudioFile &audioFile, bool pausedState);
     void StopFile(AudioFile &audioFile);
     void SetMasterVolume(float f);

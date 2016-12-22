@@ -15,12 +15,12 @@ namespace AudioSystem
 		AudioMapper();
 		
 		// Member Functions
-		bool Associate(std::string tag, std::string path, AudioSystem &a);
+		bool Associate(std::string tag, std::string path);
 		AudioFilePtr Retrieve(std::string tag);
 	  
 	private:
 		// Variables
 		std::unordered_map<std::string, AudioFilePtr> assciatedTags_;
-		
+		static bool instanciated_;
 	};
 }

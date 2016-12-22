@@ -5,12 +5,13 @@
 
 namespace ASSB
 {
-	namespace Globals
+	class Globals
 	{
+	public:
 		// Global Variables
-		static EventSystem::EventSystem EventSystemInstance{ EventSystem::EventSystem()   };
-		static AudioSystem::AudioSystem AudioSystemInstance{ AudioSystem::AudioSystem(20) }; // arg is number of channels.
-		static AudioSystem::AudioMapper AudioMapperInstance{ AudioSystem::AudioMapper()   };
+		static EventSystem::EventSystem EventSystemInstance;
+		static AudioSystem::AudioSystem AudioSystemInstance; // arg is number of channels.
+		static AudioSystem::AudioMapper AudioMapperInstance;
 		typedef unsigned long long ObjectID;
-	}
+	};
 }

@@ -100,7 +100,9 @@
     <ClCompile Include="EventSystem\ObjectEventManager.cpp" />
     <ClCompile Include="GameEngine\GameEngine.cpp" />
     <ClCompile Include="GameEngine\TransformComponent.cpp" />
+    <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="SoundEmitterComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />

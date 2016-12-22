@@ -34,15 +34,15 @@
     <Filter Include="Header Files\AudioSystem">
       <UniqueIdentifier>{6315322a-02a7-47b5-9650-f2a035a80e62}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{81f59988-50f1-4192-9cf7-7780121b7410}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameEngine\GameEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngine\TransformComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EventSystem\Delegate.cpp">
@@ -63,9 +63,6 @@
     <ClCompile Include="EventSystem\ObjectEventManager.cpp">
       <Filter>Source Files\EventSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AudioSystem\AudioFile.cpp">
       <Filter>Source Files\AudioSystem</Filter>
     </ClCompile>
@@ -74,6 +71,18 @@
     </ClCompile>
     <ClCompile Include="AudioSystem\AudioMapper.cpp">
       <Filter>Source Files\AudioSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\TransformComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEmitterComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
