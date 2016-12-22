@@ -11,7 +11,7 @@ namespace ASSB
 		Camera(Graphics),
 		PixelShader(Graphics, "LambertPixel.cso", Graphics::ShaderType::Pixel),
 		VertexShader(Graphics, "LambertVertex.cso", Graphics::ShaderType::Vertex),
-		TestTexture(Graphics, L"wow.png")
+		TestTexture(Graphics, L"../../../Assets/wow.png")
 	{
 		Graphics.VSync = Graphics::GraphicsEngine::VSyncType::On;
 
