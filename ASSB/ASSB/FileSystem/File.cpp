@@ -11,7 +11,7 @@ Lifted from my ASCIIPlayer project.
 
 
 
-namespace FileUtil
+namespace FileSystem
 {
   // Constructor for FileProxy
   inline FileProxy::FileProxy(unsigned int line, File &f) 

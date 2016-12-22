@@ -43,11 +43,11 @@
     <Filter Include="Header Files\Events">
       <UniqueIdentifier>{7b154ae1-20ec-4a00-a6e5-ce701041e7e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FileIO">
-      <UniqueIdentifier>{d3697f69-ef44-46a7-9439-311669b61d69}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\FileIO">
+    <Filter Include="Header Files\FileSystem">
       <UniqueIdentifier>{3bf7afff-e141-4700-af4d-0d396e044148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileSystem">
+      <UniqueIdentifier>{d3697f69-ef44-46a7-9439-311669b61d69}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +97,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileIO\File.cpp">
-      <Filter>Source Files\FileIO</Filter>
+      <Filter>Source Files\FileSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +162,7 @@
       <Filter>Header Files\Events</Filter>
     </ClInclude>
     <ClInclude Include="FileIO\File.hpp">
-      <Filter>Header Files\FileIO</Filter>
+      <Filter>Header Files\FileSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

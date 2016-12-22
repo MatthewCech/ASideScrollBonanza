@@ -14,7 +14,7 @@ Lifted from my ASCIIPlayer project, modified for this project.
 
 
 
-namespace FileUtil
+namespace FileSystem
 {
   // Proxy class for subscript operator shenanagins.
   class File;
