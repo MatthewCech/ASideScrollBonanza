@@ -9,23 +9,22 @@
 
 namespace ASSB
 {
-	class GameEngine;
 	class PhysicsSystem
 	{
 	public:
-		void Update(GameEngine &g, std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map);
+		void Update(std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map);
 
 	private:
-		CollisionInfo isCollidingAABB(GameEngine &g,
+		CollisionInfo isCollidingAABB(
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &obj1,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &obj2);
 
-		void resolveStaticAABBCollision(GameEngine &g,
+		void resolveStaticAABBCollision(
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &staticObj,
 			CollisionInfo info);
 
-		void resolveDynamicDynamicAABBCollision(GameEngine &g,
+		void resolveDynamicDynamicAABBCollision(
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamic1,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamic2,
 			CollisionInfo info);

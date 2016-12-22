@@ -65,9 +65,9 @@ namespace FileSystem
 		//!TODO: For testing
 		ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->
 			SetVelocity(Graphics::Vector4(
-			  static_cast<float>((((std::rand() % 100) - 50.0) / 1000.0))
-			, static_cast<float>((((std::rand() % 100) - 50.0) / 1000.0))
-			, static_cast<float>((((std::rand() % 100) - 50.0) / 1000.0))));
+			  static_cast<float>((((std::rand() % 100) - 50.0) / 2000.0))
+			, static_cast<float>((((std::rand() % 100) - 50.0) / 2000.0))
+			, static_cast<float>((((std::rand() % 100) - 50.0) / 2000.0))));
 
 		// Success(tm) if we made it here!
 		return true;

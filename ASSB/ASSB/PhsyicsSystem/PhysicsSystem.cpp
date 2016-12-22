@@ -6,7 +6,7 @@
 
 namespace ASSB
 {
-	void PhysicsSystem::Update(GameEngine &g,
+	void PhysicsSystem::Update(
 		std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map)
 	{
 		// Location updating
@@ -42,33 +42,33 @@ namespace ASSB
 						continue;
 				
 				// If one of us is not static, care a bit only if we are colliding.
-				CollisionInfo info = isCollidingAABB(g, pair1, pair2);
+				CollisionInfo info = isCollidingAABB(pair1, pair2);
 				if (info == true)
 				{
 					if (!pair1.second.static_)
 					{
 						if (!pair2.second.static_)
 							// Both pairs are dymanic
-							resolveDynamicDynamicAABBCollision(g, pair1, pair2, info);
+							resolveDynamicDynamicAABBCollision(pair1, pair2, info);
 						else
 							// Pair1 is dynamic
-							resolveStaticAABBCollision(g, pair1, pair2, info);
+							resolveStaticAABBCollision(pair1, pair2, info);
 					}
 					else
 						// Pair2 is dynamic
-						resolveStaticAABBCollision(g, pair2, pair1, info);
+						resolveStaticAABBCollision(pair2, pair1, info);
 				}
 			}
 		}
 	}
 
 	// Check if two objects are colliding
-	CollisionInfo PhysicsSystem::isCollidingAABB(GameEngine &g,
+	CollisionInfo PhysicsSystem::isCollidingAABB(
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &obj1,
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &obj2)
 	{
-		ComponentHandle<TransformComponent> o1t = g.GetComponent<TransformComponent>(obj1.first);
-		ComponentHandle<TransformComponent> o2t = g.GetComponent<TransformComponent>(obj2.first);
+		ComponentHandle<TransformComponent> o1t = GameEngine::Instance->GetComponent<TransformComponent>(obj1.first);
+		ComponentHandle<TransformComponent> o2t = GameEngine::Instance->GetComponent<TransformComponent>(obj2.first);
 		const Graphics::Vector4 pos1{ o1t->GetPosition() };
 		const Graphics::Vector4 pos2{ o2t->GetPosition() };
 		const float Half_Obj1Width{ obj1.second.width_ / 2 };
@@ -123,10 +123,12 @@ namespace ASSB
 						else if (bt <= lr && bt <= rl)
 							normal = Graphics::Vector4(0, -1, 0), offset = -bt;
 						else if (lr <= rl)
-							normal = Graphics::Vector4(1, 0, 0), offset = -lr;
+							normal = Graphics::Vector4(-1, 0, 0), offset = -lr;
 						else
-							normal = Graphics::Vector4(-1, 0, 0), offset = -rl;
+							normal = Graphics::Vector4(1, 0, 0), offset = -rl;
 
+						// Return collisionInfo object. Realized after the fact I don't need
+						// two normal variables.
 						return CollisionInfo(true, offset, normal, -normal);
 					}
 				}
@@ -138,14 +140,13 @@ namespace ASSB
 
 
 	// Misleading qualifiers, not actually const for the Game Objects.
-	void PhysicsSystem::resolveStaticAABBCollision(GameEngine &g,
+	void PhysicsSystem::resolveStaticAABBCollision(
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj,
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &staticObj,
 		CollisionInfo info)
 	{
-		// Consider: Impulse?
+		// Excecute: Impulse, apply only to 1 side.
 		DEBUG_PRINT("Dynamic to Static Collision!");
-		UNUSED(g);
 		UNUSED(dynamicObj);
 		UNUSED(staticObj);
 		UNUSED(info);
@@ -156,7 +157,7 @@ namespace ASSB
 		return v1.X * v2.X + v1.Y * v2.Y;
 	}
 	// Misleading qualifiers, not actually const for the Game Objects
-	void PhysicsSystem::resolveDynamicDynamicAABBCollision(GameEngine &g,
+	void PhysicsSystem::resolveDynamicDynamicAABBCollision(
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj1,
 		std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj2,
 		CollisionInfo info)
@@ -165,14 +166,16 @@ namespace ASSB
 		ComponentHandle<TransformComponent> t1 = GameEngine::Instance->GetComponent<TransformComponent>(dynamicObj1.first);
 		ComponentHandle<TransformComponent> t2 = GameEngine::Instance->GetComponent<TransformComponent>(dynamicObj2.first);
 		
-		// Position Correction (assumption: Same mass, of "1")
-		t1->SetPosition(t1->GetPosition() + info.Normal1 * info.Offset / 2);
-		t2->SetPosition(t2->GetPosition() - info.Normal2 * info.Offset / 2);
+		// Position Correction.
+		// IF THE THING LOOKS LIKE IT JIGGLES ON A SURFACE, (probably) FLIP THE SIGN
+		// OF THE ADDITION AND SUBTRACTION, - TO +, + TO -!
+		t1->SetPosition(t1->GetPosition() + info.Normal1 * info.Offset);
+		t2->SetPosition(t2->GetPosition() - info.Normal2 * info.Offset);
     
 		// Velocity Correction (assumption: Same mass, of "1")
 		const Graphics::Vector4 effectiveVelocity{ dynamicObj2.second.velocity_ - dynamicObj1.second.velocity_ };
 		const float normalMag{ dot(effectiveVelocity, info.Normal1) };
-		const float elasticity{ 1.0f }; //!TODO: Tweak Elasticity! :D
+		const float elasticity{ .2f }; //!TODO: Tweak Elasticity! Value: (0-1)
 
 		// We don't care if we aren't going to collide.
 		if (normalMag > 0) 
