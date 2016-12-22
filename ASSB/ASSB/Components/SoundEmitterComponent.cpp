@@ -18,14 +18,16 @@ namespace ASSB
 	// Play the sound
 	void SoundEmitterComponent::Play()
 	{
-		SE_ASI_.PlayFile(*af_);
+		if(af_ != nullptr)
+			SE_ASI_.PlayFile(*af_);
 	}
 
 
 	// Stops the sound emitter
 	void SoundEmitterComponent::Stop()
 	{
-		SE_ASI_.StopFile(*af_);
+		if(af_ != nullptr)
+			SE_ASI_.StopFile(*af_);
 	}
 
 

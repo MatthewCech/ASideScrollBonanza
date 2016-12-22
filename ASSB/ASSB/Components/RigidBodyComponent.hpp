@@ -38,7 +38,7 @@ namespace ASSB
 		float height_;
 		Graphics::Vector4 velocity_;
 
-		RigidBodyComponent(const RigidBodyComponent &rhs) = delete;
+		// Omit
 		RigidBodyComponent *operator=(const RigidBodyComponent &rhs) = delete;
 	};
 }
