@@ -122,6 +122,11 @@
     </ClCompile>
     <ClCompile Include="FileSystem\ImagePreloadingMapper.cpp">
       <Filter>Source Files\FileSystem</Filter>
+    <ClCompile Include="Input\KeyboardState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\Keyboard.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -179,9 +184,6 @@
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
       <Filter>Header Files\PhysicsSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Events\InputEvent.hpp">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
     <ClInclude Include="FileSystem\LevelPreloader.hpp">
       <Filter>Header Files\FileSystem</Filter>
     </ClInclude>
@@ -200,9 +202,6 @@
     <ClInclude Include="Components\SpriteComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngine\Key.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PhsyicsSystem\CollisionInfo.hpp">
       <Filter>Header Files\PhysicsSystem</Filter>
     </ClInclude>
@@ -211,6 +210,17 @@
     </ClInclude>
     <ClInclude Include="FileSystem\ImagePreloadingMapper.hpp">
       <Filter>Header Files\FileSystem</Filter>
+    <ClInclude Include="Input\KeyboardState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\Key.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\Keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\KeyboardEvent.hpp">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

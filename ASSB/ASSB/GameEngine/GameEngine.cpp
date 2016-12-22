@@ -1,5 +1,6 @@
 #include "GameEngine.h"
 #include "Graphics/Vector4.h"
+#include "Input/Keyboard.h"
 
 namespace ASSB
 {
@@ -23,6 +24,14 @@ namespace ASSB
 		else
 			throw "Gee user, why does your mom let you have TWO game engines?";
 
+		//setup input
+
+		window.OnKeyDown = Keyboard::KeyDown;
+		window.OnKeyUp = Keyboard::KeyUp;
+		window.OnSystemKeyDown = Keyboard::SysKeyDown;
+		window.OnSystemKeyUp = Keyboard::SysKeyUp;
+
+		//set up graphics
 		Graphics.VSync = Graphics::GraphicsEngine::VSyncType::On;
 
 		PixelShader.Create();
@@ -41,17 +50,6 @@ namespace ASSB
 
 		Square = std::unique_ptr<Graphics::Mesh>(new Graphics::Mesh(Graphics, verts, inds));
 		Square->Create(VertexShader);
-
-		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>("wowzers", NextID++));
-		AddComponent<TransformComponent>(NextID - 1);
-		AddComponent<SpriteComponent>(NextID - 1);
-		GetComponent<SpriteComponent>(NextID - 1)->Path = L"../../../Assets/FACEICON.png";
-
-		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>("wowzer", NextID++));
-		AddComponent<TransformComponent>(NextID - 1);
-		AddComponent<SpriteComponent>(NextID - 1);
-
-		Transforms[2].SetPosition(Graphics::Vector4(1, 2, 0));
 
 		Camera.SetPosition(Graphics::Vector4(0, 0, 5));
 	}
@@ -94,6 +92,7 @@ namespace ASSB
 	// Primary game loop
 	void GameEngine::Loop()
 	{
+		Keyboard::Update();
 		// Physics
 		Physics.Update(RigidBodies);
 
@@ -123,6 +122,7 @@ namespace ASSB
 		}
 
 		Graphics.Present();
+		Keyboard::PrepairForNextFrame();
 	}
 
 	Graphics::Texture & GameEngine::GetTexture(const std::wstring path)
