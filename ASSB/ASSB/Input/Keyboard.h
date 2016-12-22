@@ -37,9 +37,7 @@ namespace ASSB
 		/// gets if a key is currently down
 		/// </summary>
 		/// <param name="key">the Keyboard key to check</param>
-		/// <returns></returns>
 		bool IsKeyDown(Key key);
-
 	private:
 		static std::queue<Key> keysDown;
 		static std::queue<Key> keysUp;

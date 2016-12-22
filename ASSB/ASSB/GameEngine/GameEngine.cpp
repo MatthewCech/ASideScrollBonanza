@@ -1,6 +1,7 @@
 #include "GameEngine.h"
 #include "Graphics/Vector4.h"
 #include "Input/Keyboard.h"
+#include "Input/Mouse.h"
 
 namespace ASSB
 {
@@ -30,6 +31,9 @@ namespace ASSB
 		window.OnKeyUp = Keyboard::KeyUp;
 		window.OnSystemKeyDown = Keyboard::SysKeyDown;
 		window.OnSystemKeyUp = Keyboard::SysKeyUp;
+		window.OnMouseButton = Mouse::MouseButtonChange;
+		window.OnMouseScroll = Mouse::Scroll;
+		window.OnMouseMove = Mouse::MouseMove;
 
 		//set up graphics
 		Graphics.VSync = Graphics::GraphicsEngine::VSyncType::On;
@@ -93,6 +97,7 @@ namespace ASSB
 	void GameEngine::Loop()
 	{
 		Keyboard::Update();
+		Mouse::Update();
 		// Physics
 		Physics.Update(RigidBodies);
 
@@ -122,6 +127,7 @@ namespace ASSB
 		}
 
 		Graphics.Present();
+		Mouse::PrepairForNextFrame();
 		Keyboard::PrepairForNextFrame();
 	}
 

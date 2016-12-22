@@ -109,6 +109,8 @@
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Input\Keyboard.cpp" />
     <ClCompile Include="Input\KeyboardState.cpp" />
+    <ClCompile Include="Input\Mouse.cpp" />
+    <ClCompile Include="Input\MouseState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp" />
     <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
@@ -135,6 +137,7 @@
     <ClInclude Include="EventSystem\ObjectEventManager.hpp" />
     <ClInclude Include="EventSystem\ODefines.hpp" />
     <ClInclude Include="Events\KeyboardEvent.hpp" />
+    <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="Events\UISelectEvent.hpp" />
     <ClInclude Include="FileSystem\AudioPreloader.hpp" />
     <ClInclude Include="FileSystem\File.hpp" />
@@ -145,6 +148,9 @@
     <ClInclude Include="Globals.hpp" />
     <ClInclude Include="Input\Keyboard.h" />
     <ClInclude Include="Input\KeyboardState.h" />
+    <ClInclude Include="Input\Mouse.h" />
+    <ClInclude Include="Input\MouseButton.h" />
+    <ClInclude Include="Input\MouseState.h" />
     <ClInclude Include="PhsyicsSystem\CollisionInfo.hpp" />
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
