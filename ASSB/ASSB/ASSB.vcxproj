@@ -119,6 +119,7 @@
     <ClInclude Include="EventSystem\EventSystem.hpp" />
     <ClInclude Include="EventSystem\ObjectEventManager.hpp" />
     <ClInclude Include="EventSystem\ODefines.hpp" />
+    <ClInclude Include="Events\UISelectEvent.hpp" />
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
     <ClInclude Include="GameEngine\TransformComponent.h" />

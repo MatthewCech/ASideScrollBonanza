@@ -18,6 +18,10 @@ namespace EventSystem
     template <typename Caller, typename EventType>
     O_ID Register(Caller *c, void(Caller::*func)(EventType *));
 
+		// Vague member function delegate
+		template <typename Caller, typename EventType>
+		O_ID RegisterVague(Caller *c, void(Caller::*func)(Event *));
+
     // Global function delegate 
     template <typename EventType>  
     O_ID Register(void(*func)(EventType *e));

@@ -40,6 +40,9 @@
     <Filter Include="Template Files\Components">
       <UniqueIdentifier>{01f150f6-66d7-454b-8fd3-40fc245ef7cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Events">
+      <UniqueIdentifier>{7b154ae1-20ec-4a00-a6e5-ce701041e7e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="AudioSystem\AudioMapper.hpp">
       <Filter>Header Files\AudioSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\UISelectEvent.hpp">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

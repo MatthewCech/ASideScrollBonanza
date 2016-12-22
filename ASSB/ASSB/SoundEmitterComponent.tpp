@@ -4,6 +4,7 @@ namespace ASSB
 	template <typename EventType>
 	void SoundEmitterComponent::PlayOnEvent()
 	{
-		Connect<EventType>(this, eventCallback);
+		ConnectVague<SoundEmitterComponent, EventType>(
+			this, &SoundEmitterComponent::eventCallback);
 	}
 }

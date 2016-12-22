@@ -20,6 +20,8 @@ namespace EventSystem
     // Member Functions
     template <typename Caller, typename EventType>
     void Connect(Caller *c, void(Caller::*func)(EventType *));
+		template <typename Caller, typename EventToBind>
+		void ConnectVague(Caller *c, void(Caller::*func)(Event *));
     //void Disconnect(O_ID toDisconnect);
 
   private:
