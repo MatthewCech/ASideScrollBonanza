@@ -1,5 +1,5 @@
 Select1:../../../Assets/SFX/Select1.wav
--- break --
+== I put this line in to stop it here.
 Confirm1:../../../Assets/SFX/Confirm1.wav
 Hit1:../../../Assets/SFX/Hit1.wav
 Hit2:../../../Assets/SFX/Hit2.wav

@@ -40,7 +40,7 @@ namespace ASSB
 
 	float TransformComponent::GetScaleX()
 	{
-		return ScaleY;
+		return ScaleX;
 	}
 
 	float TransformComponent::GetScaleY()

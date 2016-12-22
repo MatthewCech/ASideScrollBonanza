@@ -58,6 +58,13 @@ namespace FileSystem
 	// Retrieve the path for an existing tag
 	std::string ImagePreloadingMapper::Retrieve(std::string tag)
 	{
-		return associatedStrings_.at(tag);
+		const auto iter = associatedStrings_.find(tag);
+		if (iter == associatedStrings_.end())
+		{
+			DEBUG_PRINT("Invalid tag lookup in Image Mapper!");
+			return "";
+		}
+		else
+			return iter->second;
 	}
 }
