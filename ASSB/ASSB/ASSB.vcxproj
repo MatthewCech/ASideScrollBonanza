@@ -106,6 +106,7 @@
     <ClCompile Include="FileSystem\File.cpp" />
     <ClCompile Include="FileSystem\LevelPreloader.cpp" />
     <ClCompile Include="GameEngine\GameEngine.cpp" />
+    <ClCompile Include="GameEngine\GameTime.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Input\Keyboard.cpp" />
     <ClCompile Include="Input\KeyboardState.cpp" />
@@ -138,12 +139,14 @@
     <ClInclude Include="Events\KeyboardEvent.hpp" />
     <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="Events\UISelectEvent.hpp" />
+    <ClInclude Include="Events\UpdateEvent.hpp" />
     <ClInclude Include="FileSystem\ImagePreloadingMapper.hpp" />
     <ClInclude Include="FileSystem\AudioPreloadingMapper.hpp" />
     <ClInclude Include="FileSystem\File.hpp" />
     <ClInclude Include="FileSystem\LevelPreloader.hpp" />
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
+    <ClInclude Include="GameEngine\GameTime.h" />
     <ClInclude Include="Input\Key.h" />
     <ClInclude Include="Globals.hpp" />
     <ClInclude Include="Input\Keyboard.h" />

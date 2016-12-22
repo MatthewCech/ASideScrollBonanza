@@ -1,263 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Template Files">
-      <UniqueIdentifier>{248083d1-3596-454c-bbcc-22ac588697e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Components">
-      <UniqueIdentifier>{8e355378-b598-47cb-99f8-a43ceb755f3a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\EventSystem">
-      <UniqueIdentifier>{5c2d76e3-e76f-4afb-ad6e-cacbcbe4fd79}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\EventSystem">
-      <UniqueIdentifier>{458ebf14-bf14-43c0-9c2a-89584cbd9312}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Template Files\EventSystem">
-      <UniqueIdentifier>{3fea76b3-ae94-4ebd-b9fb-12b20a0a12ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\AudioSystem">
-      <UniqueIdentifier>{68327aae-de3a-4649-8109-3cecbf485a2d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\AudioSystem">
-      <UniqueIdentifier>{6315322a-02a7-47b5-9650-f2a035a80e62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Components">
-      <UniqueIdentifier>{81f59988-50f1-4192-9cf7-7780121b7410}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Template Files\Components">
-      <UniqueIdentifier>{01f150f6-66d7-454b-8fd3-40fc245ef7cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Events">
-      <UniqueIdentifier>{7b154ae1-20ec-4a00-a6e5-ce701041e7e1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\FileSystem">
-      <UniqueIdentifier>{3bf7afff-e141-4700-af4d-0d396e044148}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FileSystem">
-      <UniqueIdentifier>{d3697f69-ef44-46a7-9439-311669b61d69}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\PhysicsSystem">
-      <UniqueIdentifier>{e2b18b74-34d4-4fab-979a-9dbbd1a2fd31}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\PhysicsSystem">
-      <UniqueIdentifier>{73279627-1464-4964-96f3-bcb6471454de}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="AudioSystem\AudioFile.cpp" />
+    <ClCompile Include="AudioSystem\AudioSystem.cpp" />
+    <ClCompile Include="Components\Component.cpp" />
+    <ClCompile Include="Components\RigidBodyComponent.cpp" />
+    <ClCompile Include="Components\SoundEmitterComponent.cpp" />
+    <ClCompile Include="Components\SpriteComponent.cpp" />
+    <ClCompile Include="Components\TransformComponent.cpp" />
+    <ClCompile Include="EventSystem\Delegate.cpp" />
+    <ClCompile Include="EventSystem\DelegateGroup.cpp" />
+    <ClCompile Include="EventSystem\DelegateGroupMember.cpp" />
+    <ClCompile Include="EventSystem\Event.cpp" />
+    <ClCompile Include="EventSystem\EventSystem.cpp" />
+    <ClCompile Include="EventSystem\ObjectEventManager.cpp" />
+    <ClCompile Include="FileSystem\ImagePreloadingMapper.cpp" />
+    <ClCompile Include="FileSystem\AudioPreloadingMapper.cpp" />
+    <ClCompile Include="FileSystem\File.cpp" />
+    <ClCompile Include="FileSystem\LevelPreloader.cpp" />
+    <ClCompile Include="GameEngine\GameEngine.cpp" />
+    <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="Input\Keyboard.cpp" />
+    <ClCompile Include="Input\KeyboardState.cpp" />
+    <ClCompile Include="Input\Mouse.cpp" />
+    <ClCompile Include="Input\MouseState.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp" />
+    <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp" />
+    <ClCompile Include="GameEngine\GameTime.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngine\GameEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EventSystem\Delegate.cpp">
-      <Filter>Source Files\EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="EventSystem\DelegateGroup.cpp">
-      <Filter>Source Files\EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="EventSystem\DelegateGroupMember.cpp">
-      <Filter>Source Files\EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="EventSystem\Event.cpp">
-      <Filter>Source Files\EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="EventSystem\EventSystem.cpp">
-      <Filter>Source Files\EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="EventSystem\ObjectEventManager.cpp">
-      <Filter>Source Files\EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioSystem\AudioFile.cpp">
-      <Filter>Source Files\AudioSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioSystem\AudioSystem.cpp">
-      <Filter>Source Files\AudioSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Globals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSystem\File.cpp">
-      <Filter>Source Files\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
-      <Filter>Source Files\PhysicsSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSystem\LevelPreloader.cpp">
-      <Filter>Source Files\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\Component.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\RigidBodyComponent.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\SoundEmitterComponent.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\TransformComponent.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\SpriteComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp">
-      <Filter>Source Files\PhysicsSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSystem\AudioPreloadingMapper.cpp">
-      <Filter>Source Files\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSystem\ImagePreloadingMapper.cpp">
-      <Filter>Source Files\FileSystem</Filter>
-    <ClCompile Include="Input\KeyboardState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Input\Keyboard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Input\MouseState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Input\Mouse.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="AudioSystem\AudioDefines.hpp" />
+    <ClInclude Include="AudioSystem\AudioFile.hpp" />
+    <ClInclude Include="AudioSystem\AudioSystem.hpp" />
+    <ClInclude Include="Components\Component.hpp" />
+    <ClInclude Include="Components\RigidBodyComponent.hpp" />
+    <ClInclude Include="Components\SoundEmitterComponent.hpp" />
+    <ClInclude Include="Components\SpriteComponent.hpp" />
+    <ClInclude Include="Components\TransformComponent.h" />
+    <ClInclude Include="EventSystem\Delegate.hpp" />
+    <ClInclude Include="EventSystem\DelegateGlobalFunction.hpp" />
+    <ClInclude Include="EventSystem\DelegateGroup.hpp" />
+    <ClInclude Include="EventSystem\DelegateGroupMember.hpp" />
+    <ClInclude Include="EventSystem\DelegateMemberFunction.hpp" />
+    <ClInclude Include="EventSystem\Event.hpp" />
+    <ClInclude Include="EventSystem\EventSystem.hpp" />
+    <ClInclude Include="EventSystem\ObjectEventManager.hpp" />
+    <ClInclude Include="EventSystem\ODefines.hpp" />
+    <ClInclude Include="Events\KeyboardEvent.hpp" />
+    <ClInclude Include="Events\MouseEvents.h" />
+    <ClInclude Include="Events\UISelectEvent.hpp" />
+    <ClInclude Include="FileSystem\ImagePreloadingMapper.hpp" />
+    <ClInclude Include="FileSystem\AudioPreloadingMapper.hpp" />
+    <ClInclude Include="FileSystem\File.hpp" />
+    <ClInclude Include="FileSystem\LevelPreloader.hpp" />
+    <ClInclude Include="GameEngine\ComponentHandle.h" />
+    <ClInclude Include="GameEngine\GameEngine.h" />
+    <ClInclude Include="Input\Key.h" />
+    <ClInclude Include="Globals.hpp" />
+    <ClInclude Include="Input\Keyboard.h" />
+    <ClInclude Include="Input\KeyboardState.h" />
+    <ClInclude Include="Input\Mouse.h" />
+    <ClInclude Include="Input\MouseButton.h" />
+    <ClInclude Include="Input\MouseState.h" />
+    <ClInclude Include="PhsyicsSystem\CollisionInfo.hpp" />
+    <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp" />
+    <ClInclude Include="GameEngine\GameTime.h" />
+    <ClInclude Include="Events\UpdateEvent.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameEngine\GameEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEngine\ComponentHandle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem\Delegate.hpp">
-      <Filter>Header Files\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem\DelegateGlobalFunction.hpp">
-      <Filter>Header Files\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem\DelegateGroup.hpp">
-      <Filter>Header Files\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem\DelegateGroupMember.hpp">
-      <Filter>Header Files\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem\DelegateMemberFunction.hpp">
-      <Filter>Header Files\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem\Event.hpp">
-      <Filter>Header Files\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem\EventSystem.hpp">
-      <Filter>Header Files\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem\ObjectEventManager.hpp">
-      <Filter>Header Files\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem\ODefines.hpp">
-      <Filter>Header Files\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Globals.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioSystem\AudioDefines.hpp">
-      <Filter>Header Files\AudioSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioSystem\AudioFile.hpp">
-      <Filter>Header Files\AudioSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioSystem\AudioSystem.hpp">
-      <Filter>Header Files\AudioSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\UISelectEvent.hpp">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="FileSystem\File.hpp">
-      <Filter>Header Files\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
-      <Filter>Header Files\PhysicsSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="FileSystem\LevelPreloader.hpp">
-      <Filter>Header Files\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\TransformComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Component.hpp">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\RigidBodyComponent.hpp">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\SoundEmitterComponent.hpp">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\SpriteComponent.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PhsyicsSystem\CollisionInfo.hpp">
-      <Filter>Header Files\PhysicsSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="FileSystem\AudioPreloadingMapper.hpp">
-      <Filter>Header Files\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="FileSystem\ImagePreloadingMapper.hpp">
-      <Filter>Header Files\FileSystem</Filter>
-    <ClInclude Include="Input\KeyboardState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\Key.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\Keyboard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\KeyboardEvent.hpp">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\MouseState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\Mouse.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\MouseButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Events\MouseEvents.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="EventSystem\DelegateGlobalFunction.tpp">
-      <Filter>Template Files\EventSystem</Filter>
-    </None>
-    <None Include="EventSystem\DelegateMemberFunction.tpp">
-      <Filter>Template Files\EventSystem</Filter>
-    </None>
-    <None Include="EventSystem\EventSystem.tpp">
-      <Filter>Template Files\EventSystem</Filter>
-    </None>
-    <None Include="EventSystem\ObjectEventManager.tpp">
-      <Filter>Template Files\EventSystem</Filter>
-    </None>
+    <None Include="Components\SoundEmitterComponent.tpp" />
+    <None Include="EventSystem\DelegateGlobalFunction.tpp" />
+    <None Include="EventSystem\DelegateMemberFunction.tpp" />
+    <None Include="EventSystem\EventSystem.tpp" />
+    <None Include="EventSystem\ObjectEventManager.tpp" />
     <None Include="GameEngine\ComponentHandle.tpp" />
     <None Include="GameEngine\GameEngine.tpp" />
-    <None Include="Components\SoundEmitterComponent.tpp">
-      <Filter>Template Files\Components</Filter>
-    </None>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <memory>
 #include "Globals.hpp"
+#include "GameTime.h"
 
 // Graphics
 #include "Graphics/GraphicsEngine.h"
@@ -50,6 +51,7 @@ namespace ASSB
 	private:
 		// Variables
 		Globals::ObjectID NextID;
+		GameTime Time;
 		bool Running;
 
 		// Graphics

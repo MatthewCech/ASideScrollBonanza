@@ -2,6 +2,7 @@
 #include "Graphics/Vector4.h"
 #include "Input/Keyboard.h"
 #include "Input/Mouse.h"
+#include "Events/UpdateEvent.hpp"
 
 namespace ASSB
 {
@@ -98,6 +99,9 @@ namespace ASSB
 	{
 		Keyboard::Update();
 		Mouse::Update();
+
+		Time.Tick();
+		Globals::EventSystemInstance.Dispatch(new UpdateEvent(Time));
 		// Physics
 		Physics.Update(RigidBodies);
 
