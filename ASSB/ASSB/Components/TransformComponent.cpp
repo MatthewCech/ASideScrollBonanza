@@ -5,7 +5,7 @@
 namespace ASSB
 {
 	// Default constructor 
-	TransformComponent::TransformComponent() : Position(), ScaleX(0), ScaleY(0), Rotation(0)
+	TransformComponent::TransformComponent() : Position(), ScaleX(1), ScaleY(1), Rotation(0)
 	{  }
 
 

@@ -19,6 +19,7 @@
 #include "Components/TransformComponent.h"
 #include "Components/SoundEmitterComponent.hpp"
 #include "Components/RigidBodyComponent.hpp"
+#include "Components/SpriteComponent.hpp"
 
 
 
@@ -35,6 +36,7 @@ namespace ASSB
 		Globals::ObjectID CreateGameObject(const std::string name = "");
 		void UpdateCamera();
 		void Loop();
+		Graphics::Texture& GetTexture(const std::wstring path);
 
 		// Templatized Member Function
 		template <typename T>
@@ -58,7 +60,6 @@ namespace ASSB
 		Graphics::Camera Camera;
 		Graphics::Shader PixelShader;
 		Graphics::Shader VertexShader;
-		Graphics::Texture TestTexture;
 
 		//Physics
 		PhysicsSystem Physics;
@@ -68,6 +69,8 @@ namespace ASSB
 		std::unordered_map<Globals::ObjectID, TransformComponent> Transforms;
 		std::unordered_map<Globals::ObjectID, SoundEmitterComponent> SoundEmitters;
 		std::unordered_map<Globals::ObjectID, RigidBodyComponent> RigidBodies;
+		std::unordered_map<Globals::ObjectID, SpriteComponent> Sprites;
+		std::unordered_map<std::wstring, std::shared_ptr<Graphics::Texture>> Textures;
 
 		GameEngine(const ASSB::GameEngine& other) = delete;
 

@@ -57,4 +57,16 @@ namespace ASSB
 	{
 		RigidBodies.emplace(id, RigidBodyComponent());
 	}
+
+	//Sprite
+	template<>
+	inline ComponentHandle<SpriteComponent> GameEngine::GetComponent(Globals::ObjectID id)
+	{
+		return ComponentHandle<SpriteComponent>(id, Sprites);
+	}
+	template<>
+	inline void GameEngine::AddComponent<SpriteComponent>(Globals::ObjectID id)
+	{
+		Sprites.emplace(id, SpriteComponent());
+	}
 }

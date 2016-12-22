@@ -15,8 +15,7 @@ namespace ASSB
 		Transform(Graphics, Graphics::ShaderType::Vertex, 1),
 		Camera(Graphics),
 		PixelShader(Graphics, "LambertPixel.cso", Graphics::ShaderType::Pixel),
-		VertexShader(Graphics, "LambertVertex.cso", Graphics::ShaderType::Vertex),
-		TestTexture(Graphics, L"../../../Assets/wow.png")
+		VertexShader(Graphics, "LambertVertex.cso", Graphics::ShaderType::Vertex)
 	{
 		// Singleton enforcement
 		if (Instance == nullptr)
@@ -28,8 +27,6 @@ namespace ASSB
 
 		PixelShader.Create();
 		VertexShader.Create();
-
-		TestTexture.Create();
 
 		std::vector<Graphics::Mesh::Vertex> verts;
 		std::vector<unsigned short> inds;
@@ -46,14 +43,17 @@ namespace ASSB
 		Square->Create(VertexShader);
 
 		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>("wowzers", NextID++));
-		Transforms.emplace(NextID -1, TransformComponent());
+		AddComponent<TransformComponent>(NextID - 1);
+		AddComponent<SpriteComponent>(NextID - 1);
+		GetComponent<SpriteComponent>(NextID - 1)->Path = L"../../../Assets/FACEICON.png";
 
 		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>("wowzer", NextID++));
-		Transforms.emplace(NextID - 1, TransformComponent());
+		AddComponent<TransformComponent>(NextID - 1);
+		AddComponent<SpriteComponent>(NextID - 1);
 
 		Transforms[2].SetPosition(Graphics::Vector4(1, 2, 0));
 
-		Camera.SetPosition(Graphics::Vector4(0, 0, 10));
+		Camera.SetPosition(Graphics::Vector4(0, 0, 5));
 	}
 
 
@@ -78,6 +78,7 @@ namespace ASSB
 
 		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>(name, NextID++));
 		Transforms.emplace(NextID - 1, TransformComponent());
+		AddComponent<SpriteComponent>(NextID - 1);
 
 		return NextID - 1;
 	}
@@ -108,16 +109,32 @@ namespace ASSB
 		for (auto iterator : GameObjects)
 		{
 			Globals::ObjectID id = iterator.second;
-			ComponentHandle<TransformComponent> comp = GetComponent<TransformComponent>(id);
-			auto position = comp->GetPosition();
-			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ 1, -1,1 }, { 0,0 }, comp->GetRotation(), { position.X, position.Y, position.Z });
+			ComponentHandle<SpriteComponent> sprite = GetComponent<SpriteComponent>(id);
+			if (!sprite)
+				continue;
+			ComponentHandle<TransformComponent> trans = GetComponent<TransformComponent>(id);
+			auto position = trans->GetPosition();
+			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { position.X, position.Y, position.Z });
 
 			Transform.Use();
-			TestTexture.Use();
+			GetTexture(sprite->Path).Use();
 
 			Graphics.Draw(*Square);
 		}
 
 		Graphics.Present();
+	}
+
+	Graphics::Texture & GameEngine::GetTexture(const std::wstring path)
+	{
+		auto it = Textures.find(path);
+
+		if (it == Textures.end())
+		{
+			Textures.emplace(path, std::shared_ptr<Graphics::Texture>(new Graphics::Texture(Graphics, path)));
+			Textures[path]->Create();
+			return *Textures[path];
+		}
+		return *(it->second);
 	}
 }

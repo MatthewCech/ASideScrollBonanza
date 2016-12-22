@@ -94,6 +94,7 @@
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\RigidBodyComponent.cpp" />
     <ClCompile Include="Components\SoundEmitterComponent.cpp" />
+    <ClCompile Include="Components\SpriteComponent.cpp" />
     <ClCompile Include="Components\TransformComponent.cpp" />
     <ClCompile Include="EventSystem\Delegate.cpp" />
     <ClCompile Include="EventSystem\DelegateGroup.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="Components\Component.hpp" />
     <ClInclude Include="Components\RigidBodyComponent.hpp" />
     <ClInclude Include="Components\SoundEmitterComponent.hpp" />
+    <ClInclude Include="Components\SpriteComponent.hpp" />
     <ClInclude Include="Components\TransformComponent.h" />
     <ClInclude Include="EventSystem\Delegate.hpp" />
     <ClInclude Include="EventSystem\DelegateGlobalFunction.hpp" />
