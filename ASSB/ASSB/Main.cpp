@@ -21,9 +21,11 @@ int main()
 	ASSB::GameEngine Engine(window);
 
 	// Preloading
-	FileSystem::ImagePreloadingMapper::LoadFromFile("../../../Assets/Levels/ImageList.txt");
+	FileSystem::ImagePreloadingMapper::LoadFromFile("../../../Assets/ImageList.txt");
 	FileSystem::AudioPreloadingMapper::LoadFromFile("../../../Assets/AudioList.txt");
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/LevelTest.txt");
+	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/SandboxLevel.txt");
+
 
 	// Audio system test
 	ASSB::SoundEmitterComponent se("Select1");

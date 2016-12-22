@@ -2,7 +2,9 @@
 #include "AudioSystem/AudioDefines.hpp"
 #include "Components/TransformComponent.h"
 #include "Components/RigidBodyComponent.hpp"
+#include "Components/SpriteComponent.hpp"
 #include "GameEngine/GameEngine.h"
+#include "FileSystem/ImagePreloadingMapper.hpp"
 #include <cstdlib>
 
 
@@ -44,30 +46,71 @@ namespace FileSystem
 		const std::string second{ line.substr(splitLoc + 1) };
 
 		// Split for position x and y
-		size_t commaLoc = first.find_first_of(",");
-		if (commaLoc == std::string::npos)
+		const size_t commaLoc1 = first.find_first_of(",");
+		if (commaLoc1 == std::string::npos)
 			return false;
 
-		const float x{ std::stof(first.substr(0, commaLoc)) };
-		const float y{ std::stof(first.substr(commaLoc + 1)) };
+		const float x{ std::stof(first.substr(0, commaLoc1)) };
+		const float y{ std::stof(first.substr(commaLoc1 + 1)) };
 
+		// Split for image path and flags string
+		const size_t commaLoc2 = second.find_first_of(",");
+		if (commaLoc2 == std::string::npos)
+			return false;
+
+		std::string imageTag{ second.substr(0, commaLoc2) };
+		const std::string flags{ second.substr(commaLoc2 + 1) };
+
+		/*
+		float scaleX = 1;
+		float scaleY = 1;
+		const size_t scaleLoc = second.find_first_of("*");
+		if (scaleLoc != std::string::npos)
+		{
+			const std::string scaleStr{ imageTag.substr(scaleLoc + 1) };
+			const size_t xCharLoc = scaleStr.find_first_of("x");
+			if (xCharLoc == std::string::npos)
+				return false;
+
+			scaleX = scaleStr.substr()
+			imageTag = imageTag.substr(0, scaleLoc);
+		}
+		*/
+
+
+    //!TODO: MOVE ALL PARSING ABOVE TO CUSTOM OBJECT
 
 		// Construct components
 		ASSB::Globals::ObjectID id = ASSB::GameEngine::Instance->CreateGameObject();
 		ASSB::GameEngine::Instance->AddComponent<ASSB::RigidBodyComponent>(id);
 
-		// Adjust components
+		// Set position
 		ASSB::GameEngine::Instance->GetComponent<ASSB::TransformComponent>(id)->
 			SetPosition({ x, y, 0});
-		//ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->
-		//	SetStatic(true);
+		
+		// Dynamic or static
+		if (flags[0] == 'd')
+		{
+			ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->SetStatic(false);
 
-		//!TODO: For testing
-		ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->
-			SetVelocity(Graphics::Vector4(
-			  static_cast<float>((((std::rand() % 100) - 50.0) / 2000.0))
-			, static_cast<float>((((std::rand() % 100) - 50.0) / 2000.0))
-			, static_cast<float>((((std::rand() % 100) - 50.0) / 2000.0))));
+			//!TODO: For testing
+			ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->
+				SetVelocity(Graphics::Vector4(
+					static_cast<float>((((std::rand() % 100) - 50.0) / 2000.0))
+					, static_cast<float>((((std::rand() % 100) - 50.0) / 2000.0))
+					, static_cast<float>((((std::rand() % 100) - 50.0) / 2000.0))));
+		}
+		else if (flags[0] == 's')
+		{
+			ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->SetStatic(true);
+		}
+
+		// Set image
+		std::string path = FileSystem::ImagePreloadingMapper::Retrieve(imageTag);
+		if (path.size() > 0)
+		{
+			ASSB::GameEngine::Instance->GetComponent<ASSB::SpriteComponent>(id)->Path = std::wstring(path.begin(), path.end());
+		}
 
 		// Success(tm) if we made it here!
 		return true;
