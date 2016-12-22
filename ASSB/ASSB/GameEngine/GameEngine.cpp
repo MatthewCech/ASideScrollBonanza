@@ -59,6 +59,8 @@ namespace ASSB
 
 	void GameEngine::Loop()
 	{
+		// Physics
+		Physics.Update(*this, RigidBodies);
 
 		//draw
 		Graphics.ClearScreen();

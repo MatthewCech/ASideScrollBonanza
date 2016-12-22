@@ -90,15 +90,6 @@
     <ClCompile Include="AudioSystem\AudioMapper.cpp">
       <Filter>Source Files\AudioSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEngine\TransformComponent.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundEmitterComponent.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Globals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -111,7 +102,19 @@
     <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
       <Filter>Source Files\PhysicsSystem</Filter>
     </ClCompile>
-    <ClCompile Include="RigidBodyComponent.cpp">
+    <ClCompile Include="FileSystem\LevelPreloader.cpp">
+      <Filter>Source Files\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Component.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\RigidBodyComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\SoundEmitterComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\TransformComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -121,15 +124,6 @@
     </ClInclude>
     <ClInclude Include="GameEngine\ComponentHandle.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundEmitterComponent.hpp">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEngine\TransformComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.hpp">
-      <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="EventSystem\Delegate.hpp">
       <Filter>Header Files\EventSystem</Filter>
@@ -185,7 +179,22 @@
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
       <Filter>Header Files\PhysicsSystem</Filter>
     </ClInclude>
-    <ClInclude Include="RigidBodyComponent.hpp">
+    <ClInclude Include="Events\InputEvent.hpp">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem\LevelPreloader.hpp">
+      <Filter>Header Files\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TransformComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Component.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\RigidBodyComponent.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SoundEmitterComponent.hpp">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -204,7 +213,7 @@
     </None>
     <None Include="GameEngine\ComponentHandle.tpp" />
     <None Include="GameEngine\GameEngine.tpp" />
-    <None Include="SoundEmitterComponent.tpp">
+    <None Include="Components\SoundEmitterComponent.tpp">
       <Filter>Template Files\Components</Filter>
     </None>
   </ItemGroup>

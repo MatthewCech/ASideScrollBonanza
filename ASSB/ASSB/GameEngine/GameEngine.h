@@ -11,11 +11,15 @@
 #include "Graphics/Shaders/Shader.h"
 #include "Graphics/Texture.h"
 
+// Physics
+#include "PhsyicsSystem/PhysicsSystem.hpp"
+
 // Components
 #include "ComponentHandle.h"
-#include "TransformComponent.h"
-#include "SoundEmitterComponent.hpp"
-#include "RigidBodyComponent.hpp"
+#include "Components/TransformComponent.h"
+#include "Components/SoundEmitterComponent.hpp"
+#include "Components/RigidBodyComponent.hpp"
+
 
 
 namespace ASSB
@@ -36,6 +40,8 @@ namespace ASSB
 	private:
 		Globals::ObjectID NextID;
 		bool Running;
+
+		// Graphics
 		Graphics::GraphicsEngine Graphics;
 		Graphics::Window& Window;
 		Graphics::ConstantBuffer<DirectX::XMMATRIX> Transform;
@@ -44,6 +50,9 @@ namespace ASSB
 		Graphics::Shader PixelShader;
 		Graphics::Shader VertexShader;
 		Graphics::Texture TestTexture;
+
+		//Physics
+		PhysicsSystem Physics;
 
 		// Add components here
 		std::unordered_map<std::string, Globals::ObjectID> GameObjects;

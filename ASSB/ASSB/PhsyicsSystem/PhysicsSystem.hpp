@@ -1,22 +1,20 @@
 #pragma once
-//#include "RigidBodyComponent.hpp"
+#include "Components\RigidBodyComponent.hpp"
 #include <unordered_map>
 #include <utility>
-//#include "Globals.hpp"
+#include "Globals.hpp"
 
 
 
 namespace ASSB
 {
-	//class GameEngine;
-	class ObjectID;
+	class GameEngine;
 	class PhysicsSystem
 	{
 	public:
-		void Update(std::unordered_map<const ObjectID, int> &map);
+		void Update(GameEngine &g, std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map);
 
 	private:
-		/*
 		bool isCollidingAABB(GameEngine &g,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &obj1,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &obj2);
@@ -28,6 +26,5 @@ namespace ASSB
 		void resolveDynamicDynamicAABBCollision(GameEngine &g,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamic1,
 			std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamic2);
-			*/
 	};
 }

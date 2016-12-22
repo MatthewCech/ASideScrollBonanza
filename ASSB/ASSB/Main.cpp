@@ -1,9 +1,9 @@
 #include "Graphics/Window.h"
 #include "GameEngine/GameEngine.h"
+#include "Components/SoundEmitterComponent.hpp"
+#include "Events/UISelectEvent.hpp"
+#include "FileSystem/AudioPreloader.hpp"
 #include "Globals.hpp"
-#include "SoundEmitterComponent.hpp"
-#include "Events\UISelectEvent.hpp"
-#include "FileSystem\AudioPreloader.hpp"
 
 
 // Defines for testing
