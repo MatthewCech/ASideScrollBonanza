@@ -87,16 +87,10 @@
     <ClCompile Include="AudioSystem\AudioSystem.cpp">
       <Filter>Source Files\AudioSystem</Filter>
     </ClCompile>
-    <ClCompile Include="AudioSystem\AudioMapper.cpp">
-      <Filter>Source Files\AudioSystem</Filter>
-    </ClCompile>
     <ClCompile Include="Globals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileSystem\File.cpp">
-      <Filter>Source Files\FileSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSystem\AudioPreloader.cpp">
       <Filter>Source Files\FileSystem</Filter>
     </ClCompile>
     <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
@@ -122,6 +116,12 @@
     </ClCompile>
     <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp">
       <Filter>Source Files\PhysicsSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystem\AudioPreloadingMapper.cpp">
+      <Filter>Source Files\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystem\ImagePreloadingMapper.cpp">
+      <Filter>Source Files\FileSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,16 +170,10 @@
     <ClInclude Include="AudioSystem\AudioSystem.hpp">
       <Filter>Header Files\AudioSystem</Filter>
     </ClInclude>
-    <ClInclude Include="AudioSystem\AudioMapper.hpp">
-      <Filter>Header Files\AudioSystem</Filter>
-    </ClInclude>
     <ClInclude Include="Events\UISelectEvent.hpp">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
     <ClInclude Include="FileSystem\File.hpp">
-      <Filter>Header Files\FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="FileSystem\AudioPreloader.hpp">
       <Filter>Header Files\FileSystem</Filter>
     </ClInclude>
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
@@ -211,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="PhsyicsSystem\CollisionInfo.hpp">
       <Filter>Header Files\PhysicsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem\AudioPreloadingMapper.hpp">
+      <Filter>Header Files\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem\ImagePreloadingMapper.hpp">
+      <Filter>Header Files\FileSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

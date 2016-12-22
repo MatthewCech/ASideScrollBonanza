@@ -10,7 +10,7 @@ namespace ASSB
 	{
 	public:
 		// Constructor
-		CollisionInfo(bool colliding, float offset, Graphics::Vector4 normal1, Graphics::Vector4 normal2);
+		CollisionInfo(bool colliding, float offset = 0, Graphics::Vector4 normal = {});
 
 		// Bool operator overload
 		operator bool();
@@ -18,7 +18,6 @@ namespace ASSB
 		// Variables
 		bool Colliding;
 		float Offset;
-		Graphics::Vector4 Normal1;
-		Graphics::Vector4 Normal2;
+		Graphics::Vector4 Normal;
 	};
 }

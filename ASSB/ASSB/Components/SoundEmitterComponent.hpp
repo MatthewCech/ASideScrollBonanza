@@ -1,7 +1,8 @@
 #pragma once
 #include "Component.hpp" // Component
-#include "AudioSystem\AudioDefines.hpp"
-#include "EventSystem\Event.hpp"
+#include "AudioSystem/AudioDefines.hpp"
+#include "EventSystem/Event.hpp"
+
 
 
 namespace ASSB
