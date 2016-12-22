@@ -8,9 +8,6 @@ namespace ASSB
 	void PhysicsSystem::Update(GameEngine &g,
 		std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map)
 	{
-		UNUSED(g);
-		UNUSED(map);
-
 		//!TODO:Convert to not using full N^2 items in map!
 		for (auto &pair1 : map)
 		{
@@ -47,7 +44,6 @@ namespace ASSB
 				}
 			}
 		}
-
 	}
 
 	// Check if two objects are colliding

@@ -91,7 +91,10 @@
     <ClCompile Include="AudioSystem\AudioFile.cpp" />
     <ClCompile Include="AudioSystem\AudioMapper.cpp" />
     <ClCompile Include="AudioSystem\AudioSystem.cpp" />
-    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Components\Component.cpp" />
+    <ClCompile Include="Components\RigidBodyComponent.cpp" />
+    <ClCompile Include="Components\SoundEmitterComponent.cpp" />
+    <ClCompile Include="Components\TransformComponent.cpp" />
     <ClCompile Include="EventSystem\Delegate.cpp" />
     <ClCompile Include="EventSystem\DelegateGroup.cpp" />
     <ClCompile Include="EventSystem\DelegateGroupMember.cpp" />
@@ -100,24 +103,23 @@
     <ClCompile Include="EventSystem\ObjectEventManager.cpp" />
     <ClCompile Include="FileSystem\AudioPreloader.cpp" />
     <ClCompile Include="FileSystem\File.cpp" />
+    <ClCompile Include="FileSystem\LevelPreloader.cpp" />
     <ClCompile Include="GameEngine\GameEngine.cpp" />
-    <ClCompile Include="GameEngine\TransformComponent.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="RigidBodyComponent.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="SoundEmitterComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />
     <ClInclude Include="AudioSystem\AudioFile.hpp" />
     <ClInclude Include="AudioSystem\AudioMapper.hpp" />
     <ClInclude Include="AudioSystem\AudioSystem.hpp" />
-    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Components\Component.hpp" />
+    <ClInclude Include="Components\RigidBodyComponent.hpp" />
+    <ClInclude Include="Components\SoundEmitterComponent.hpp" />
+    <ClInclude Include="Components\TransformComponent.h" />
     <ClInclude Include="EventSystem\Delegate.hpp" />
     <ClInclude Include="EventSystem\DelegateGlobalFunction.hpp" />
     <ClInclude Include="EventSystem\DelegateGroup.hpp" />
@@ -127,29 +129,26 @@
     <ClInclude Include="EventSystem\EventSystem.hpp" />
     <ClInclude Include="EventSystem\ObjectEventManager.hpp" />
     <ClInclude Include="EventSystem\ODefines.hpp" />
+    <ClInclude Include="Events\InputEvent.hpp" />
     <ClInclude Include="Events\UISelectEvent.hpp" />
     <ClInclude Include="FileSystem\AudioPreloader.hpp" />
     <ClInclude Include="FileSystem\File.hpp" />
+    <ClInclude Include="FileSystem\LevelPreloader.hpp" />
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
-    <ClInclude Include="GameEngine\TransformComponent.h" />
     <ClInclude Include="Globals.hpp" />
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="RigidBodyComponent.hpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="SoundEmitterComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Components\SoundEmitterComponent.tpp" />
     <None Include="EventSystem\DelegateGlobalFunction.tpp" />
     <None Include="EventSystem\DelegateMemberFunction.tpp" />
     <None Include="EventSystem\EventSystem.tpp" />
     <None Include="EventSystem\ObjectEventManager.tpp" />
     <None Include="GameEngine\ComponentHandle.tpp" />
     <None Include="GameEngine\GameEngine.tpp" />
-    <None Include="SoundEmitterComponent.tpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

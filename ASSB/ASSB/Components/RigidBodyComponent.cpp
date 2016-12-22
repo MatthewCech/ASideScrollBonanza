@@ -52,4 +52,14 @@ namespace ASSB
 	{
 		velocity_ = velocity;
 	}
+
+	bool RigidBodyComponent::IsStatic() const
+	{
+		return static_;
+	}
+
+	void RigidBodyComponent::SetStatic(bool isStatic)
+	{
+		static_ = isStatic;
+	}
 }

@@ -25,7 +25,7 @@ namespace FileSystem
 			if (loc == std::string::npos)
 			{
 				DEBUG_PRINT("Could not parse out :, assuming requested EOF.");
-				DEBUG_PRINT("Line parsed: " << line);
+				DEBUG_PRINT("Line parse attempt on: " << line);
 				return;
 			}
 

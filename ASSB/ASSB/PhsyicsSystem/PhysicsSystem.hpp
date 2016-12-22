@@ -1,5 +1,5 @@
 #pragma once
-#include "RigidBodyComponent.hpp"
+#include "Components\RigidBodyComponent.hpp"
 #include <unordered_map>
 #include <utility>
 #include "Globals.hpp"
