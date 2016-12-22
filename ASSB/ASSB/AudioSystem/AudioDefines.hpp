@@ -43,7 +43,6 @@ using APUnique      = unsigned long long;
 typedef std::shared_ptr<AudioSystem::AudioFile> AudioFilePtr;
 
 // Defines
-#define DJ_ABSTRACT =0
 #define UNUSED(x) (void)(x)
 
   ///////////
@@ -66,4 +65,5 @@ enum AudioDataStyle
 #else
   #define DEBUG_PRINT(x) 
 #endif
+
 

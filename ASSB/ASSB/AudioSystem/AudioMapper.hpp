@@ -21,6 +21,5 @@ namespace AudioSystem
 	private:
 		// Variables
 		std::unordered_map<std::string, AudioFilePtr> assciatedTags_;
-		static bool instanciated_;
 	};
 }

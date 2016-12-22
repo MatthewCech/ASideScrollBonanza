@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Debug print
-#define D_PRINT(x) do { std::cout << #x << " : " << x << '\n';} while (0) 
+#define DEBUG_PRINT_VAR(x) do { std::cout << #x << " : " << x << '\n';} while (0) 
 
 // Windows
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)

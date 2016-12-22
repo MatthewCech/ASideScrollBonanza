@@ -5,21 +5,10 @@
 
 namespace AudioSystem
 {
-	// Statics
-	bool AudioMapper::instanciated_ = false;
-
-
 	// Constructor
 	AudioMapper::AudioMapper() 
 		: assciatedTags_()
-	{
-		DEBUG_PRINT("Audio Mapper was made!");
-
-		//if (instanciated_)
-		//	throw "Don't.";
-		//else
-		//	instanciated_ = true;
-	}
+	{  }
 
 
 	// Associates a tag/name with a specific audio path.

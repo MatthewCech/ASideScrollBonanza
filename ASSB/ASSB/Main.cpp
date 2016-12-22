@@ -13,17 +13,15 @@
 
 int main()
 {
+	// Window and engine creation
 	Graphics::Window window(L"OWO");
 	ASSB::GameEngine Engine(window);
 
-	// Events thing
-	EventSystem::Event e;
-
-	// Audiosystem Test
+	// AudioSystem and AudioPreloader Test
 	FileSystem::AudioPreloader::LoadFromFile("../../../Assets/AudioList.txt");
 	ASSB::SoundEmitterComponent se("Select1");
-	se.PlayOnEvent<ASSB::UISelectEvent>();
-	ASSB_ESI_.Dispatch(new ASSB::UISelectEvent());
+	se.PlayOnEvent<ASSB::UISelectionChangedEvent>();
+	ASSB_ESI_.Dispatch(new ASSB::UISelectionChangedEvent());
 
 	bool run = true;
 	MSG msg;
