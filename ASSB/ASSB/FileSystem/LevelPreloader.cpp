@@ -3,6 +3,8 @@
 #include "Components/TransformComponent.h"
 #include "Components/RigidBodyComponent.hpp"
 #include "GameEngine/GameEngine.h"
+#include <cstdlib>
+
 
 
 namespace FileSystem
@@ -59,6 +61,13 @@ namespace FileSystem
 			SetPosition({ x, y, 0});
 		ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->
 			SetStatic(true);
+
+		//!TODO: For testing
+		ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->
+			SetVelocity(Graphics::Vector4(
+			  static_cast<float>((((std::rand() % 100) - 50.0) / 1000.0))
+			, static_cast<float>((((std::rand() % 100) - 50.0) / 1000.0))
+			, static_cast<float>((((std::rand() % 100) - 50.0) / 1000.0))));
 
 		// Success(tm) if we made it here!
 		return true;

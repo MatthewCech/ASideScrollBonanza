@@ -8,6 +8,13 @@ namespace ASSB
 	void PhysicsSystem::Update(GameEngine &g,
 		std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map)
 	{
+		// Location updating
+		for (auto &pair : map)
+		{
+			ComponentHandle<TransformComponent> t = GameEngine::Instance->GetComponent<TransformComponent>(pair.first);
+			t->SetPosition(t->GetPosition() + pair.second.velocity_);
+		}
+
 		//!TODO:Convert to not using full N^2 items in map!
 		for (auto &pair1 : map)
 		{
