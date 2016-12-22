@@ -61,9 +61,9 @@ namespace FileSystem
 		std::string imageTag{ second.substr(0, commaLoc2) };
 		const std::string flags{ second.substr(commaLoc2 + 1) };
 
-		/*
 		float scaleX = 1;
 		float scaleY = 1;
+		bool scaleSpecified = false;
 		const size_t scaleLoc = second.find_first_of("*");
 		if (scaleLoc != std::string::npos)
 		{
@@ -72,10 +72,11 @@ namespace FileSystem
 			if (xCharLoc == std::string::npos)
 				return false;
 
-			scaleX = scaleStr.substr()
+			scaleX = std::stof(scaleStr.substr(0, xCharLoc));
+			scaleY = std::stof(scaleStr.substr(xCharLoc + 1));
 			imageTag = imageTag.substr(0, scaleLoc);
+			scaleSpecified = true;
 		}
-		*/
 
 
     //!TODO: MOVE ALL PARSING ABOVE TO CUSTOM OBJECT
@@ -84,10 +85,14 @@ namespace FileSystem
 		ASSB::Globals::ObjectID id = ASSB::GameEngine::Instance->CreateGameObject();
 		ASSB::GameEngine::Instance->AddComponent<ASSB::RigidBodyComponent>(id);
 
-		// Set position
-		ASSB::GameEngine::Instance->GetComponent<ASSB::TransformComponent>(id)->
-			SetPosition({ x, y, 0});
-		
+		// Set position, and scale if specified.
+		ASSB::ComponentHandle<ASSB::TransformComponent> tComp = ASSB::GameEngine::Instance->GetComponent<ASSB::TransformComponent>(id);
+		tComp->SetPosition({ x, y, 0});
+		if (scaleSpecified)
+		{
+			tComp->SetScale(scaleX, scaleY);
+		}
+
 		// Dynamic or static
 		if (flags[0] == 'd')
 		{
