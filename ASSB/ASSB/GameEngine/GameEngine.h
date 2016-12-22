@@ -14,7 +14,7 @@
 #include "ComponentHandle.h"
 #include "TransformComponent.h"
 #include "SoundEmitterComponent.hpp"
-
+#include "RigidBodyComponent.hpp"
 
 
 namespace ASSB
@@ -47,6 +47,7 @@ namespace ASSB
 		std::unordered_map<std::string, Globals::ObjectID> GameObjects;
 		std::unordered_map<Globals::ObjectID, TransformComponent> Transforms;
 		std::unordered_map<Globals::ObjectID, SoundEmitterComponent> SoundEmitters;
+		std::unordered_map<Globals::ObjectID, RigidBodyComponent> RigidBodies;
 
 		GameEngine(const ASSB::GameEngine& other) = delete;
 

@@ -25,4 +25,10 @@ namespace ASSB
 	{
 		return ComponentHandle<SoundEmitterComponent>(id, SoundEmitters);
 	}
+
+	template<>
+	inline ComponentHandle<RigidBodyComponent> GameEngine::GetComponent(Globals::ObjectID id)
+	{
+		return ComponentHandle<RigidBodyComponent>(id, RigidBodies);
+	}
 }

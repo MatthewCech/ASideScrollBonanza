@@ -104,6 +104,12 @@
     <ClCompile Include="GameEngine\TransformComponent.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="RigidBodyComponent.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="SoundEmitterComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +134,12 @@
     <ClInclude Include="GameEngine\GameEngine.h" />
     <ClInclude Include="GameEngine\TransformComponent.h" />
     <ClInclude Include="Globals.hpp" />
+    <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="RigidBodyComponent.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="SoundEmitterComponent.hpp" />
   </ItemGroup>
   <ItemGroup>

@@ -49,6 +49,12 @@
     <Filter Include="Source Files\FileSystem">
       <UniqueIdentifier>{d3697f69-ef44-46a7-9439-311669b61d69}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PhysicsSystem">
+      <UniqueIdentifier>{e2b18b74-34d4-4fab-979a-9dbbd1a2fd31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PhysicsSystem">
+      <UniqueIdentifier>{73279627-1464-4964-96f3-bcb6471454de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -101,6 +107,12 @@
     </ClCompile>
     <ClCompile Include="FileSystem\AudioPreloader.cpp">
       <Filter>Source Files\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
+      <Filter>Source Files\PhysicsSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBodyComponent.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +181,12 @@
     </ClInclude>
     <ClInclude Include="FileSystem\AudioPreloader.hpp">
       <Filter>Header Files\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
+      <Filter>Header Files\PhysicsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBodyComponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
