@@ -10,7 +10,7 @@ namespace ASSB
 	{
 	public:
 		// Constructor
-		SoundEmitterComponent(std::string tag);
+		SoundEmitterComponent(std::string tag = "");
 
 		// Member functions
 		void Play();

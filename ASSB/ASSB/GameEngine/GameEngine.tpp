@@ -9,6 +9,13 @@ namespace ASSB
 	{
 		throw std::exception("Not Implemented");
 	}
+
+	template <typename T>
+	void GameEngine::AddComponent(Globals::ObjectID id)
+	{
+		throw std::exception("Not Implemented");
+	}
+
 	  ////////////////////////////////////////////////////
 	 // Add template specialization for each component //
 	////////////////////////////////////////////////////
@@ -18,6 +25,13 @@ namespace ASSB
 	{
 		return ComponentHandle<TransformComponent>(id, Transforms);
 	}
+	template<>
+	inline void GameEngine::AddComponent<TransformComponent>(Globals::ObjectID id)
+	{
+		//Transforms.emplace(NextID - 1, TransformComponent());
+		Transforms.emplace(id, TransformComponent());
+	}
+
 
 	// Sound Emitter
 	template<>
@@ -25,10 +39,22 @@ namespace ASSB
 	{
 		return ComponentHandle<SoundEmitterComponent>(id, SoundEmitters);
 	}
+	template<>
+	inline void GameEngine::AddComponent<SoundEmitterComponent>(Globals::ObjectID id)
+	{
+		SoundEmitters.emplace(id, SoundEmitterComponent());
+	}
 
+
+	// Rigid Body
 	template<>
 	inline ComponentHandle<RigidBodyComponent> GameEngine::GetComponent(Globals::ObjectID id)
 	{
 		return ComponentHandle<RigidBodyComponent>(id, RigidBodies);
+	}
+	template<>
+	inline void GameEngine::AddComponent<RigidBodyComponent>(Globals::ObjectID id)
+	{
+		RigidBodies.emplace(id, RigidBodyComponent());
 	}
 }

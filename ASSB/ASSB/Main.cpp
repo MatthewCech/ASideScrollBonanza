@@ -3,7 +3,9 @@
 #include "Components/SoundEmitterComponent.hpp"
 #include "Events/UISelectEvent.hpp"
 #include "FileSystem/AudioPreloader.hpp"
+#include "FileSystem/LevelPreloader.hpp"
 #include "Globals.hpp"
+
 
 
 // Defines for testing
@@ -17,12 +19,16 @@ int main()
 	Graphics::Window window(L"OWO");
 	ASSB::GameEngine Engine(window);
 
+	// Level preloading test
+	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/LevelTest.txt");
+
 	// AudioSystem and AudioPreloader Test
 	FileSystem::AudioPreloader::LoadFromFile("../../../Assets/AudioList.txt");
 	ASSB::SoundEmitterComponent se("Select1");
 	se.PlayOnEvent<ASSB::UISelectionChangedEvent>();
 	ASSB_ESI_.Dispatch(new ASSB::UISelectionChangedEvent());
 
+	// Physics system test
 	bool run = true;
 	MSG msg;
 

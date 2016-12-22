@@ -24,20 +24,29 @@
 
 namespace ASSB
 {
-
 	class GameEngine
 	{
 	public:
+		// Connstructor
 		GameEngine(Graphics::Window& window);
 
+		// Member functions
 		Globals::ObjectID GetIdOf(const std::string name);
+		Globals::ObjectID CreateGameObject(const std::string name = "");
 		void UpdateCamera();
+		void Loop();
 
+		// Templatized Member Function
 		template <typename T>
 		ComponentHandle<T> GetComponent(Globals::ObjectID id);
+		template <typename T>
+		void AddComponent(Globals::ObjectID id);
 
-		void Loop();
+		// Static instance of the game engine
+		static GameEngine *Instance;
+
 	private:
+		// Variables
 		Globals::ObjectID NextID;
 		bool Running;
 

@@ -39,6 +39,9 @@ namespace AudioSystem
 	// Returns a pointer to the loaded audio file associated with the unique tag.
 	AudioFilePtr AudioMapper::Retrieve(std::string tag)
 	{
-		return assciatedTags_.at(tag);
+		if(tag.size() > 0)
+			return assciatedTags_.at(tag);
+
+		return nullptr;
 	}
 }

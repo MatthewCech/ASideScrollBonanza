@@ -3,6 +3,11 @@
 
 namespace ASSB
 {
+	// Static Init
+	GameEngine *GameEngine::Instance = nullptr;
+
+
+	// Constructor
 	GameEngine::GameEngine(Graphics::Window & window)
 		: NextID(1),
 		Window(window),
@@ -13,6 +18,12 @@ namespace ASSB
 		VertexShader(Graphics, "LambertVertex.cso", Graphics::ShaderType::Vertex),
 		TestTexture(Graphics, L"../../../Assets/wow.png")
 	{
+		// Singleton enforcement
+		if (Instance == nullptr)
+			Instance = this;
+		else
+			throw "Gee user, why does your mom let you have TWO game engines?";
+
 		Graphics.VSync = Graphics::GraphicsEngine::VSyncType::On;
 
 		PixelShader.Create();
@@ -43,6 +54,8 @@ namespace ASSB
 		Camera.SetPosition(Graphics::Vector4(0, 0, 10));
 	}
 
+
+	// Gets the ID of the name
 	Globals::ObjectID GameEngine::GetIdOf(const std::string name)
 	{
 		//check if it exists
@@ -52,11 +65,30 @@ namespace ASSB
 			return GameObjects[name];
 	}
 
+
+	// Creates a game object with the specified name.
+	// Names must be more than just numbers, as unspecified names 
+	// are assigned their ID.
+	Globals::ObjectID GameEngine::CreateGameObject(std::string name)
+	{
+		if (name.size() == 0)
+			name = std::to_string(NextID + 1);
+
+		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>(name, NextID++));
+		Transforms.emplace(NextID - 1, TransformComponent());
+
+		return NextID - 1;
+	}
+
+
+	// Updates the size of the camera object
 	void GameEngine::UpdateCamera()
 	{
 		Camera.UpdateSize();
 	}
 
+
+	// Primary game loop
 	void GameEngine::Loop()
 	{
 		// Physics
