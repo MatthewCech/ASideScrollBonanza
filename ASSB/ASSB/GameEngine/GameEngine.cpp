@@ -18,6 +18,8 @@ namespace ASSB
 		PixelShader.Create();
 		VertexShader.Create();
 
+		TestTexture.Create();
+
 		std::vector<Graphics::Mesh::Vertex> verts;
 		std::vector<unsigned short> inds;
 
@@ -76,9 +78,10 @@ namespace ASSB
 			Globals::ObjectID id = iterator.second;
 			ComponentHandle<TransformComponent> comp = GetComponent<TransformComponent>(id);
 			auto position = comp->GetPosition();
-			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ 1,1,1 }, { 0,0 }, comp->GetRotation(), { position.X, position.Y, position.Z });
+			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ 1, -1,1 }, { 0,0 }, comp->GetRotation(), { position.X, position.Y, position.Z });
 
 			Transform.Use();
+			TestTexture.Use();
 
 			Graphics.Draw(*Square);
 		}
