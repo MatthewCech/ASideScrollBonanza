@@ -96,7 +96,10 @@
     <ClCompile Include="Globals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileIO\File.cpp">
+    <ClCompile Include="FileSystem\File.cpp">
+      <Filter>Source Files\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystem\AudioPreloader.cpp">
       <Filter>Source Files\FileSystem</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,7 +164,10 @@
     <ClInclude Include="Events\UISelectEvent.hpp">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="FileIO\File.hpp">
+    <ClInclude Include="FileSystem\File.hpp">
+      <Filter>Header Files\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem\AudioPreloader.hpp">
       <Filter>Header Files\FileSystem</Filter>
     </ClInclude>
   </ItemGroup>

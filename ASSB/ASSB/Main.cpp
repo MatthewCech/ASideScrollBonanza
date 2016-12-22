@@ -3,6 +3,7 @@
 #include "Globals.hpp"
 #include "SoundEmitterComponent.hpp"
 #include "Events\UISelectEvent.hpp"
+#include "FileSystem\AudioPreloader.hpp"
 
 
 // Defines for testing
@@ -18,19 +19,9 @@ int main()
 	// Events thing
 	EventSystem::Event e;
 
-  // Test audio system
-	//AMI_.Associate("Confirm1", "../../../Assets/SFX/Confirm1.wav");
-	//AMI_.Associate("Switch1", "../../../Assets/SFX/Switch1.wav");
-	//AMI_.Associate("Select1", "../../../Assets/SFX/Select1.wav");
-	//ASSB_AMI_.Associate("Confirm", "../../../Assets/Music/TESTING.wav");
-	ASSB_AMI_.Associate("Select", "../../../Assets/SFX/Select1.wav");
-	//
-	//ASI_.PlayFile(*AMI_.Retrieve("SONG"));
-	//ASI_.PlayFile(*AMI_.Retrieve("Switch1"));
-	//ASI_.PlayFile(*AMI_.Retrieve("Select1"));
-	//ASI_.PlayFile(*AMI_.Retrieve("Confirm1"));
-	//se.Play();
-	ASSB::SoundEmitterComponent se("Select");
+	// Audiosystem Test
+	FileSystem::AudioPreloader::LoadFromFile("../../../Assets/AudioList.txt");
+	ASSB::SoundEmitterComponent se("Select1");
 	se.PlayOnEvent<ASSB::UISelectEvent>();
 	ASSB_ESI_.Dispatch(new ASSB::UISelectEvent());
 
