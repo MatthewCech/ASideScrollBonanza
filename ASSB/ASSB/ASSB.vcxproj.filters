@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Components">
       <UniqueIdentifier>{81f59988-50f1-4192-9cf7-7780121b7410}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Template Files\Components">
+      <UniqueIdentifier>{01f150f6-66d7-454b-8fd3-40fc245ef7cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -159,5 +162,8 @@
     </None>
     <None Include="GameEngine\ComponentHandle.tpp" />
     <None Include="GameEngine\GameEngine.tpp" />
+    <None Include="SoundEmitterComponent.tpp">
+      <Filter>Template Files\Components</Filter>
+    </None>
   </ItemGroup>
 </Project>

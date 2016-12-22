@@ -36,6 +36,14 @@ namespace ASSB
 		Stop();
 		af_ = SE_AMI_.Retrieve(newTag);
 	}
+
+
+	// Event callback
+	void SoundEmitterComponent::eventCallback(EventSystem::Event *e)
+	{
+		Play();
+		UNUSED(e);
+	}
 }
 
 #undef SE_AMI_
