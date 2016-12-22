@@ -138,6 +138,7 @@
     <ClInclude Include="FileSystem\LevelPreloader.hpp" />
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
+    <ClInclude Include="GameEngine\Key.h" />
     <ClInclude Include="Globals.hpp" />
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
