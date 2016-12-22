@@ -107,6 +107,8 @@
     <ClCompile Include="FileSystem\LevelPreloader.cpp" />
     <ClCompile Include="GameEngine\GameEngine.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="Input\Keyboard.cpp" />
+    <ClCompile Include="Input\KeyboardState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp" />
     <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
@@ -132,15 +134,17 @@
     <ClInclude Include="EventSystem\EventSystem.hpp" />
     <ClInclude Include="EventSystem\ObjectEventManager.hpp" />
     <ClInclude Include="EventSystem\ODefines.hpp" />
-    <ClInclude Include="Events\InputEvent.hpp" />
+    <ClInclude Include="Events\KeyboardEvent.hpp" />
     <ClInclude Include="Events\UISelectEvent.hpp" />
     <ClInclude Include="FileSystem\AudioPreloader.hpp" />
     <ClInclude Include="FileSystem\File.hpp" />
     <ClInclude Include="FileSystem\LevelPreloader.hpp" />
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
-    <ClInclude Include="GameEngine\Key.h" />
+    <ClInclude Include="Input\Key.h" />
     <ClInclude Include="Globals.hpp" />
+    <ClInclude Include="Input\Keyboard.h" />
+    <ClInclude Include="Input\KeyboardState.h" />
     <ClInclude Include="PhsyicsSystem\CollisionInfo.hpp" />
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
