@@ -59,8 +59,8 @@ namespace FileSystem
 		// Adjust components
 		ASSB::GameEngine::Instance->GetComponent<ASSB::TransformComponent>(id)->
 			SetPosition({ x, y, 0});
-		ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->
-			SetStatic(true);
+		//ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->
+		//	SetStatic(true);
 
 		//!TODO: For testing
 		ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->

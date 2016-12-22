@@ -120,6 +120,9 @@
     <ClCompile Include="Components\SpriteComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp">
+      <Filter>Source Files\PhysicsSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\GameEngine.h">
@@ -205,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="GameEngine\Key.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PhsyicsSystem\CollisionInfo.hpp">
+      <Filter>Header Files\PhysicsSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

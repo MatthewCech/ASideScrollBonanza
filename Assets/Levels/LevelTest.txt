@@ -1,5 +1,6 @@
-0,0:Default
-0,1:Default
+-.2,1.2:Default
+.5,0:Default
+---
 2,1:Default
 3,2:Default
 3,0:Default
