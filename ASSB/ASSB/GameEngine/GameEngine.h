@@ -9,6 +9,7 @@
 #include "Graphics/Mesh.h"
 #include "Graphics/Camera.h"
 #include "Graphics/Shaders/Shader.h"
+#include "Graphics/Texture.h"
 
 // Components
 #include "ComponentHandle.h"
@@ -42,6 +43,7 @@ namespace ASSB
 		Graphics::Camera Camera;
 		Graphics::Shader PixelShader;
 		Graphics::Shader VertexShader;
+		Graphics::Texture TestTexture;
 
 		// Add components here
 		std::unordered_map<std::string, Globals::ObjectID> GameObjects;

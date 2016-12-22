@@ -6,11 +6,12 @@ namespace ASSB
 	GameEngine::GameEngine(Graphics::Window & window)
 		: NextID(1),
 		Window(window),
-		Graphics(window, true),
+		Graphics(window, true),//todo don't debug graphics
 		Transform(Graphics, Graphics::ShaderType::Vertex, 1),
 		Camera(Graphics),
 		PixelShader(Graphics, "LambertPixel.cso", Graphics::ShaderType::Pixel),
-		VertexShader(Graphics, "LambertVertex.cso", Graphics::ShaderType::Vertex)
+		VertexShader(Graphics, "LambertVertex.cso", Graphics::ShaderType::Vertex),
+		TestTexture(Graphics, L"wow.png")
 	{
 		Graphics.VSync = Graphics::GraphicsEngine::VSyncType::On;
 
@@ -30,6 +31,16 @@ namespace ASSB
 
 		Square = std::unique_ptr<Graphics::Mesh>(new Graphics::Mesh(Graphics, verts, inds));
 		Square->Create(VertexShader);
+
+		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>("wowzers", NextID++));
+		Transforms.emplace(NextID -1, TransformComponent());
+
+		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>("wowzer", NextID++));
+		Transforms.emplace(NextID - 1, TransformComponent());
+
+		Transforms[2].SetPosition(Graphics::Vector4(1, 2, 0));
+
+		Camera.SetPosition(Graphics::Vector4(0, 0, 10));
 	}
 
 	Globals::ObjectID GameEngine::GetIdOf(const std::string name)
@@ -51,6 +62,8 @@ namespace ASSB
 
 		//draw
 		Graphics.ClearScreen();
+
+		static float woo = 0;
 
 		PixelShader.Use();
 		VertexShader.Use();
