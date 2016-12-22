@@ -87,10 +87,10 @@ namespace ASSB
 		const Graphics::Vector4 p2 = o2t->GetPosition();
 
 		// Width and height
-		const float w1 = obj1.second.width_;
-		const float w2 = obj2.second.width_;
-		const float h1 = obj1.second.height_;
-		const float h2 = obj2.second.height_;
+		const float w1 = obj1.second.width_ * o1t->GetScaleX();
+		const float w2 = obj2.second.width_ * o2t->GetScaleY();
+		const float h1 = obj1.second.height_ * o1t->GetScaleX();
+		const float h2 = obj2.second.height_ * o2t->GetScaleY();
 
 		// Sides
 		const float l1 = p1.X - w1 / 2;
