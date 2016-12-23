@@ -1,4 +1,5 @@
-#include "EventSystem\Event.hpp"
+#pragma once
+#include "EventSystem/Event.hpp"
 #include "Input/Key.h"
 
 

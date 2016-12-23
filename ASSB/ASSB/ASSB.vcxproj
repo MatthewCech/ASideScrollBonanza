@@ -92,6 +92,7 @@
     <ClCompile Include="AudioSystem\AudioSystem.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\MenuComponent.cpp" />
+    <ClCompile Include="Components\PlayerManagerComponent.cpp" />
     <ClCompile Include="Components\RigidBodyComponent.cpp" />
     <ClCompile Include="Components\SoundEmitterComponent.cpp" />
     <ClCompile Include="Components\SpriteComponent.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="AudioSystem\AudioSystem.hpp" />
     <ClInclude Include="Components\Component.hpp" />
     <ClInclude Include="Components\MenuComponent.hpp" />
+    <ClInclude Include="Components\PlayerManagerComponent.hpp" />
     <ClInclude Include="Components\RigidBodyComponent.hpp" />
     <ClInclude Include="Components\SoundEmitterComponent.hpp" />
     <ClInclude Include="Components\SpriteComponent.hpp" />
@@ -144,6 +146,7 @@
     <ClInclude Include="Events\KeyboardEvent.hpp" />
     <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="Components\ParticleComponent.hpp" />
+    <ClInclude Include="Events\UIChangeEvent.hpp" />
     <ClInclude Include="Events\UISelectEvent.hpp" />
     <ClInclude Include="Events\UpdateEvent.hpp" />
     <ClInclude Include="FileSystem\ImagePreloadingMapper.hpp" />

@@ -2,6 +2,7 @@
 #include "GameEngine/GameEngine.h"
 #include "Components/SoundEmitterComponent.hpp"
 #include "Components/MenuComponent.hpp"
+#include "Components/PlayerManagerComponent.hpp"
 #include "Events/UISelectEvent.hpp"
 #include "FileSystem/AudioPreloadingMapper.hpp"
 #include "FileSystem/ImagePreloadingMapper.hpp"
@@ -26,6 +27,14 @@ int main()
 	FileSystem::AudioPreloadingMapper::LoadFromFile("../../../Assets/AudioList.txt");
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/LevelTest.txt");
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/SandboxLevel.txt");
+
+	// Player
+	ASSB::Globals::ObjectID player = Engine.CreateGameObject("player");
+	Engine.AddComponent<ASSB::PlayerManagerComponent>(player);
+	Engine.AddComponent<ASSB::RigidBodyComponent>(player);
+	ASSB::ComponentHandle<ASSB::PlayerManagerComponent> pmComp = Engine.GetComponent<ASSB::PlayerManagerComponent>(player);
+	pmComp->SetImage("icon", { .5f, .5f, 0 });
+	pmComp->SetActive(true);
 
 	// Menu System
 	ASSB::Globals::ObjectID obj = Engine.CreateGameObject();
