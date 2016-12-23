@@ -3,14 +3,37 @@
 #include "GameEngine\GameEngine.h"
 #include <climits>
 #include <memory>
+#include "Events/PauseToggleEvent.hpp"
 
 
 
 namespace ASSB
 {
+	// Constructor
+	PhysicsSystem::PhysicsSystem()
+		: EventSystem::ObjectEventManager(Globals::EventSystemInstance)
+		, enabled_(true)
+	{
+		Connect(this, &PhysicsSystem::pausedUpdate);
+	}
+
+	// Handle paused
+	//!TODO: Improve Cheap pause fix
+	void PhysicsSystem::pausedUpdate(PauseToggleEvent *e)
+	{
+		if (e->Paused)
+			enabled_ = false;
+		else
+			enabled_ = true;
+	}
+
+	// Primary update function
 	void PhysicsSystem::Update(
 		std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &input, const GameTime &g)
 	{
+		//!TODO: Improve Cheap pause fix
+		if (!enabled_) return;
+
 		// Define map as vector
 		std::vector<std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>>::iterator> map;//
 		for (auto iter{ input.begin() }; iter != input.end(); ++iter)

@@ -38,6 +38,7 @@ namespace ASSB
 		void SetVertical(bool isVertical);
 		void SetIndicated(int index);
 		void SetActive(bool isActive);
+		void SetVisible(bool isVisible);
 
 		// Getters
 		Graphics::Vector4 GetPosition();

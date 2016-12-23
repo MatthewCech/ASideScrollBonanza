@@ -150,6 +150,7 @@
     <ClInclude Include="Events\KeyboardEvent.hpp" />
     <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="Components\ParticleComponent.hpp" />
+    <ClInclude Include="Events\PauseToggleEvent.hpp" />
     <ClInclude Include="Events\QuitRequestEvent.hpp" />
     <ClInclude Include="Events\UIChangeEvent.hpp" />
     <ClInclude Include="Events\UISelectEvent.hpp" />

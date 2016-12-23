@@ -21,7 +21,7 @@ namespace ASSB
 
 	private:
 		// Variables
-		bool active_;
+		bool active_; // Do we honor input and whatnot? (auto set to false when paused)
 
 		// private member functions
 		void keyDownEvent(KeyboardEvent *e);

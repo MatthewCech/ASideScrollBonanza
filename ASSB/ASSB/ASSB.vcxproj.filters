@@ -84,6 +84,7 @@
     <ClInclude Include="Events\QuitRequestEvent.hpp" />
     <ClInclude Include="Events\GameStartEvent.hpp" />
     <ClInclude Include="GameEngine\Utilities.hpp" />
+    <ClInclude Include="Events\PauseToggleEvent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />

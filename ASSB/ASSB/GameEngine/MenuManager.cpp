@@ -7,6 +7,8 @@
 #include "Events/ShutdownEvent.hpp"
 #include "Events/QuitRequestEvent.hpp"
 #include "Events/GameStartEvent.hpp"
+#include "Events/KeyboardEvent.hpp"
+#include "Events/PauseToggleEvent.hpp"
 
 
 
@@ -17,8 +19,10 @@ namespace ASSB
 
 
 	// Constructor
-	MenuManager::MenuManager() 
+	MenuManager::MenuManager()
 		: EventSystem::ObjectEventManager(Globals::EventSystemInstance)
+		, onMainMenu_(true)
+		, onPauseMenu_(false)
 	{
 		// Singleton enforcement
 		if (Instance == nullptr)
@@ -26,18 +30,33 @@ namespace ASSB
 		else
 			throw std::exception("One set of menus is enough, don't you think?");
 
-		// Menu System
+		// Main Menu System
 		ASSB::Globals::ObjectID obj = GameEngine::Instance->CreateGameObject("mainMenu");
 		GameEngine::Instance->AddComponent<MenuComponent>(obj);
+		GameEngine::Instance->GetComponent<SpriteComponent>(obj)->Visible = false;
 		ASSB::ComponentHandle<MenuComponent> comp = GameEngine::Instance->GetComponent<MenuComponent>(obj);
 		comp->SetSpacing({ 0, -.4f, 0 });
-		comp->SetPosition({ 0, 3.0f, 0 });
+		comp->SetPosition({ -0.5f, 3.0f, 0 });
 		comp->SetIndicatorTag("selectImage", { 1.75f, .4f, 0 });
 		comp->AddInteractable("start", { 1.5f,.3f,0 }, new GameStartEvent());
-		//comp->AddInteractable("options", { 1.5f,.3f,0 }, new QuitRequestEvent());
+		comp->AddInteractable("options", { 1.5f,.3f,0 }, new QuitRequestEvent());
 		comp->AddInteractable("credits", { 1.5f,.3f,0 }, new QuitRequestEvent());
-		comp->AddInteractable("quit", { 1.5f,.3f,0 }, new QuitRequestEvent());
+		comp->AddInteractable("quit", { 1.5f,.3f,0 }, new ShutdownEvent());
 		
+		// Pause Menu System
+		ASSB::Globals::ObjectID pause = GameEngine::Instance->CreateGameObject("pauseMenu");
+		GameEngine::Instance->AddComponent<MenuComponent>(pause);
+		GameEngine::Instance->GetComponent<SpriteComponent>(pause)->Visible = false;
+		ASSB::ComponentHandle<MenuComponent> pauseComp = GameEngine::Instance->GetComponent<MenuComponent>(pause);
+		pauseComp->SetSpacing({ 0, -.4f, 0 });
+		pauseComp->SetPosition({ 1, 2, 0 });
+		pauseComp->SetIndicatorTag("selectImage", { 1.75f, .4f, 0 });
+		pauseComp->AddInteractable("resume", { 1.5f,.3f,0 }, new PauseToggleEvent(false));
+		pauseComp->AddInteractable("restart", { 1.5f,.3f,0 }, new QuitRequestEvent());
+		pauseComp->AddInteractable("exit", { 1.5f,.3f,0 }, new QuitRequestEvent());
+		pauseComp->SetActive(false);
+		pauseComp->SetVisible(false);
+
 		// Audio
 		initializeSFX();
 
@@ -46,6 +65,8 @@ namespace ASSB
 		Connect(this, &MenuManager::shutdownRequest);
 		Connect(this, &MenuManager::shutdownRequest);
 		Connect(this, &MenuManager::gameStart);
+		Connect(this, &MenuManager::handleKeyboard);
+		Connect(this, &MenuManager::pauseToggle);
 	}
 
 	// Creates necessary SFX Objects
@@ -87,6 +108,53 @@ namespace ASSB
 		Globals::ObjectID id2 = GameEngine::Instance->GetIdOf("mainMenu");
 		GameEngine::Instance->GetComponent<PlayerManagerComponent>(id)->SetActive(true);
 		GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetActive(false);
+		GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetVisible(false);
+		onMainMenu_ = false;
 		UNUSED(e);
+	}
+
+	// Catch relevant keyboard input
+	void MenuManager::handleKeyboard(KeyboardEvent *e)
+	{
+		if (e->Down)
+		{
+			if (e->Key == Key::P || e->Key == Key::Escape)
+			{
+				if (!onMainMenu_)
+				{
+					if (onPauseMenu_)
+					{
+						ASSB::Globals::EventSystemInstance.Dispatch(new PauseToggleEvent(false));
+						onPauseMenu_ = false;
+					}
+					else
+					{
+						ASSB::Globals::EventSystemInstance.Dispatch(new PauseToggleEvent(true));
+						onPauseMenu_ = true;
+					}
+				}
+			}
+		}
+	}
+
+	// Pause was hit on or off
+	void MenuManager::pauseToggle(PauseToggleEvent *e)
+	{
+		Globals::ObjectID id = GameEngine::Instance->GetIdOf("player");
+		Globals::ObjectID id2 = GameEngine::Instance->GetIdOf("pauseMenu");
+		if(e->Paused)
+		{
+			// Show menu and stop player
+			GameEngine::Instance->GetComponent<PlayerManagerComponent>(id)->SetActive(false);
+			GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetActive(true);
+			GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetVisible(true);
+		}
+		else
+		{
+			// enable player and hide menu
+			GameEngine::Instance->GetComponent<PlayerManagerComponent>(id)->SetActive(true);
+			GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetActive(false);
+			GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetVisible(false);
+		}
 	}
 }

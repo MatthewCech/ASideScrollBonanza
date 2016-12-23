@@ -9,6 +9,8 @@ namespace ASSB
 	class QuitRequestEvent;
 	class ShutdownEvent;
 	class GameStartEvent;
+	class KeyboardEvent;
+	class PauseToggleEvent;
 	class MenuManager : public EventSystem::ObjectEventManager
 	{
 	public:
@@ -20,12 +22,16 @@ namespace ASSB
 
 	private:
 		// Variables
+		bool onMainMenu_;
+		bool onPauseMenu_;
 
 		// Member functions
 		void initializeSFX();
 		void quitRequest(QuitRequestEvent *e);
 		void shutdownRequest(ShutdownEvent *e);
 		void gameStart(GameStartEvent *e);
+		void handleKeyboard(KeyboardEvent *e);
+		void pauseToggle(PauseToggleEvent *e);
 
 		// Omit
 		MenuManager &operator=(const MenuManager &rhs) = delete;

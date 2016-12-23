@@ -1,7 +1,10 @@
 buttonBase:../../../Assets/Images/Menu/buttonBase.png
+exit:../../../Assets/Images/Menu/exit.png
 credits:../../../Assets/Images/Menu/credits.png
 options:../../../Assets/Images/Menu/options.png
 quit:../../../Assets/Images/Menu/quit.png
+restart:../../../Assets/Images/Menu/restart.png
+resume:../../../Assets/Images/Menu/resume.png
 selectImage:../../../Assets/Images/Menu/selectImage.png
 start:../../../Assets/Images/Menu/start.png
 blank:../../../Assets/Images/blank.png
@@ -12,5 +15,4 @@ tree1:../../../Assets/Images/tree1.png
 tile1:../../../Assets/Images/tile1.png
 tile2:../../../Assets/Images/tile2.png
 selectImage:../../../Assets/Images/selectImage.png
-
 == I put this line in to stop it here.

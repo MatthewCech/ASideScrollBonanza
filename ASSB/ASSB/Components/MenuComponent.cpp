@@ -20,17 +20,16 @@ namespace ASSB
 		, interactables_()
 		, vertical_(vertical)
 	{
-		selectionIndicator_ = GameEngine::Instance->CreateGameObject("MenuSelectionIndicator");
+		selectionIndicator_ = GameEngine::Instance->CreateGameObject();
 		SetIndicatorTag(indicatorTag, { 1,1,0 });
 
 		// Connect Events
 		Connect(this, &MenuComponent::handleKeyboardEvent);
 	}
 
-
-	void MenuComponent::SetActive(bool isActive)
+	void MenuComponent::SetVisible(bool isVisible)
 	{
-		if (isActive == false)
+		if (isVisible == false)
 		{
 			for (size_t i = 0; i < interactables_.size(); ++i)
 			{
@@ -48,6 +47,10 @@ namespace ASSB
 			}
 			GameEngine::Instance->GetComponent<SpriteComponent>(selectionIndicator_)->Visible = true;
 		}
+	}
+
+	void MenuComponent::SetActive(bool isActive)
+	{
 		active_ = isActive;
 	}
 
