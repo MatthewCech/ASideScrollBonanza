@@ -11,6 +11,7 @@
 #include "Graphics/Camera.h"
 #include "Graphics/Shaders/Shader.h"
 #include "Graphics/Texture.h"
+#include "Particles/ParticleBuffer.h"
 
 // Physics
 #include "PhsyicsSystem/PhysicsSystem.hpp"
@@ -63,6 +64,10 @@ namespace ASSB
 		Graphics::Camera Camera;
 		Graphics::Shader PixelShader;
 		Graphics::Shader VertexShader;
+		Graphics::Shader ParticleVertexShader;
+		Graphics::Shader ParticleGeoShader;
+		ParticleBuffer testParticle;
+
 
 		//Physics
 		PhysicsSystem Physics;

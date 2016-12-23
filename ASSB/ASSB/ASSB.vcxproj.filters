@@ -30,6 +30,7 @@
     <ClCompile Include="GameEngine\GameTime.cpp" />
     <ClCompile Include="Components\MenuManagerComponent.cpp" />
     <ClCompile Include="EventSystem\EventCarrier.cpp" />
+    <ClCompile Include="Particles\ParticleBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="Events\UpdateEvent.hpp" />
     <ClInclude Include="Components\MenuManagerComponent.hpp" />
     <ClInclude Include="EventSystem\EventCarrier.hpp" />
+    <ClInclude Include="Particles\ParticleBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />
@@ -81,5 +83,13 @@
     <None Include="GameEngine\ComponentHandle.tpp" />
     <None Include="GameEngine\GameEngine.tpp" />
     <None Include="Components\MenuManagerComponent.tpp" />
+    <None Include="Shaders\Particle.hlsli" />
+    <None Include="Shaders\Sprite.hlsli" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\ParticleVertex.hlsl" />
+    <FxCompile Include="Shaders\SpriteVertex.hlsl" />
+    <FxCompile Include="Shaders\SpritePixel.hlsl" />
+    <FxCompile Include="Shaders\ParticleGeo.hlsl" />
   </ItemGroup>
 </Project>

@@ -14,11 +14,14 @@ namespace ASSB
 	GameEngine::GameEngine(Graphics::Window & window)
 		: NextID(1),
 		Window(window),
-		Graphics(window, true),//todo don't debug graphics
+		Graphics(window),
 		Transform(Graphics, Graphics::ShaderType::Vertex, 1),
 		Camera(Graphics),
-		PixelShader(Graphics, "LambertPixel.cso", Graphics::ShaderType::Pixel),
-		VertexShader(Graphics, "LambertVertex.cso", Graphics::ShaderType::Vertex)
+		PixelShader(Graphics, "SpritePixel.cso", Graphics::ShaderType::Pixel),
+		VertexShader(Graphics, "SpriteVertex.cso", Graphics::ShaderType::Vertex),
+		ParticleVertexShader(Graphics, "ParticleVertex.cso", Graphics::ShaderType::Vertex),
+		ParticleGeoShader(Graphics, "ParticleGeo.cso", Graphics::ShaderType::Geometry),
+		testParticle(Graphics)
 	{
 		// Singleton enforcement
 		if (Instance == nullptr)
@@ -41,6 +44,9 @@ namespace ASSB
 
 		PixelShader.Create();
 		VertexShader.Create();
+		ParticleVertexShader.Create();
+		ParticleGeoShader.Create();
+		testParticle.Create(ParticleVertexShader);
 
 		std::vector<Graphics::Mesh::Vertex> verts;
 		std::vector<unsigned short> inds;
@@ -56,7 +62,7 @@ namespace ASSB
 		Square = std::unique_ptr<Graphics::Mesh>(new Graphics::Mesh(Graphics, verts, inds));
 		Square->Create(VertexShader);
 
-		Camera.SetPosition(Graphics::Vector4(0, 0, 5));
+		Camera.SetPosition(Graphics::Vector4(0, 0, 10));
 	}
 
 
@@ -109,27 +115,72 @@ namespace ASSB
 		//draw
 		Graphics.ClearScreen();
 
-		static float woo = 0;
-
-		PixelShader.Use();
-		VertexShader.Use();
 		Camera.Use();
 
 		for (auto iterator : GameObjects)
 		{
 			Globals::ObjectID id = iterator.second;
 			ComponentHandle<SpriteComponent> sprite = GetComponent<SpriteComponent>(id);
-			if (!sprite)
-				continue;
-			ComponentHandle<TransformComponent> trans = GetComponent<TransformComponent>(id);
-			auto position = trans->GetPosition();
-			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { position.X, position.Y, position.Z });
+			if (sprite)
+			{
+				PixelShader.Use();
+				VertexShader.Use();
+				ComponentHandle<TransformComponent> trans = GetComponent<TransformComponent>(id);
+				auto position = trans->GetPosition();
+				Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { position.X, position.Y, position.Z });
 
-			Transform.Use();
-			GetTexture(sprite->Path).Use();
+				Transform.Use();
+				GetTexture(sprite->Path).Use();
 
-			Graphics.Draw(*Square);
+				Graphics.Draw(*Square);
+			}
+
 		}
+
+		for (int i = 0; i < 1; ++i)
+		{
+			auto& part = testParticle.Add();
+
+			if (part.Position[1] == 0)
+			{
+				part.Position[0] = (rand() / static_cast<float>(RAND_MAX)) * 20 - 10;
+				part.Position[1] = 10;
+				part.Position[2] = (rand() / static_cast<float>(RAND_MAX)) * 20 - 10;
+
+				part.Scale = (rand() / static_cast<float>(RAND_MAX)) + 0.5f;
+				part.Rotation = (rand() / static_cast<float>(RAND_MAX)) * 3.1415926f * 2;
+
+				part.Color[0] = (rand() / static_cast<float>(RAND_MAX));
+				part.Color[1] = (rand() / static_cast<float>(RAND_MAX));
+				part.Color[2] = (rand() / static_cast<float>(RAND_MAX));
+				part.Color[3] = (rand() / static_cast<float>(RAND_MAX));
+
+				part.life = (rand() / static_cast<float>(RAND_MAX)) * 20;
+			}
+		}
+		
+
+		for (size_t i = 0; i < testParticle.size(); ++i)
+		{
+			auto& part = testParticle[i];
+			part.Position[1] -= 0.04f;
+			part.life -= static_cast<float>(Time.DT);
+
+			if (part.life < 0)
+			{
+				testParticle.Remove(i);
+				--i;
+			}
+		}
+
+		GetTexture(L"../../../Assets/None.png").Use();
+		ParticleGeoShader.Use();
+		ParticleVertexShader.Use();
+		testParticle.Use();
+		Graphics.SetBlendMode(Graphics::GraphicsEngine::BlendMode::Additive);
+		Graphics.DeviceContext->Draw(static_cast<UINT>(testParticle.size()), 0);
+		Graphics.SetBlendMode(Graphics::GraphicsEngine::BlendMode::Multiply);
+		ParticleGeoShader.UnUse();
 
 		Graphics.Present();
 		Mouse::PrepairForNextFrame();
