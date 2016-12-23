@@ -29,6 +29,7 @@ namespace ASSB
 		bool active_; // Do we honor input and whatnot? (auto set to false when paused)
 		bool CanJump;
 		float IsJump;
+		bool White;
 
 		// private member functions
 		void keyDownEvent(KeyboardEvent *e);

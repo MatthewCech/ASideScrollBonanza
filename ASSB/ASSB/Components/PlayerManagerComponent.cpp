@@ -5,6 +5,7 @@
 #include "Input/Key.h"
 #include "Events/KeyboardEvent.hpp"
 #include "Events/UpdateEvent.hpp"
+#include "Events/SwitchEvent.hpp"
 
 
 namespace ASSB
@@ -62,13 +63,26 @@ namespace ASSB
 		// Handle position movement
 		const ASSB::Key k{ e->Key };
 
-		//todo I need collision events before I can limit jumping
 		if (e->Down)
 		{
 			if (k == Key::Space && CanJump)
 			{
 				IsJump = 0.15f;
 				CanJump = false;
+			}
+			else if (k == Key::Tab)
+			{
+				auto transform = GameEngine::Instance->GetComponent<TransformComponent>(Owner);
+				if (White)
+				{//make black
+					transform->SetScale(0.5, 1);
+				}
+				else
+				{//make white
+					transform->SetScale(0.25, 0.5);
+				}
+				White = !White;
+				Globals::EventSystemInstance.Dispatch(new SwitchEvent(White));
 			}
 		}
 		else
