@@ -12,6 +12,7 @@
 // Tersting
 #include "Globals.hpp"
 #include "Components/PlayerManagerComponent.hpp"
+#include "Events/ShutdownEvent.hpp"
 
 
 
@@ -41,7 +42,9 @@ int main()
 	pmComp->SetActive(false);
 	Engine.GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 1, 0 });
 	Engine.GetComponent<ASSB::RigidBodyComponent>(player)->SetStatic(false);
-	
+	//Engine.GetComponent<ASSB::RigidBodyComponent>(player)->AddDispatchOnCollision(new ASSB::ShutdownEvent());
+
+
 	// Start the game.
 	Engine.Run();
 	return 0;

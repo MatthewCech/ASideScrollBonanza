@@ -62,4 +62,10 @@ namespace ASSB
 	{
 		return colType_;
 	}
+
+	void RigidBodyComponent::dispatchAll()
+	{
+		for (size_t i = 0; i < dispatchables_.size(); ++i)
+			dispatchables_[i]->Dispatch();
+	}
 }

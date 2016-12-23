@@ -204,6 +204,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\MenuComponent.tpp" />
+    <None Include="Components\RigidBodyComponent.tpp" />
     <None Include="Components\SoundEmitterComponent.tpp" />
     <None Include="EventSystem\DelegateGlobalFunction.tpp" />
     <None Include="EventSystem\DelegateMemberFunction.tpp" />
