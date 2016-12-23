@@ -73,13 +73,13 @@ namespace ASSB
 
 	// Menu Managers
 	template<>
-	inline ComponentHandle<MenuManagerComponent> GameEngine::GetComponent(Globals::ObjectID id)
+	inline ComponentHandle<MenuComponent> GameEngine::GetComponent(Globals::ObjectID id)
 	{
-		return ComponentHandle<MenuManagerComponent>(id, MenuManagers);
+		return ComponentHandle<MenuComponent>(id, MenuManagers);
 	}
 	template<>
-	inline void GameEngine::AddComponent<MenuManagerComponent>(Globals::ObjectID id)
+	inline void GameEngine::AddComponent<MenuComponent>(Globals::ObjectID id)
 	{
-		MenuManagers.emplace(id, std::unique_ptr<MenuManagerComponent>(new MenuManagerComponent()));
+		MenuManagers.emplace(id, std::unique_ptr<MenuComponent>(new MenuComponent()));
 	}
 }

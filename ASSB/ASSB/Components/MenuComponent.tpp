@@ -1,7 +1,7 @@
 namespace ASSB
 {
 	template<typename EventType>
-	void MenuManagerComponent::AddInteractable(std::string tag, Graphics::Vector4 scale, EventType *evt)
+	void MenuComponent::AddInteractable(std::string tag, Graphics::Vector4 scale, EventType *evt)
 	{
 		// Object instance
 		Globals::ObjectID id = GameEngine::Instance->CreateGameObject();
@@ -22,5 +22,6 @@ namespace ASSB
 
 		// Add our lovely new pair.
 		interactables_.push_back({ id, ecb });
+		updateSelectionIndicator();
 	}
 }

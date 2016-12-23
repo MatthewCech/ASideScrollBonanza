@@ -28,9 +28,9 @@
     <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp" />
     <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp" />
     <ClCompile Include="GameEngine\GameTime.cpp" />
-    <ClCompile Include="Components\MenuManagerComponent.cpp" />
     <ClCompile Include="EventSystem\EventCarrier.cpp" />
     <ClCompile Include="Particles\ParticleBuffer.cpp" />
+    <ClCompile Include="Components\MenuComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />
@@ -70,9 +70,9 @@
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp" />
     <ClInclude Include="GameEngine\GameTime.h" />
     <ClInclude Include="Events\UpdateEvent.hpp" />
-    <ClInclude Include="Components\MenuManagerComponent.hpp" />
     <ClInclude Include="EventSystem\EventCarrier.hpp" />
     <ClInclude Include="Particles\ParticleBuffer.h" />
+    <ClInclude Include="Components\MenuComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />
@@ -82,9 +82,9 @@
     <None Include="EventSystem\ObjectEventManager.tpp" />
     <None Include="GameEngine\ComponentHandle.tpp" />
     <None Include="GameEngine\GameEngine.tpp" />
-    <None Include="Components\MenuManagerComponent.tpp" />
     <None Include="Shaders\Particle.hlsli" />
     <None Include="Shaders\Sprite.hlsli" />
+    <None Include="Components\MenuComponent.tpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\ParticleVertex.hlsl" />

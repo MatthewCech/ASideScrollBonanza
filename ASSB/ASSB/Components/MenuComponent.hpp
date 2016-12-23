@@ -14,12 +14,12 @@
 
 namespace ASSB
 {
-	// MenuManagerComponent allows creation and management of a few other objects that allow for interfacing.
-	class MenuManagerComponent : public Component
+	// MenuComponent allows creation and management of a few other objects that allow for interfacing.
+	class MenuComponent : public Component
 	{
 	public:
 		// Constructor
-		MenuManagerComponent(std::string indicatorTag = "", bool vertical_ = true);
+		MenuComponent(std::string indicatorTag = "", bool vertical_ = true);
 
 		// Templatized Function
 		template<typename EventType>
@@ -30,15 +30,20 @@ namespace ASSB
 		void DectementIndicated();
 		void Select();
 
+		// Setters
 		void SetIndicatorTag(std::string indicator, Graphics::Vector4 scale);
-		void SetVertical(bool isVertical);
-		bool IsVertical();
-		void SetIndicated(int index);
 		void SetSpacing(Graphics::Vector4 spacing);
 		void SetPosition(Graphics::Vector4 newPos);
+		void SetVertical(bool isVertical);
+		void SetIndicated(int index);
+		void SetActive(bool isActive);
+
+		// Getters
 		Graphics::Vector4 GetPosition();
-		int GetIndicated();
 		Graphics::Vector4 GetSpacing();
+		int GetIndicated();
+		bool IsVertical();
+		bool IsActive();
 
 	private:
 		// Variables
@@ -56,9 +61,9 @@ namespace ASSB
 		void updateSpacing();
 
 		// Omit
-		MenuManagerComponent *operator=(const MenuManagerComponent &rhs) = delete;
-		//MenuManagerComponent(const MenuManagerComponent &rhs) = delete;
+		MenuComponent *operator=(const MenuComponent &rhs) = delete;
+		//MenuComponent(const MenuComponent &rhs) = delete;
 	};
 }
 
-#include "MenuManagerComponent.tpp"
+#include "MenuComponent.tpp"

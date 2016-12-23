@@ -1,4 +1,4 @@
-#include "MenuManagerComponent.hpp"
+#include "MenuComponent.hpp"
 #include "GameEngine/GameEngine.h"
 #include "SpriteComponent.hpp"
 #include "FileSystem/ImagePreloadingMapper.hpp"
@@ -8,10 +8,10 @@
 namespace ASSB
 {
 	// Constructor
-	MenuManagerComponent::MenuManagerComponent(std::string indicatorTag, bool vertical)
+	MenuComponent::MenuComponent(std::string indicatorTag, bool vertical)
 		: active_(true)
 		, selected_(0)
-		, spacing_({ 0, 1, 0 })
+		, spacing_({ 0, -1, 0 })
 		, pos_({ 0, 0, 0 })
 		, selectionIndicator_()
 		, interactables_()
@@ -21,12 +21,12 @@ namespace ASSB
 		SetIndicatorTag(indicatorTag, { 1,1,0 });
 
 		// Connect Events
-		Connect(this, &MenuManagerComponent::handleKeyboardEvent);
+		Connect(this, &MenuComponent::handleKeyboardEvent);
 	}
 
 
 	// 0-based indexing into the array
-	void MenuManagerComponent::SetIndicated(int index)
+	void MenuComponent::SetIndicated(int index)
 	{
 		if (index < 0)
 			index = 0;
@@ -38,14 +38,14 @@ namespace ASSB
 
 
 	// Selects the current index, dispatching the associated event.
-	void MenuManagerComponent::Select()
+	void MenuComponent::Select()
 	{
 		interactables_[static_cast<size_t>(selected_)].second->Dispatch();
 	}
 
 
 	// Keyboard event callback
-	void MenuManagerComponent::handleKeyboardEvent(KeyboardEvent *e)
+	void MenuComponent::handleKeyboardEvent(KeyboardEvent *e)
 	{
 		if (active_)
 		{
@@ -76,7 +76,7 @@ namespace ASSB
 
 
 	// Updates location of selection indicator to position of the new item
-	void MenuManagerComponent::updateSelectionIndicator()
+	void MenuComponent::updateSelectionIndicator()
 	{
 		ComponentHandle<TransformComponent> indicatorLoc = GameEngine::Instance->GetComponent<TransformComponent>(selectionIndicator_);
 		ComponentHandle<TransformComponent> interactableLoc = GameEngine::Instance->GetComponent<TransformComponent>(interactables_[static_cast<size_t>(selected_)].first);
@@ -86,7 +86,7 @@ namespace ASSB
 
 
 	// Increments the position: Goes Down or Right
-	void MenuManagerComponent::IncrementIndicated()
+	void MenuComponent::IncrementIndicated()
 	{
 		++selected_;
 		if (selected_ >= static_cast<int>(interactables_.size()))
@@ -97,17 +97,18 @@ namespace ASSB
 
 
 	// Decrements the positon: Goes Up or Left.
-	void MenuManagerComponent::DectementIndicated()
+	void MenuComponent::DectementIndicated()
 	{
 		--selected_;
 		if (selected_ < 0)
-			selected_ = static_cast<int>(interactables_.size());
+			selected_ = static_cast<int>(interactables_.size()) - 1;
 
 		updateSelectionIndicator();
 	}
 
 
-	void MenuManagerComponent::updateSpacing()
+	// Updates the selection location
+	void MenuComponent::updateSpacing()
 	{
 		for (size_t i = 0; i < interactables_.size(); ++i)
 		{
@@ -117,7 +118,7 @@ namespace ASSB
 	}
 
 	// Getters and Setters
-	void MenuManagerComponent::SetIndicatorTag(std::string indicatorTag, Graphics::Vector4 scale)
+	void MenuComponent::SetIndicatorTag(std::string indicatorTag, Graphics::Vector4 scale)
 	{
 		if (indicatorTag.size() > 0)
 		{
@@ -131,32 +132,32 @@ namespace ASSB
 			}
 		}
 	}
-	void MenuManagerComponent::SetVertical(bool isVertical)
+	void MenuComponent::SetVertical(bool isVertical)
 	{
 		vertical_ = isVertical;
 	}
-	bool MenuManagerComponent::IsVertical()
+	bool MenuComponent::IsVertical()
 	{
 		return vertical_;
 	}
-	void MenuManagerComponent::SetSpacing(Graphics::Vector4 spacingVal)
+	void MenuComponent::SetSpacing(Graphics::Vector4 spacingVal)
 	{
 
 		spacing_ = spacingVal;
 	}
-	void MenuManagerComponent::SetPosition(Graphics::Vector4 newPos)
+	void MenuComponent::SetPosition(Graphics::Vector4 newPos)
 	{
 		pos_ = newPos;
 	}
-	Graphics::Vector4 MenuManagerComponent::GetPosition()
+	Graphics::Vector4 MenuComponent::GetPosition()
 	{
 		return pos_;
 	}
-	int MenuManagerComponent::GetIndicated()
+	int MenuComponent::GetIndicated()
 	{
 		return selected_;
 	}
-	Graphics::Vector4 MenuManagerComponent::GetSpacing()
+	Graphics::Vector4 MenuComponent::GetSpacing()
 	{
 		return spacing_;
 	}
