@@ -1,10 +1,10 @@
 #include "PhysicsSystem.hpp"
 #include "Globals.hpp"
-#include "GameEngine\GameEngine.h"
+#include "GameEngine/GameEngine.h"
 #include <climits>
 #include <memory>
 #include "Events/PauseToggleEvent.hpp"
-
+#include "Events/CollisionEvent.hpp"
 
 
 namespace ASSB
@@ -75,6 +75,9 @@ namespace ASSB
 					// Dispatch registered collision events
 					map[i]->second->dispatchAll();
 					map[j]->second->dispatchAll();
+
+					// Dispatch a collision occured
+					Globals::EventSystemInstance.Dispatch(new CollisionEvent(map[i]->first, map[j]->first));
 
 					// handle collision resolution
 					if (map[i]->second->GetCollisionType() == ASSB::GHOSTING)

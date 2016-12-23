@@ -11,7 +11,7 @@ namespace FileSystem
 	{
 	public:
 		// Static Functions
-		static void LoadFromFile(std::string filepath);
-		static bool ParseLine(std::string line);
+		static void LoadFromFile(std::string filepath, float offsetX = 0);
+		static bool ParseLine(std::string line, float offsetX);
 	};
 }

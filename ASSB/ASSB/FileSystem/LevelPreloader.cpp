@@ -12,7 +12,7 @@
 namespace FileSystem
 {
 	// Attempts to generate information for a level based on a filepath.
-	void LevelPreloader::LoadFromFile(std::string filepath)
+	void LevelPreloader::LoadFromFile(std::string filepath, float offsetX)
 	{
 		File f{ filepath };
 		if (!f.FileFound())
@@ -24,7 +24,7 @@ namespace FileSystem
 		for (unsigned int i{ 0 }; i < f.GetLineCount(); ++i)
 		{
 			std::string line = f[i];
-			if(!ParseLine(line))
+			if(!ParseLine(line, offsetX))
 			{
 				DEBUG_PRINT("Could not parse line, assuming requested EOF.");
 				DEBUG_PRINT("Line parse attempt on: " << line);
@@ -35,7 +35,7 @@ namespace FileSystem
 
 
 	// Parses an individual line into objects, just returns success or not.
-	bool LevelPreloader::ParseLine(std::string line)
+	bool LevelPreloader::ParseLine(std::string line, float offsetX)
 	{
 		// Split for block type and pos
 		const size_t splitLoc = line.find_first_of(":");
@@ -50,7 +50,7 @@ namespace FileSystem
 		if (commaLoc1 == std::string::npos)
 			return false;
 
-		const float x{ std::stof(first.substr(0, commaLoc1)) };
+		const float x{ offsetX + std::stof(first.substr(0, commaLoc1)) };
 		const float y{ std::stof(first.substr(commaLoc1 + 1)) };
 
 		// Split for image path and flags string

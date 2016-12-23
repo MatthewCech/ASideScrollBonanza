@@ -146,6 +146,7 @@
     <ClInclude Include="EventSystem\EventSystem.hpp" />
     <ClInclude Include="EventSystem\ObjectEventManager.hpp" />
     <ClInclude Include="EventSystem\ODefines.hpp" />
+    <ClInclude Include="Events\CollisionEvent.hpp" />
     <ClInclude Include="Events\GameStartEvent.hpp" />
     <ClInclude Include="Events\KeyboardEvent.hpp" />
     <ClInclude Include="Events\MouseEvents.h" />
