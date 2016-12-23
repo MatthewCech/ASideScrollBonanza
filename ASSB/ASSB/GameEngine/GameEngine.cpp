@@ -4,6 +4,8 @@
 #include "Input/Mouse.h"
 #include "Events/UpdateEvent.hpp"
 
+#include <cstdlib>
+
 namespace ASSB
 {
 	// Static Init
@@ -113,6 +115,7 @@ namespace ASSB
 		Physics.Update(RigidBodies, Time);
 
 		//draw
+		std::vector<Globals::ObjectID> drawOrder;
 		Graphics.ClearScreen();
 
 		float screenXOffset = -0.5f * (Mouse::Current.ScreenXPos/ static_cast<float>(Window.Width) - 0.5f); 
@@ -122,24 +125,47 @@ namespace ASSB
 
 		Camera.Use();
 
+		//get the objects
 		for (auto iterator : GameObjects)
 		{
 			Globals::ObjectID id = iterator.second;
+			if (GetComponent<SpriteComponent>(id))
+				drawOrder.push_back(id);
+		}
+
+		//sort them
+		std::qsort(&drawOrder[0], drawOrder.size(), sizeof(Globals::ObjectID), 
+			[](const void* p1, const void* p2)
+		{
+			Globals::ObjectID id1 = *reinterpret_cast<const Globals::ObjectID*>(p1);
+			Globals::ObjectID id2 = *reinterpret_cast<const Globals::ObjectID*>(p2);
+
+			ComponentHandle<TransformComponent> trans1 = Instance->GetComponent<TransformComponent>(id1);
+			ComponentHandle<TransformComponent> trans2 = Instance->GetComponent<TransformComponent>(id2);
+
+			float val = trans1->GetPosition().Z - trans2->GetPosition().Z;
+			
+			if (val < 0)
+				return -1;
+			else if (val == 0)
+				return 0;
+			else
+				return 1;
+		});
+
+		for (Globals::ObjectID id : drawOrder)
+		{
 			ComponentHandle<SpriteComponent> sprite = GetComponent<SpriteComponent>(id);
-			if (sprite)
-			{
-				PixelShader.Use();
-				VertexShader.Use();
-				ComponentHandle<TransformComponent> trans = GetComponent<TransformComponent>(id);
-				auto position = trans->GetPosition();
-				Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { position.X, position.Y, position.Z });
+			PixelShader.Use();
+			VertexShader.Use();
+			ComponentHandle<TransformComponent> trans = GetComponent<TransformComponent>(id);
+			auto position = trans->GetPosition();
+			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { position.X, position.Y, position.Z });
 
-				Transform.Use();
-				GetTexture(sprite->Path).Use();
+			Transform.Use();
+			GetTexture(sprite->Path).Use();
 
-				Graphics.Draw(*Square);
-			}
-
+			Graphics.Draw(*Square);
 		}
 
 		for (int i = 0; i < 1; ++i)
