@@ -36,13 +36,27 @@ namespace ASSB
 
 		// Define map as vector
 		std::vector<std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>>::iterator> map;//
+		float playerX = GameEngine::Instance->GetComponent<TransformComponent>(GameEngine::Instance->GetIdOf("player"))->GetPosition().X;
+		float acceptableDelay = 2; // units behind player to allow
+		playerX -= acceptableDelay;
+		Globals::ObjectID playerid = GameEngine::Instance->GetIdOf("player");
+		std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>>::iterator playerIter;
 		for (auto iter{ input.begin() }; iter != input.end(); ++iter)
 		{
+			if (GameEngine::Instance->GetComponent<TransformComponent>(iter->first)->GetPosition().X < playerX)
+				continue;
+			if (iter->first == playerid)
+			{
+				playerIter = iter;
+				continue;
+			}
 			if (iter->second->GetCollisionType() == ASSB::NO_COLLISION)
 				continue;
 			else
 				map.push_back(iter);
 		}
+		//!TODO: FIX THIS CHEAP HACK!
+		map.push_back(playerIter);
 
 		// Location updating
 		for (unsigned int i{ 0 }; i < map.size(); ++i)
@@ -89,15 +103,23 @@ namespace ASSB
 					if (!map[i]->second->static_)
 					{
 						if (!map[j]->second->static_)
+						{
 							// Both pairs are dymanic
 							resolveDynamicDynamicAABBCollision(*map[i], *map[j], info);
+						}
 						else
+						{
 							// Pair1 is dynamic
+							info.Normal *= -1;
+							DEBUG_PRINT("CHEAP HACK FAILED! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 							resolveStaticAABBCollision(*map[i], *map[j], info);
+						}
 					}
 					else
+					{
 						// Pair2 is dynamic
 						resolveStaticAABBCollision(*map[j], *map[i], info);
+					}
 				}
 			}
 		}
@@ -141,6 +163,10 @@ namespace ASSB
 		if (l1 > r2) return CollisionInfo(false);
 		if (b1 < t2) return CollisionInfo(false);
 		if (t1 > b2) return CollisionInfo(false);
+
+		// Print colliding objects
+		//DEBUG_PRINT_VAR(obj1.first);
+		//DEBUG_PRINT_VAR(obj2.first);
 
 		// Offset into the other object:
 		float offR = r1 - l2;
@@ -191,6 +217,8 @@ namespace ASSB
 		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &staticObj,
 		CollisionInfo info)
 	{
+		//DEBUG_PRINT_VAR(dynamicObj.first);
+		//DEBUG_PRINT_VAR(staticObj.first);
 		UNUSED(staticObj);
 		// Excecute: Impulse, apply only to 1 side.
 		DEBUG_PRINT("Static Collision!");
@@ -222,7 +250,7 @@ namespace ASSB
 		Graphics::Vector4 impulseVector = info.Normal * impScalar;
 		dynamicObj.second->velocity_ += impulseVector;
 		//dynamicObj2.second->velocity_ += impulseVector;
-		DEBUG_PRINT("Static velocity correction A\applied!");
+		DEBUG_PRINT("Static velocity correction Applied!");
 	}
 
 	// Misleading qualifiers, not actually const for the Game Objects
