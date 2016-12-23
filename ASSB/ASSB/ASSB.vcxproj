@@ -112,6 +112,7 @@
     <ClCompile Include="GameEngine\GameEngine.cpp" />
     <ClCompile Include="GameEngine\GameTime.cpp" />
     <ClCompile Include="GameEngine\MenuManager.cpp" />
+    <ClCompile Include="GameEngine\Utilities.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Input\Keyboard.cpp" />
     <ClCompile Include="Input\KeyboardState.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="GameEngine\GameEngine.h" />
     <ClInclude Include="GameEngine\GameTime.h" />
     <ClInclude Include="GameEngine\MenuManager.hpp" />
+    <ClInclude Include="GameEngine\Utilities.hpp" />
     <ClInclude Include="Input\Key.h" />
     <ClInclude Include="Globals.hpp" />
     <ClInclude Include="Input\Keyboard.h" />

@@ -5,9 +5,9 @@
 namespace ASSB
 {
 	// Constructor
-	RigidBodyComponent::RigidBodyComponent(bool isStatic) 
-		: static_(isStatic)
-		, collidable_(true)
+	RigidBodyComponent::RigidBodyComponent() 
+		: colType_(COLLIDABLE)
+		, static_(true)
 		, width_(1)
 		, height_(1)
 		, velocity_()
@@ -33,17 +33,12 @@ namespace ASSB
 		return height_;
 	}
 
-	void RigidBodyComponent::SetCollidable(bool isCollidable)
+	void RigidBodyComponent::SetCollisionType(CollisionType type)
 	{
-		collidable_ = isCollidable;
+		colType_ = type;
 	}
 
-	bool RigidBodyComponent::IsCollidable() const
-	{
-		return collidable_;
-	}
-
-	Graphics::Vector4  RigidBodyComponent::GetVelocity() const
+	Graphics::Vector4 RigidBodyComponent::GetVelocity() const
 	{
 		return velocity_;
 	}
@@ -61,5 +56,10 @@ namespace ASSB
 	void RigidBodyComponent::SetStatic(bool isStatic)
 	{
 		static_ = isStatic;
+	}
+
+	CollisionType RigidBodyComponent::GetCollisionType() const
+	{
+		return colType_;
 	}
 }

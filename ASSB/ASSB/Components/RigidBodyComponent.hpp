@@ -8,32 +8,33 @@ namespace ASSB
 {
 	// A rigid body for an object! By default, the objects are dynamic.
 	// This can be changed with a bool in the constructor.
+	enum CollisionType { COLLIDABLE, GHOSTING, NO_COLLISION };
 	class RigidBodyComponent : public Component
 	{
 		// frieeeeeend
 		friend class PhysicsSystem;
 	public:
 		// Consructor
-		RigidBodyComponent(bool isStatic = false);
+		RigidBodyComponent();
 	
 		// Member functions - Set
 		void SetWidth(float width);
 		void SetHeight(float height);
 		void SetStatic(bool isStatic);
-		void SetCollidable(bool isCollidable);
+		void SetCollisionType(CollisionType type);
 		void SetVelocity(Graphics::Vector4 velocity);
 
 		// Member functions - Get
+		bool IsStatic() const;
 		float GetWidth() const;
 		float GetHeight() const;
-		bool IsStatic() const;
-		bool IsCollidable() const;
 		Graphics::Vector4 GetVelocity() const;
+		CollisionType GetCollisionType() const;
 
 	private:
 		// Variables
+		CollisionType colType_;
 		bool static_;
-		bool collidable_;
 		float width_;
 		float height_;
 		Graphics::Vector4 velocity_;

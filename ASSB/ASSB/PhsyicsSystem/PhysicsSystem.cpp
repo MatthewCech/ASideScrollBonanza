@@ -14,7 +14,12 @@ namespace ASSB
 		// Define map as vector
 		std::vector<std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>>::iterator> map;//
 		for (auto iter{ input.begin() }; iter != input.end(); ++iter)
-			map.push_back(iter);
+		{
+			if (iter->second->GetCollisionType() == ASSB::NO_COLLISION)
+				continue;
+			else
+				map.push_back(iter);
+		}
 
 		// Location updating
 		for (unsigned int i{ 0 }; i < map.size(); ++i)
@@ -29,18 +34,10 @@ namespace ASSB
 		//!TODO:Convert to not using full N^2 items in map!
 		for (unsigned int i{ 0 }; i < map.size(); ++i)
 		{
-			// If we are not collidable, don't bother for the entier loop.
-			if (!map[i]->second->collidable_)
-				continue;
-
 			for (unsigned int j{ i }; j < map.size(); ++j)
 			{
 				// If we're really just one person, don't bother.
 				if (map[i]->first == map[j]->first)
-					continue;
-
-				// If we're not collidable, don't bother.
-				if (!map[j]->second->collidable_)
 					continue;
 
 				// If we are both static, don't bother.

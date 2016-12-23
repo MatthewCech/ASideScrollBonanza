@@ -7,6 +7,7 @@
 #include "FileSystem/ImagePreloadingMapper.hpp"
 #include "FileSystem/LevelPreloader.hpp"
 #include "GameEngine/MenuManager.hpp"
+#include "GameEngine/Utilities.hpp"
 
 // Tersting
 #include "Globals.hpp"
@@ -28,6 +29,7 @@ int main()
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/SandboxLevel.txt");
 
 	// Post-preloading
+	ASSB::Utilities Utils;
 	ASSB::MenuManager Menus;
 
 	// Player
@@ -38,6 +40,7 @@ int main()
 	pmComp->SetImage("icon", { .5f, .5f, 0 });
 	pmComp->SetActive(false);
 	Engine.GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 1, 0 });
+	Engine.GetComponent<ASSB::RigidBodyComponent>(player)->SetStatic(false);
 	
 	// Start the game.
 	Engine.Run();

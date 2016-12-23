@@ -4,6 +4,7 @@
 #include "FileSystem/ImagePreloadingMapper.hpp"
 #include "Events/UIChangeEvent.hpp"
 #include "Events/UISelectEvent.hpp"
+#include "GameEngine/Utilities.hpp"
 
 
 
@@ -111,7 +112,8 @@ namespace ASSB
 		ComponentHandle<TransformComponent> indicatorLoc = GameEngine::Instance->GetComponent<TransformComponent>(selectionIndicator_);
 		ComponentHandle<TransformComponent> interactableLoc = GameEngine::Instance->GetComponent<TransformComponent>(interactables_[static_cast<size_t>(selected_)].first);
 		//!TODO: ACTIONS SYSTEM FOR INTERPOLATION
-		indicatorLoc->SetPosition(interactableLoc->GetPosition());
+		Utilities::Instance->InterpolatePos(selectionIndicator_, interactableLoc->GetPosition(), 80);
+		//indicatorLoc->SetPosition(interactableLoc->GetPosition());
 	}
 
 

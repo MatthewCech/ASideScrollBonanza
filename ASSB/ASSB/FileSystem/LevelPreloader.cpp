@@ -94,20 +94,22 @@ namespace FileSystem
 		}
 
 		// Dynamic or static
-		if (flags[0] == 'd')
+		ASSB::ComponentHandle<ASSB::RigidBodyComponent> rigidBody = ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id);
+		rigidBody->SetCollisionType(ASSB::NO_COLLISION);
+		rigidBody->SetStatic(true);
+		for (size_t i = 0; i < flags.size(); ++i)
 		{
-			ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->SetStatic(false);
-
-			//!TODO: For testing
-			ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->
-				SetVelocity(Graphics::Vector4(
-					static_cast<float>((((std::rand() % 100) - 50.0) / 50.0))
-					, static_cast<float>((((std::rand() % 100) - 50.0) / 50.0))
-					, static_cast<float>((((std::rand() % 100) - 50.0) / 50.0))));
-		}
-		else if (flags[0] == 's')
-		{
-			ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id)->SetStatic(true);
+			const char flag = flags[i];
+			if (flag == 'd')
+				rigidBody->SetStatic(false);
+			else if (flag == 's')
+				rigidBody->SetStatic(true);
+			else if (flag == 'c')
+				rigidBody->SetCollisionType(ASSB::COLLIDABLE);
+			else if (flag == 'g')
+				rigidBody->SetCollisionType(ASSB::GHOSTING);
+			else if (flag == 'n')
+				rigidBody->SetCollisionType(ASSB::NO_COLLISION);
 		}
 
 		// Set image
