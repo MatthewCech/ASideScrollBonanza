@@ -11,8 +11,9 @@
 namespace ASSB
 {
 	// Constructor
-	MenuComponent::MenuComponent(std::string indicatorTag, bool vertical)
-		: active_(true)
+	MenuComponent::MenuComponent(Globals::ObjectID owner, std::string indicatorTag, bool vertical)
+		: Component(owner)
+		, active_(true)
 		, selected_(0)
 		, spacing_({ 0, -1, 0 })
 		, pos_({ 0, 0, 0 })

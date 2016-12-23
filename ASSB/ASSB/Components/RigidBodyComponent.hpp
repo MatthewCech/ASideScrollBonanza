@@ -15,7 +15,7 @@ namespace ASSB
 		friend class PhysicsSystem;
 	public:
 		// Consructor
-		RigidBodyComponent();
+		RigidBodyComponent(Globals::ObjectID owner);
 	
 		// Member functions - Set
 		void SetWidth(float width);

@@ -5,8 +5,9 @@
 namespace ASSB
 {
 	// Constructor
-	RigidBodyComponent::RigidBodyComponent() 
-		: colType_(COLLIDABLE)
+	RigidBodyComponent::RigidBodyComponent(Globals::ObjectID owner)
+		: Component(owner)
+		, colType_(COLLIDABLE)
 		, static_(true)
 		, width_(1)
 		, height_(1)

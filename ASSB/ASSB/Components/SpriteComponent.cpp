@@ -2,7 +2,13 @@
 
 namespace ASSB
 {
-	SpriteComponent::SpriteComponent(const SpriteComponent & rhs)
+	SpriteComponent::SpriteComponent(Globals::ObjectID owner) : Component(owner)
+	{
+		Visible = true;
+		Path = L"../../../Assets/None.png";
+	}
+
+	SpriteComponent::SpriteComponent(const SpriteComponent & rhs) : Component(rhs.Owner)
 	{
 		*this = rhs;
 	}
@@ -14,9 +20,4 @@ namespace ASSB
 		return *this;
 	}
 
-	SpriteComponent::SpriteComponent()
-	{
-		Visible = true;
-		Path = L"../../../Assets/None.png";
-	}
 }

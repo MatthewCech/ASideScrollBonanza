@@ -6,7 +6,7 @@
 namespace ASSB
 {
 	// Constructor
-	Component::Component() : ObjectEventManager(Globals::EventSystemInstance)
+	Component::Component(Globals::ObjectID owner) : ObjectEventManager(Globals::EventSystemInstance), Owner(owner)
 	{  }
 
 

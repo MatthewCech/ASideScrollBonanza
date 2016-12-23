@@ -11,7 +11,7 @@ namespace ASSB
 	{
 	public:
 		// Constructors / Assignment
-		TransformComponent();
+		TransformComponent(Globals::ObjectID owner);
 		TransformComponent(const TransformComponent &rhs);
 		TransformComponent &operator=(const TransformComponent &rhs);
 

@@ -4,15 +4,18 @@
 #include "GameEngine/GameEngine.h"
 #include "Input/Key.h"
 #include "Events/KeyboardEvent.hpp"
+#include "Events/UpdateEvent.hpp"
 
 
 namespace ASSB
 {
-	PlayerManagerComponent::PlayerManagerComponent()
-		: active_(false)
+	PlayerManagerComponent::PlayerManagerComponent(Globals::ObjectID owner)
+		: Component(owner),
+		active_(false)
 	{
 		// Connect events
 		Connect(this, &PlayerManagerComponent::keyDownEvent);
+		Connect(this, &PlayerManagerComponent::Update);
 	}
 
 
@@ -57,15 +60,56 @@ namespace ASSB
 
 		// Handle position movement
 		const ASSB::Key k{ e->Key };
-		float accelSpeed = .1f;
-		if (k == Key::A || k == Key::Left)
-			rigidBody->SetVelocity(rigidBody->GetVelocity() + Graphics::Vector4(-accelSpeed, 0, 0));
-		else if (k == Key::S || k == Key::Down)
-			rigidBody->SetVelocity(rigidBody->GetVelocity() + Graphics::Vector4(0, -accelSpeed, 0));
-		else if (k == Key::D || k == Key::Right)
-			rigidBody->SetVelocity(rigidBody->GetVelocity() + Graphics::Vector4(accelSpeed, 0, 0));
-		else if (k == Key::W || k == Key::Up)
-			rigidBody->SetVelocity(rigidBody->GetVelocity() + Graphics::Vector4(0, accelSpeed, 0));
 
+		//todo I need collision events before I can limit jumping
+		if (e->Down)
+		{
+			if (k == Key::Space)
+			{
+				IsJump = 0.15f;
+			}
+		}
+		else
+		{
+			if (k == Key::Space)
+			{
+				IsJump = 0;
+			}
+		}
+	}
+
+	void PlayerManagerComponent::Update(UpdateEvent * e)
+	{
+		float dt = static_cast<float>(e->Time.DT);
+		ComponentHandle<RigidBodyComponent> rigidBody = GameEngine::Instance->GetComponent<RigidBodyComponent>(Owner);
+
+		Graphics::Vector4 velocity = rigidBody->GetVelocity();
+		velocity.Y -= 40 * dt;
+		velocity.X = 5;
+
+		if (IsJump > 0)
+		{
+			velocity.Y += 150 * dt;
+			IsJump -= dt;
+		}
+
+		//fake drag
+		velocity *= 0.96f;
+
+		rigidBody->SetVelocity(velocity);
+
+
+		//do the camera
+		Graphics::Vector4 campos = GameEngine::Instance->Camera.GetPosition();
+		Graphics::Vector4 pPos = GameEngine::Instance->GetComponent<TransformComponent>(Owner)->GetPosition();
+
+		campos.X = pPos.X;
+
+		float diff = pPos.Y - campos.Y;
+		diff /= 20;
+
+		campos.Y += diff;
+
+		GameEngine::Instance->Camera.SetPosition(campos);
 	}
 }

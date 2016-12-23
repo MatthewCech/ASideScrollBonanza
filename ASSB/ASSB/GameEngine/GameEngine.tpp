@@ -29,7 +29,7 @@ namespace ASSB
 	inline void GameEngine::AddComponent<TransformComponent>(Globals::ObjectID id)
 	{
 		//Transforms.emplace(NextID - 1, TransformComponent());
-		Transforms.emplace(id, std::unique_ptr<TransformComponent>(new TransformComponent()));
+		Transforms.emplace(id, std::unique_ptr<TransformComponent>(new TransformComponent(id)));
 	}
 
 
@@ -42,7 +42,7 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<SoundEmitterComponent>(Globals::ObjectID id)
 	{
-		SoundEmitters.emplace(id, std::unique_ptr<SoundEmitterComponent>(new SoundEmitterComponent()));
+		SoundEmitters.emplace(id, std::unique_ptr<SoundEmitterComponent>(new SoundEmitterComponent(id)));
 	}
 
 
@@ -55,7 +55,7 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<RigidBodyComponent>(Globals::ObjectID id)
 	{
-		RigidBodies.emplace(id, std::unique_ptr<RigidBodyComponent>(new RigidBodyComponent()));
+		RigidBodies.emplace(id, std::unique_ptr<RigidBodyComponent>(new RigidBodyComponent(id)));
 	}
 
 	//Sprite
@@ -67,7 +67,7 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<SpriteComponent>(Globals::ObjectID id)
 	{
-		Sprites.emplace(id, std::unique_ptr<SpriteComponent>(new SpriteComponent()));
+		Sprites.emplace(id, std::unique_ptr<SpriteComponent>(new SpriteComponent(id)));
 	}
 
 
@@ -80,7 +80,7 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<MenuComponent>(Globals::ObjectID id)
 	{
-		Menus.emplace(id, std::unique_ptr<MenuComponent>(new MenuComponent()));
+		Menus.emplace(id, std::unique_ptr<MenuComponent>(new MenuComponent(id)));
 	}
 
 
@@ -93,7 +93,7 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<PlayerManagerComponent>(Globals::ObjectID id)
 	{
-		PlayerManagers.emplace(id, std::unique_ptr<PlayerManagerComponent>(new PlayerManagerComponent()));
+		PlayerManagers.emplace(id, std::unique_ptr<PlayerManagerComponent>(new PlayerManagerComponent(id)));
 	}
 
 	// Particles
@@ -105,6 +105,6 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<ParticleComponent>(Globals::ObjectID id)
 	{
-		ParticleSystems.emplace(id, std::unique_ptr<ParticleComponent>(new ParticleComponent()));
+		ParticleSystems.emplace(id, std::unique_ptr<ParticleComponent>(new ParticleComponent(id)));
 	}
 }

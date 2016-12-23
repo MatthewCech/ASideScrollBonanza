@@ -6,6 +6,7 @@ namespace ASSB
 	struct GameTime
 	{
 	public:
+		double MaxDT;
 		double DT;
 		double RunTime;
 		GameTime();

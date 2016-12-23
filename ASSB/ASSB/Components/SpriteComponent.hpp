@@ -9,9 +9,10 @@ namespace ASSB
 	public:
 		bool Visible;
 		std::wstring Path;
+
+		SpriteComponent(Globals::ObjectID owner);
 		SpriteComponent(const SpriteComponent &rhs);
 		SpriteComponent &operator=(const SpriteComponent &rhs);
 
-		SpriteComponent();
 	};
 }
