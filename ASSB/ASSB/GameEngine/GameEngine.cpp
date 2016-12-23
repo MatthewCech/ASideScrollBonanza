@@ -115,6 +115,11 @@ namespace ASSB
 		//draw
 		Graphics.ClearScreen();
 
+		float screenXOffset = -0.5f * (Mouse::Current.ScreenXPos/ static_cast<float>(Window.Width) - 0.5f); 
+		float screenYOffset = 0.5f * (Mouse::Current.ScreenYPos / static_cast<float>(Window.Height) - 0.5f);
+
+		Camera.SetLook(Graphics::Vector4(screenXOffset, screenYOffset, -1));
+
 		Camera.Use();
 
 		for (auto iterator : GameObjects)

@@ -5,6 +5,8 @@ struct GeoShaderInput
 	float4 color : COLOR;
 	float rotation : ROTATION;
 	float scale : SCALE;
+    matrix view : TRANSFORM;
+    matrix viewProjection : PROJECTION;
 };
 
 struct PixelShaderInput

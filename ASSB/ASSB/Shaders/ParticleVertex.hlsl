@@ -19,11 +19,12 @@ GeoShaderInput main(VertexShaderInput input)
 	GeoShaderInput output;
 
 	float4 pos = float4(input.position, 1.0f);
-	pos = mul(viewProjection, pos);
 	output.position = pos;
 	output.color = input.color;
 	output.rotation = input.rotation;
 	output.scale = input.scale;
+    output.view = view;
+    output.viewProjection = viewProjection;
 
 	return output;
 }
