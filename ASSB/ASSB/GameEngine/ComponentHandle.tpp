@@ -3,7 +3,7 @@
 namespace ASSB
 {
 	template<typename T>
-	inline ComponentHandle<T>::ComponentHandle(Globals::ObjectID objectId, std::unordered_map<unsigned long long, T>& map) : Map(map), Id(objectId)
+	inline ComponentHandle<T>::ComponentHandle(Globals::ObjectID objectId, std::unordered_map<unsigned long long, std::unique_ptr<T>>& map) : Map(map), Id(objectId)
 	{
 
 	}
@@ -17,25 +17,25 @@ namespace ASSB
 	template<typename T>
 	inline const T * ComponentHandle<T>::operator->() const
 	{
-		return &Map.at(Id);
+		return Map.at(Id);
 	}
 
 	template<typename T>
 	T * ComponentHandle<T>::operator->()
 	{
-		return &Map.at(Id);
+		return &*Map.at(Id);
 	}
 
 	template<typename T>
 	const T& ComponentHandle<T>::operator*() const
 	{
-		return Map.at(Id);
+		return *Map.at(Id);
 	}
 
 	template<typename T>
 	T& ComponentHandle<T>::operator*()
 	{
-		return Map.at(Id);
+		return *Map.at(Id);
 	}
 
 	template<typename T>

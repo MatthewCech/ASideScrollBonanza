@@ -18,7 +18,10 @@ namespace ASSB
 		, vertical_(vertical)
 	{
 		selectionIndicator_ = GameEngine::Instance->CreateGameObject("MenuSelectionIndicator");
-		SetIndicatorTag(indicatorTag);
+		SetIndicatorTag(indicatorTag, { 1,1,0 });
+
+		// Connect Events
+		Connect(this, &MenuManagerComponent::handleKeyboardEvent);
 	}
 
 
@@ -63,6 +66,10 @@ namespace ASSB
 					else if (k == Key::A || k == Key::Left || k == Key::Numpad_4)
 						DectementIndicated();
 				}
+
+				// Key selected
+				if (k == Key::Enter || k == Key::Space || k == Key::Numpad_Enter)
+					Select();
 			}
 		}
 	}
@@ -110,7 +117,7 @@ namespace ASSB
 	}
 
 	// Getters and Setters
-	void MenuManagerComponent::SetIndicatorTag(std::string indicatorTag)
+	void MenuManagerComponent::SetIndicatorTag(std::string indicatorTag, Graphics::Vector4 scale)
 	{
 		if (indicatorTag.size() > 0)
 		{
@@ -119,6 +126,8 @@ namespace ASSB
 			{
 				GameEngine::Instance->GetComponent<SpriteComponent>(selectionIndicator_)->
 					Path = std::wstring(path.begin(), path.end());
+				GameEngine::Instance->GetComponent<TransformComponent>(selectionIndicator_)->
+					SetScale(scale.X, scale.Y);
 			}
 		}
 	}

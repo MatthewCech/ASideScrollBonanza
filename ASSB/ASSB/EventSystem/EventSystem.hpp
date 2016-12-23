@@ -28,7 +28,7 @@ namespace EventSystem
 
     // Event dispatching
     template <typename EventType>
-    int Dispatch(EventType *e);
+    int Dispatch(EventType *e, bool cleanup = true);
 
     // Event disconnecting
     void Disconnect(O_ID toDisconnect);

@@ -2,26 +2,27 @@
 #include "Globals.hpp"
 #include "GameEngine\GameEngine.h"
 #include <climits>
+#include <memory>
 
 
 
 namespace ASSB
 {
 	void PhysicsSystem::Update(
-		std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &input, const GameTime &g)
+		std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &input, const GameTime &g)
 	{
 		// Define map as vector
-		std::vector<std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent>::iterator> map;//
+		std::vector<std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>>::iterator> map;//
 		for (auto iter{ input.begin() }; iter != input.end(); ++iter)
 			map.push_back(iter);
 
 		// Location updating
 		for (unsigned int i{ 0 }; i < map.size(); ++i)
 		{
-			if (!map[i]->second.static_)
+			if (!map[i]->second->static_)
 			{
 				ComponentHandle<TransformComponent> t = GameEngine::Instance->GetComponent<TransformComponent>(map[i]->first);
-				t->SetPosition(t->GetPosition() + map[i]->second.velocity_ * static_cast<float>(g.DT));
+				t->SetPosition(t->GetPosition() + map[i]->second->velocity_ * static_cast<float>(g.DT));
 			}
 		}
 
@@ -29,7 +30,7 @@ namespace ASSB
 		for (unsigned int i{ 0 }; i < map.size(); ++i)
 		{
 			// If we are not collidable, don't bother for the entier loop.
-			if (!map[i]->second.collidable_)
+			if (!map[i]->second->collidable_)
 				continue;
 
 			for (unsigned int j{ i }; j < map.size(); ++j)
@@ -39,21 +40,21 @@ namespace ASSB
 					continue;
 
 				// If we're not collidable, don't bother.
-				if (!map[j]->second.collidable_)
+				if (!map[j]->second->collidable_)
 					continue;
 
 				// If we are both static, don't bother.
-				if (map[i]->second.static_)
-					if (map[j]->second.static_)
+				if (map[i]->second->static_)
+					if (map[j]->second->static_)
 						continue;
 
 				// If one of us is not static, care a bit only if we are colliding.
 				CollisionInfo info = isCollidingAABB(*map[i], *map[j]);
 				if (info == true)
 				{
-					if (!map[i]->second.static_)
+					if (!map[i]->second->static_)
 					{
-						if (!map[j]->second.static_)
+						if (!map[j]->second->static_)
 							// Both pairs are dymanic
 							resolveDynamicDynamicAABBCollision(*map[i], *map[j], info);
 						else
@@ -77,8 +78,8 @@ namespace ASSB
 
 	// Check if two objects are colliding
 	CollisionInfo PhysicsSystem::isCollidingAABB(
-		std::pair<const Globals::ObjectID, RigidBodyComponent> &obj1,
-		std::pair<const Globals::ObjectID, RigidBodyComponent> &obj2)
+		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &obj1,
+		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &obj2)
 	{
 		ComponentHandle<TransformComponent> o1t = GameEngine::Instance->GetComponent<TransformComponent>(obj1.first);
 		ComponentHandle<TransformComponent> o2t = GameEngine::Instance->GetComponent<TransformComponent>(obj2.first);
@@ -86,10 +87,10 @@ namespace ASSB
 		const Graphics::Vector4 p2 = o2t->GetPosition();
 
 		// Width and height
-		const float w1 = obj1.second.width_ * o1t->GetScaleX();
-		const float w2 = obj2.second.width_ * o2t->GetScaleY();
-		const float h1 = obj1.second.height_ * o1t->GetScaleX();
-		const float h2 = obj2.second.height_ * o2t->GetScaleY();
+		const float w1 = obj1.second->width_ * o1t->GetScaleX();
+		const float w2 = obj2.second->width_ * o2t->GetScaleY();
+		const float h1 = obj1.second->height_ * o1t->GetScaleX();
+		const float h2 = obj2.second->height_ * o2t->GetScaleY();
 
 		// Sides
 		const float l1 = p1.X - w1 / 2;
@@ -149,8 +150,8 @@ namespace ASSB
 
 	// Misleading qualifiers, not actually const for the Game Objects.
 	void PhysicsSystem::resolveStaticAABBCollision(
-		std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj,
-		std::pair<const Globals::ObjectID, RigidBodyComponent> &staticObj,
+		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &dynamicObj,
+		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &staticObj,
 		CollisionInfo info)
 	{
 		// Excecute: Impulse, apply only to 1 side.
@@ -166,8 +167,8 @@ namespace ASSB
 	}
 	// Misleading qualifiers, not actually const for the Game Objects
 	void PhysicsSystem::resolveDynamicDynamicAABBCollision(
-		std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj1,
-		std::pair<const Globals::ObjectID, RigidBodyComponent> &dynamicObj2,
+		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &dynamicObj1,
+		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &dynamicObj2,
 		CollisionInfo info)
 	{
 		DEBUG_PRINT("Dynamic to Dynamic Collision!");
@@ -183,7 +184,7 @@ namespace ASSB
 		t2->SetPosition(t2->GetPosition() - (OffsetVec * mass1 / massTotal));
     
 		// Velocity Correction (assumption: Same mass, of "1")
-		const Graphics::Vector4 effectiveVelocity = dynamicObj2.second.velocity_ - dynamicObj1.second.velocity_;
+		const Graphics::Vector4 effectiveVelocity = dynamicObj2.second->velocity_ - dynamicObj1.second->velocity_;
 		const float normalMag = dot(effectiveVelocity, info.Normal);
 		const float elasticity = 1.0f ; //!TODO: Tweak Elasticity! Value: (0-1)
 
@@ -197,8 +198,8 @@ namespace ASSB
 		impScalar *= normalMag;
 		impScalar /= 1 / mass1 + 1 / mass2;
 		Graphics::Vector4 impulseVector = info.Normal * impScalar;
-		dynamicObj1.second.velocity_ -= impulseVector;
-		dynamicObj2.second.velocity_ += impulseVector;
+		dynamicObj1.second->velocity_ -= impulseVector;
+		dynamicObj2.second->velocity_ += impulseVector;
 		DEBUG_PRINT("Impulse Applied!");
 	}
 }

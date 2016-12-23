@@ -5,4 +5,5 @@ tree1:../../../Assets/Images/tree1.png
 tile1:../../../Assets/Images/tile1.png
 tile2:../../../Assets/Images/tile2.png
 buttonBase:../../../Assets/Images/buttonBase.png
+selectImage:../../../Assets/Images/selectImage.png
 == I put this line in to stop it here.

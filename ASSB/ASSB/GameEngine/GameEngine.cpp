@@ -86,7 +86,7 @@ namespace ASSB
 			name = std::to_string(NextID + 1);
 
 		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>(name, NextID++));
-		Transforms.emplace(NextID - 1, TransformComponent());
+		AddComponent<TransformComponent>(NextID - 1);
 		AddComponent<SpriteComponent>(NextID - 1);
 
 		return NextID - 1;

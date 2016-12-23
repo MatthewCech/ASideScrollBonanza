@@ -33,9 +33,11 @@ int main()
 	ASSB::ComponentHandle<ASSB::MenuManagerComponent> comp = Engine.GetComponent<ASSB::MenuManagerComponent>(obj);
 	comp->SetSpacing({ 0, .5f, 0 });
 	comp->SetPosition({ 0, 1, 0 });
+	comp->SetIndicatorTag("selectImage", { 1.75f, .4f, 0 });
 	comp->AddInteractable("buttonBase", { 1.5f,.3f,0 }, new ASSB::UISelectionChangedEvent());
 	comp->AddInteractable("buttonBase", { 1.5f,.3f,0 }, new ASSB::UISelectionChangedEvent());
 	comp->AddInteractable("buttonBase", { 1.5f,.3f,0 }, new ASSB::UISelectionChangedEvent());
+	
 	//Engine.AddComponent<
 	UNUSED(obj);
 	// Audio system test
