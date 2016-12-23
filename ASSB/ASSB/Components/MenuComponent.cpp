@@ -33,10 +33,21 @@ namespace ASSB
 		{
 			for (size_t i = 0; i < interactables_.size(); ++i)
 			{
-				//GameEngine::Instance->GetComponent<SpriteComponent>(interactables_[i].first)
-					//->
+				GameEngine::Instance->GetComponent<SpriteComponent>(interactables_[i].first)
+					->Visible = false;
 			}
+			GameEngine::Instance->GetComponent<SpriteComponent>(selectionIndicator_)->Visible = false;
 		}
+		else
+		{
+			for (size_t i = 0; i < interactables_.size(); ++i)
+			{
+				GameEngine::Instance->GetComponent<SpriteComponent>(interactables_[i].first)
+					->Visible = true;
+			}
+			GameEngine::Instance->GetComponent<SpriteComponent>(selectionIndicator_)->Visible = true;
+		}
+		active_ = isActive;
 	}
 
 	bool MenuComponent::IsActive()

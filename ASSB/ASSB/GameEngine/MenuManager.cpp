@@ -45,6 +45,7 @@ namespace ASSB
 		Connect(this, &MenuManager::quitRequest);
 		Connect(this, &MenuManager::shutdownRequest);
 		Connect(this, &MenuManager::shutdownRequest);
+		Connect(this, &MenuManager::gameStart);
 	}
 
 	// Creates necessary SFX Objects
