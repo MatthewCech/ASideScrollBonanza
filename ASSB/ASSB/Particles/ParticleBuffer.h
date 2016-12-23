@@ -12,6 +12,7 @@ namespace ASSB
 {
 	struct ParticleBuffer
 	{
+		friend class ParticleComponent;
 	public:
 		struct Particle
 		{
@@ -30,7 +31,7 @@ namespace ASSB
 		const Particle& operator[](size_t index) const;
 		Particle& operator[](size_t index);
 
-		void Use() const;
+		void Use();
 		bool Create(const Graphics::Shader& shader);
 		size_t size();
 		void Remove(size_t index);
@@ -43,6 +44,6 @@ namespace ASSB
 		std::vector<Particle> Particles;
 		size_t MaxParticles;
 
-		bool Update() const;
+		bool Update();
 	};
 }

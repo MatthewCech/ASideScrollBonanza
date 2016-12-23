@@ -24,6 +24,7 @@
 #include "Components/SpriteComponent.hpp"
 #include "Components/MenuComponent.hpp"
 #include "Components/PlayerManagerComponent.hpp"
+#include "Components/ParticleComponent.hpp"
 
 
 
@@ -31,6 +32,7 @@ namespace ASSB
 {
 	class GameEngine
 	{
+		friend class ParticleComponent;
 	public:
 		// Connstructor
 		GameEngine(Graphics::Window& window);
@@ -71,7 +73,6 @@ namespace ASSB
 		Graphics::Shader VertexShader;
 		Graphics::Shader ParticleVertexShader;
 		Graphics::Shader ParticleGeoShader;
-		ParticleBuffer testParticle;
 
 
 		//Physics
@@ -85,6 +86,7 @@ namespace ASSB
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<SpriteComponent>> Sprites;
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<MenuComponent>> Menus;
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<PlayerManagerComponent>> PlayerManagers;
+		std::unordered_map<Globals::ObjectID, std::unique_ptr<ParticleComponent>> ParticleSystems;
 		std::unordered_map<std::wstring, std::shared_ptr<Graphics::Texture>> Textures;
 		GameEngine(const ASSB::GameEngine& other) = delete;
 

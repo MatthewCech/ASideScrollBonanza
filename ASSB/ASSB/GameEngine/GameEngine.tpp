@@ -95,4 +95,16 @@ namespace ASSB
 	{
 		PlayerManagers.emplace(id, std::unique_ptr<PlayerManagerComponent>(new PlayerManagerComponent()));
 	}
+
+	// Particles
+	template<>
+	inline ComponentHandle<ParticleComponent> GameEngine::GetComponent(Globals::ObjectID id)
+	{
+		return ComponentHandle<ParticleComponent>(id, ParticleSystems);
+	}
+	template<>
+	inline void GameEngine::AddComponent<ParticleComponent>(Globals::ObjectID id)
+	{
+		ParticleSystems.emplace(id, std::unique_ptr<ParticleComponent>(new ParticleComponent()));
+	}
 }

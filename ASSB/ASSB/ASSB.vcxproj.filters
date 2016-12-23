@@ -33,6 +33,7 @@
     <ClCompile Include="Components\MenuComponent.cpp" />
     <ClCompile Include="Components\PlayerManagerComponent.cpp" />
     <ClCompile Include="GameEngine\MenuManager.cpp" />
+    <ClCompile Include="Components\ParticleComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />
