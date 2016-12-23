@@ -27,6 +27,22 @@ namespace ASSB
 	}
 
 
+	void MenuComponent::SetActive(bool isActive)
+	{
+		if (isActive == false)
+		{
+			for (size_t i = 0; i < interactables_.size(); ++i)
+			{
+				//GameEngine::Instance->GetComponent<SpriteComponent>(interactables_[i].first)
+					//->
+			}
+		}
+	}
+
+	bool MenuComponent::IsActive()
+	{
+		return active_;
+	}
 	// 0-based indexing into the array
 	void MenuComponent::SetIndicated(int index)
 	{

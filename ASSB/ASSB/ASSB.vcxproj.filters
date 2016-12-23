@@ -81,6 +81,7 @@
     <ClInclude Include="Components\PlayerManagerComponent.hpp" />
     <ClInclude Include="GameEngine\MenuManager.hpp" />
     <ClInclude Include="Events\QuitRequestEvent.hpp" />
+    <ClInclude Include="Events\GameStartEvent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />

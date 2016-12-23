@@ -8,6 +8,7 @@ namespace ASSB
 	// Handles menus and some menu-related events.
 	class QuitRequestEvent;
 	class ShutdownEvent;
+	class GameStartEvent;
 	class MenuManager : public EventSystem::ObjectEventManager
 	{
 	public:
@@ -24,6 +25,7 @@ namespace ASSB
 		void initializeSFX();
 		void quitRequest(QuitRequestEvent *e);
 		void shutdownRequest(ShutdownEvent *e);
+		void gameStart(GameStartEvent *e);
 
 		// Omit
 		MenuManager &operator=(const MenuManager &rhs) = delete;

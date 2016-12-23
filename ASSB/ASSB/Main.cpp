@@ -36,7 +36,7 @@ int main()
 	Engine.AddComponent<ASSB::RigidBodyComponent>(player);
 	ASSB::ComponentHandle<ASSB::PlayerManagerComponent> pmComp = Engine.GetComponent<ASSB::PlayerManagerComponent>(player);
 	pmComp->SetImage("icon", { .5f, .5f, 0 });
-	pmComp->SetActive(true);
+	pmComp->SetActive(false);
 	
 	// Start the game.
 	Engine.Run();
