@@ -22,8 +22,7 @@ namespace ASSB
 		PixelShader(Graphics, "SpritePixel.cso", Graphics::ShaderType::Pixel),
 		VertexShader(Graphics, "SpriteVertex.cso", Graphics::ShaderType::Vertex),
 		ParticleVertexShader(Graphics, "ParticleVertex.cso", Graphics::ShaderType::Vertex),
-		ParticleGeoShader(Graphics, "ParticleGeo.cso", Graphics::ShaderType::Geometry),
-		testParticle(Graphics)
+		ParticleGeoShader(Graphics, "ParticleGeo.cso", Graphics::ShaderType::Geometry)
 	{
 		// Singleton enforcement
 		if (Instance == nullptr)
@@ -48,7 +47,6 @@ namespace ASSB
 		VertexShader.Create();
 		ParticleVertexShader.Create();
 		ParticleGeoShader.Create();
-		testParticle.Create(ParticleVertexShader);
 
 		std::vector<Graphics::Mesh::Vertex> verts;
 		std::vector<unsigned short> inds;
@@ -114,8 +112,13 @@ namespace ASSB
 		// Physics
 		Physics.Update(RigidBodies, Time);
 
-		//draw
+		//////////////////
+		//
+		//        Graphics
+		//              //
+		//////////////////
 		std::vector<Globals::ObjectID> drawOrder;
+		std::vector<Globals::ObjectID> particles;
 		Graphics.ClearScreen();
 
 		float screenXOffset = -0.5f * (Mouse::Current.ScreenXPos/ static_cast<float>(Window.Width) - 0.5f); 
@@ -131,6 +134,8 @@ namespace ASSB
 			Globals::ObjectID id = iterator.second;
 			if (GetComponent<SpriteComponent>(id))
 				drawOrder.push_back(id);
+			if (GetComponent<ParticleComponent>(id))
+				particles.push_back(id);
 		}
 
 		//sort them
@@ -168,7 +173,7 @@ namespace ASSB
 			Graphics.Draw(*Square);
 		}
 
-		for (int i = 0; i < 1; ++i)
+		/*for (int i = 0; i < 1; ++i)
 		{
 			auto& part = testParticle.Add();
 
@@ -188,10 +193,10 @@ namespace ASSB
 
 				part.life = (rand() / static_cast<float>(RAND_MAX)) * 20;
 			}
-		}
+		}*/
 		
 
-		for (size_t i = 0; i < testParticle.size(); ++i)
+		/*for (size_t i = 0; i < testParticle.size(); ++i)
 		{
 			auto& part = testParticle[i];
 			part.Position[1] -= 0.04f;
@@ -202,14 +207,20 @@ namespace ASSB
 				testParticle.Remove(i);
 				--i;
 			}
-		}
+		}*/
 
-		GetTexture(L"../../../Assets/None.png").Use();
+		//particles
 		ParticleGeoShader.Use();
 		ParticleVertexShader.Use();
-		testParticle.Use();
-		Graphics.SetBlendMode(Graphics::GraphicsEngine::BlendMode::Additive);
-		Graphics.DeviceContext->Draw(static_cast<UINT>(testParticle.size()), 0);
+		for (Globals::ObjectID id : particles)
+		{
+			auto partComp = GetComponent<ParticleComponent>(id);
+
+			partComp->Buffer.Use();
+			GetTexture(partComp->Path).Use();
+			Graphics.SetBlendMode(partComp->BlendMode);
+			Graphics.DeviceContext->Draw(static_cast<UINT>(partComp->Buffer.size()), 0);
+		}
 		Graphics.SetBlendMode(Graphics::GraphicsEngine::BlendMode::Multiply);
 		ParticleGeoShader.UnUse();
 

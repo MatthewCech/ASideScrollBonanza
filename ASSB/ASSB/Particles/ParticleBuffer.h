@@ -12,6 +12,7 @@ namespace ASSB
 {
 	struct ParticleBuffer
 	{
+		friend class ParticleComponent;
 	public:
 		struct Particle
 		{

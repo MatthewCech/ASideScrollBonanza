@@ -92,6 +92,7 @@
     <ClCompile Include="AudioSystem\AudioSystem.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\MenuComponent.cpp" />
+    <ClCompile Include="Components\ParticleComponent.cpp" />
     <ClCompile Include="Components\PlayerManagerComponent.cpp" />
     <ClCompile Include="Components\RigidBodyComponent.cpp" />
     <ClCompile Include="Components\SoundEmitterComponent.cpp" />
