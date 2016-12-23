@@ -4,6 +4,7 @@
 #include <utility>
 #include "Globals.hpp"
 #include "CollisionInfo.hpp"
+#include "GameEngine/GameTime.h"
 
 
 
@@ -12,7 +13,7 @@ namespace ASSB
 	class PhysicsSystem
 	{
 	public:
-		void Update(std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map);
+		void Update(std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &map, const GameTime &g);
 
 	private:
 		CollisionInfo isCollidingAABB(

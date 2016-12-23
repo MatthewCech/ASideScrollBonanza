@@ -28,6 +28,8 @@
     <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp" />
     <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp" />
     <ClCompile Include="GameEngine\GameTime.cpp" />
+    <ClCompile Include="Components\MenuManagerComponent.cpp" />
+    <ClCompile Include="EventSystem\EventCarrier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />
@@ -67,6 +69,8 @@
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp" />
     <ClInclude Include="GameEngine\GameTime.h" />
     <ClInclude Include="Events\UpdateEvent.hpp" />
+    <ClInclude Include="Components\MenuManagerComponent.hpp" />
+    <ClInclude Include="EventSystem\EventCarrier.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />
@@ -76,5 +80,6 @@
     <None Include="EventSystem\ObjectEventManager.tpp" />
     <None Include="GameEngine\ComponentHandle.tpp" />
     <None Include="GameEngine\GameEngine.tpp" />
+    <None Include="Components\MenuManagerComponent.tpp" />
   </ItemGroup>
 </Project>

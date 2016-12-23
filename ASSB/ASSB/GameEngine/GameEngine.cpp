@@ -102,8 +102,9 @@ namespace ASSB
 
 		Time.Tick();
 		Globals::EventSystemInstance.Dispatch(new UpdateEvent(Time));
+
 		// Physics
-		Physics.Update(RigidBodies);
+		Physics.Update(RigidBodies, Time);
 
 		//draw
 		Graphics.ClearScreen();

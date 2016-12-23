@@ -8,7 +8,7 @@
 namespace ASSB
 {
 	void PhysicsSystem::Update(
-		std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &input)
+		std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent> &input, const GameTime &g)
 	{
 		// Define map as vector
 		std::vector<std::unordered_map<ASSB::Globals::ObjectID, RigidBodyComponent>::iterator> map;//
@@ -21,7 +21,7 @@ namespace ASSB
 			if (!map[i]->second.static_)
 			{
 				ComponentHandle<TransformComponent> t = GameEngine::Instance->GetComponent<TransformComponent>(map[i]->first);
-				t->SetPosition(t->GetPosition() + map[i]->second.velocity_);
+				t->SetPosition(t->GetPosition() + map[i]->second.velocity_ * static_cast<float>(g.DT));
 			}
 		}
 
@@ -32,7 +32,6 @@ namespace ASSB
 			if (!map[i]->second.collidable_)
 				continue;
 
-			// I + 1???
 			for (unsigned int j{ i }; j < map.size(); ++j)
 			{
 				// If we're really just one person, don't bother.

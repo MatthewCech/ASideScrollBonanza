@@ -69,4 +69,17 @@ namespace ASSB
 	{
 		Sprites.emplace(id, SpriteComponent());
 	}
+
+
+	// Menu Managers
+	template<>
+	inline ComponentHandle<MenuManagerComponent> GameEngine::GetComponent(Globals::ObjectID id)
+	{
+		return ComponentHandle<MenuManagerComponent>(id, MenuManagers);
+	}
+	template<>
+	inline void GameEngine::AddComponent<MenuManagerComponent>(Globals::ObjectID id)
+	{
+		MenuManagers.emplace(id, MenuManagerComponent());
+	}
 }

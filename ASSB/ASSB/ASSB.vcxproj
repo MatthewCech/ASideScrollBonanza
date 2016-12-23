@@ -91,6 +91,7 @@
     <ClCompile Include="AudioSystem\AudioFile.cpp" />
     <ClCompile Include="AudioSystem\AudioSystem.cpp" />
     <ClCompile Include="Components\Component.cpp" />
+    <ClCompile Include="Components\MenuManagerComponent.cpp" />
     <ClCompile Include="Components\RigidBodyComponent.cpp" />
     <ClCompile Include="Components\SoundEmitterComponent.cpp" />
     <ClCompile Include="Components\SpriteComponent.cpp" />
@@ -99,6 +100,7 @@
     <ClCompile Include="EventSystem\DelegateGroup.cpp" />
     <ClCompile Include="EventSystem\DelegateGroupMember.cpp" />
     <ClCompile Include="EventSystem\Event.cpp" />
+    <ClCompile Include="EventSystem\EventCarrier.cpp" />
     <ClCompile Include="EventSystem\EventSystem.cpp" />
     <ClCompile Include="EventSystem\ObjectEventManager.cpp" />
     <ClCompile Include="FileSystem\ImagePreloadingMapper.cpp" />
@@ -123,6 +125,7 @@
     <ClInclude Include="AudioSystem\AudioFile.hpp" />
     <ClInclude Include="AudioSystem\AudioSystem.hpp" />
     <ClInclude Include="Components\Component.hpp" />
+    <ClInclude Include="Components\MenuManagerComponent.hpp" />
     <ClInclude Include="Components\RigidBodyComponent.hpp" />
     <ClInclude Include="Components\SoundEmitterComponent.hpp" />
     <ClInclude Include="Components\SpriteComponent.hpp" />
@@ -133,6 +136,7 @@
     <ClInclude Include="EventSystem\DelegateGroupMember.hpp" />
     <ClInclude Include="EventSystem\DelegateMemberFunction.hpp" />
     <ClInclude Include="EventSystem\Event.hpp" />
+    <ClInclude Include="EventSystem\EventCarrier.hpp" />
     <ClInclude Include="EventSystem\EventSystem.hpp" />
     <ClInclude Include="EventSystem\ObjectEventManager.hpp" />
     <ClInclude Include="EventSystem\ODefines.hpp" />
@@ -160,6 +164,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Components\MenuManagerComponent.tpp" />
     <None Include="Components\SoundEmitterComponent.tpp" />
     <None Include="EventSystem\DelegateGlobalFunction.tpp" />
     <None Include="EventSystem\DelegateMemberFunction.tpp" />
