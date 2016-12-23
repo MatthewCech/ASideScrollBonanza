@@ -147,24 +147,51 @@ namespace ASSB
 		return CollisionInfo(true, finalOffset, normal);
 	}
 
-
+	static float dot(Graphics::Vector4 v1, Graphics::Vector4 v2)
+	{
+		return v1.X * v2.X + v1.Y * v2.Y;
+	}
 	// Misleading qualifiers, not actually const for the Game Objects.
 	void PhysicsSystem::resolveStaticAABBCollision(
 		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &dynamicObj,
 		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &staticObj,
 		CollisionInfo info)
 	{
-		// Excecute: Impulse, apply only to 1 side.
-		DEBUG_PRINT("Dynamic to Static Collision!");
-		UNUSED(dynamicObj);
 		UNUSED(staticObj);
-		UNUSED(info);
+		// Excecute: Impulse, apply only to 1 side.
+		DEBUG_PRINT("Static Collision!");
+		ComponentHandle<TransformComponent> t1 = GameEngine::Instance->GetComponent<TransformComponent>(dynamicObj.first);
+		//ComponentHandle<TransformComponent> t2 = GameEngine::Instance->GetComponent<TransformComponent>(dynamicObj2.first);
+
+		// Position Correction, using fake masses.
+		// (masses included as dummy values to make sure I'm following correct steps)
+		const float mass1 = 1, mass2 = 1;
+		const float massTotal = mass1 + mass2;
+		const Graphics::Vector4 OffsetVec = info.Normal * info.Offset;
+		t1->SetPosition(t1->GetPosition() - OffsetVec);
+		//t2->SetPosition(t2->GetPosition() - (OffsetVec * mass1 / massTotal));
+
+		/*
+		// Velocity Correction (assumption: Same mass, of "1")
+		const Graphics::Vector4 effectiveVelocity = dynamicObj.second->velocity_;
+		const float normalMag = dot(effectiveVelocity, info.Normal);
+		const float elasticity = 0; //!TODO: Tweak Elasticity! Value: (0-1)
+																	 // We don't care if we aren't going to collide.
+		if (normalMag > 0)
+			return;
+
+		// Calcualte and apply impulse. Normally: (-(1 + elasticity) * normalMag) / ((1/mass1) + (1/mass2).
+		// However, we are assuming it's a mass of 1.
+		float impScalar = -(1 + elasticity);
+		impScalar *= normalMag;
+		impScalar /= 1 / mass1 + 1 / mass2;
+		Graphics::Vector4 impulseVector = info.Normal * impScalar;
+		dynamicObj.second->velocity_ -= impulseVector;
+		//dynamicObj2.second->velocity_ += impulseVector;
+		DEBUG_PRINT("Impulse Applied!");
+		*/
 	}
 
-	static float dot(Graphics::Vector4 v1, Graphics::Vector4 v2)
-	{
-		return v1.X * v2.X + v1.Y * v2.Y;
-	}
 	// Misleading qualifiers, not actually const for the Game Objects
 	void PhysicsSystem::resolveDynamicDynamicAABBCollision(
 		std::pair<const Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> &dynamicObj1,

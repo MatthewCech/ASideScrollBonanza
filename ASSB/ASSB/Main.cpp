@@ -24,7 +24,7 @@ int main()
 	// Preloading
 	FileSystem::ImagePreloadingMapper::LoadFromFile("../../../Assets/ImageList.txt");
 	FileSystem::AudioPreloadingMapper::LoadFromFile("../../../Assets/AudioList.txt");
-	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/LevelTest.txt");
+	//FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/LevelTest.txt");
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/SandboxLevel.txt");
 
 	// Post-preloading
@@ -37,6 +37,7 @@ int main()
 	ASSB::ComponentHandle<ASSB::PlayerManagerComponent> pmComp = Engine.GetComponent<ASSB::PlayerManagerComponent>(player);
 	pmComp->SetImage("icon", { .5f, .5f, 0 });
 	pmComp->SetActive(false);
+	Engine.GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 1, 0 });
 	
 	// Start the game.
 	Engine.Run();
