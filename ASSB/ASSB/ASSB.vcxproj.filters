@@ -70,9 +70,10 @@
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp" />
     <ClInclude Include="GameEngine\GameTime.h" />
     <ClInclude Include="Events\UpdateEvent.hpp" />
-    <ClInclude Include="EventSystem\EventCarrier.hpp" />
-    <ClInclude Include="Particles\ParticleBuffer.h" />
     <ClInclude Include="Components\MenuComponent.hpp" />
+    <ClInclude Include="Particles\ParticleBuffer.h" />
+    <ClInclude Include="EventSystem\EventCarrier.hpp" />
+    <ClInclude Include="Components\ParticleComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />
