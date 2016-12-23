@@ -1,6 +1,7 @@
 #include "Graphics/Window.h"
 #include "GameEngine/GameEngine.h"
 #include "Components/SoundEmitterComponent.hpp"
+#include "Components/MenuManagerComponent.hpp"
 #include "Events/UISelectEvent.hpp"
 #include "FileSystem/AudioPreloadingMapper.hpp"
 #include "FileSystem/ImagePreloadingMapper.hpp"
@@ -26,7 +27,17 @@ int main()
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/LevelTest.txt");
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/SandboxLevel.txt");
 
-
+	// Menu System
+	ASSB::Globals::ObjectID obj = Engine.CreateGameObject();
+	Engine.AddComponent<ASSB::MenuManagerComponent>(obj);
+	ASSB::ComponentHandle<ASSB::MenuManagerComponent> comp = Engine.GetComponent<ASSB::MenuManagerComponent>(obj);
+	comp->SetSpacing({ 0, .5f, 0 });
+	comp->SetPosition({ 0, 1, 0 });
+	comp->AddInteractable("buttonBase", { 1.5f,.3f,0 }, new ASSB::UISelectionChangedEvent());
+	comp->AddInteractable("buttonBase", { 1.5f,.3f,0 }, new ASSB::UISelectionChangedEvent());
+	comp->AddInteractable("buttonBase", { 1.5f,.3f,0 }, new ASSB::UISelectionChangedEvent());
+	//Engine.AddComponent<
+	UNUSED(obj);
 	// Audio system test
 	ASSB::SoundEmitterComponent se("Select1");
 	se.PlayOnEvent<ASSB::UISelectionChangedEvent>();
