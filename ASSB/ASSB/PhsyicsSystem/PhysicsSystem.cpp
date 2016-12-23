@@ -39,24 +39,24 @@ namespace ASSB
 		float playerX = GameEngine::Instance->GetComponent<TransformComponent>(GameEngine::Instance->GetIdOf("player"))->GetPosition().X;
 		float acceptableDelay = 2; // units behind player to allow
 		playerX -= acceptableDelay;
-		Globals::ObjectID playerid = GameEngine::Instance->GetIdOf("player");
+//		Globals::ObjectID playerid = GameEngine::Instance->GetIdOf("player");
 		std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>>::iterator playerIter;
 		for (auto iter{ input.begin() }; iter != input.end(); ++iter)
 		{
 			if (GameEngine::Instance->GetComponent<TransformComponent>(iter->first)->GetPosition().X < playerX)
 				continue;
-			if (iter->first == playerid)
-			{
-				playerIter = iter;
-				continue;
-			}
+			//if (iter->first == playerid)
+			//{
+			//	playerIter = iter;
+			//	continue;
+			//}
 			if (iter->second->GetCollisionType() == ASSB::NO_COLLISION)
 				continue;
 			else
 				map.push_back(iter);
 		}
 		//!TODO: FIX THIS CHEAP HACK!
-		map.push_back(playerIter);
+		//map.push_back(playerIter);
 
 		// Location updating
 		for (unsigned int i{ 0 }; i < map.size(); ++i)
@@ -183,12 +183,12 @@ namespace ASSB
 		float finalOffset;
 		if (offR <= offL && offR <= offT && offR <= offB)
 		{
-			normal = Graphics::Vector4(1, 0, 0);
+			normal = Graphics::Vector4(-1, 0, 0);
 			finalOffset = -offR;
 		}
 		else if (offL <= offT && offL <= offB)
 		{
-			normal = Graphics::Vector4(-1, 0, 0);
+			normal = Graphics::Vector4(1, 0, 0);
 			finalOffset = -offL;
 		}
 		else if (offT <= offB)
