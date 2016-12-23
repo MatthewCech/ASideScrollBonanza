@@ -113,6 +113,7 @@
     <ClCompile Include="Input\Mouse.cpp" />
     <ClCompile Include="Input\MouseState.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Particles\ParticleBuffer.cpp" />
     <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp" />
     <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -154,10 +155,36 @@
     <ClInclude Include="Input\Mouse.h" />
     <ClInclude Include="Input\MouseButton.h" />
     <ClInclude Include="Input\MouseState.h" />
+    <ClInclude Include="Particles\ParticleBuffer.h" />
     <ClInclude Include="PhsyicsSystem\CollisionInfo.hpp" />
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <FxCompile Include="Shaders\ParticleGeo.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Geometry</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Geometry</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Shaders\SpritePixel.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Shaders\SpriteVertex.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Shaders\ParticleVertex.hlsl">
+      <FileType>CppHeader</FileType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />
@@ -167,6 +194,8 @@
     <None Include="EventSystem\ObjectEventManager.tpp" />
     <None Include="GameEngine\ComponentHandle.tpp" />
     <None Include="GameEngine\GameEngine.tpp" />
+    <None Include="Shaders\Sprite.hlsli" />
+    <None Include="Shaders\Particle.hlsli" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
