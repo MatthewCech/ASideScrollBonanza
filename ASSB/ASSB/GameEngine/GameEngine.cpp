@@ -133,7 +133,8 @@ namespace ASSB
 		for (auto iterator : GameObjects)
 		{
 			Globals::ObjectID id = iterator.second;
-			if (GetComponent<SpriteComponent>(id))
+			auto sprite = GetComponent<SpriteComponent>(id);
+			if (sprite && sprite->Visible)
 				drawOrder.push_back(id);
 			if (GetComponent<ParticleComponent>(id))
 				particles.push_back(id);
