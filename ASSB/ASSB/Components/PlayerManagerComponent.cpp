@@ -16,6 +16,7 @@ namespace ASSB
 		// Connect events
 		Connect(this, &PlayerManagerComponent::keyDownEvent);
 		Connect(this, &PlayerManagerComponent::Update);
+		Connect(this, &PlayerManagerComponent::Collide);
 	}
 
 
@@ -64,9 +65,10 @@ namespace ASSB
 		//todo I need collision events before I can limit jumping
 		if (e->Down)
 		{
-			if (k == Key::Space)
+			if (k == Key::Space && CanJump)
 			{
 				IsJump = 0.15f;
+				CanJump = false;
 			}
 		}
 		else
@@ -113,5 +115,22 @@ namespace ASSB
 		campos.Y += diff;
 
 		GameEngine::Instance->Camera.SetPosition(campos);
+	}
+
+	void PlayerManagerComponent::Collide(CollisionEvent * e)
+	{
+		if (!active_)
+			return;
+
+		if (e->ID1 != Owner && e->ID2 != Owner)
+			return;
+
+		Globals::ObjectID Other;
+		if (e->ID1 == Owner)
+			Other = e->ID2;
+		else
+			Other = e->ID1;
+
+		CanJump = true;
 	}
 }

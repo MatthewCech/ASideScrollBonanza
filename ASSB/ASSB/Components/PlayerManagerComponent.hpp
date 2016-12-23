@@ -4,6 +4,7 @@
 #include "Graphics/Vector4.h"
 #include "GameEngine/ComponentHandle.h"
 #include "RigidBodyComponent.hpp"
+#include "Events/CollisionEvent.hpp"
 
 
 namespace ASSB
@@ -32,6 +33,7 @@ namespace ASSB
 		// private member functions
 		void keyDownEvent(KeyboardEvent *e);
 		void Update(UpdateEvent *e);
+		void Collide(CollisionEvent* e);
 
 		// Omit
 		PlayerManagerComponent(const PlayerManagerComponent &rhs) = delete;
