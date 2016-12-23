@@ -98,6 +98,7 @@
     <None Include="Shaders\Sprite.hlsli" />
     <None Include="Components\MenuComponent.tpp" />
     <None Include="Events\ShutdownEvent.hpp" />
+    <None Include="Components\RigidBodyComponent.tpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\ParticleVertex.hlsl" />

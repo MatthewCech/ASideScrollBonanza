@@ -1,7 +1,8 @@
 #pragma once
 #include "Component.hpp"
-#include "Graphics\Vector4.h"
-
+#include "Graphics/Vector4.h"
+#include "EventSystem/EventCarrier.hpp"
+#include  <vector>
 
 
 namespace ASSB
@@ -24,6 +25,10 @@ namespace ASSB
 		void SetCollisionType(CollisionType type);
 		void SetVelocity(Graphics::Vector4 velocity);
 
+		// Event binding
+		template<typename EventType>
+		void AddDispatchOnCollision(EventType *e);
+
 		// Member functions - Get
 		bool IsStatic() const;
 		float GetWidth() const;
@@ -41,5 +46,9 @@ namespace ASSB
 
 		// Omit
 		RigidBodyComponent *operator=(const RigidBodyComponent &rhs) = delete;
+		std::vector<EventSystem::ECBase *> dispatchables_;
+		void dispatchAll();
 	};
 }
+
+#include "RigidBodyComponent.tpp"

@@ -72,6 +72,17 @@ namespace ASSB
 				CollisionInfo info = isCollidingAABB(*map[i], *map[j]);
 				if (info == true)
 				{
+					// Dispatch registered collision events
+					map[i]->second->dispatchAll();
+					map[j]->second->dispatchAll();
+
+					// handle collision resolution
+					if (map[i]->second->GetCollisionType() == ASSB::GHOSTING)
+						continue;
+					if (map[j]->second->GetCollisionType() == ASSB::GHOSTING)
+						continue;
+
+					// Handle static
 					if (!map[i]->second->static_)
 					{
 						if (!map[j]->second->static_)
