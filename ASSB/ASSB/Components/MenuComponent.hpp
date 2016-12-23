@@ -20,7 +20,7 @@ namespace ASSB
 	{
 	public:
 		// Constructor
-		MenuComponent(std::string indicatorTag = "", bool vertical_ = true);
+		MenuComponent(Globals::ObjectID owner, std::string indicatorTag = "", bool vertical_ = true);
 
 		// Templatized Function
 		template<typename EventType>

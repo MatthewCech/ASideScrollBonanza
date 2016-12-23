@@ -1,19 +1,24 @@
 #include "GameTime.h"
+#include <cmath>
 
 namespace ASSB
 {
-	GameTime::GameTime()
+	GameTime::GameTime() : MaxDT(0.1f)
 	{
-		Start = std::chrono::steady_clock::now();
-		Last = std::chrono::steady_clock::now();
 	}
 
 	void GameTime::Tick()
 	{
-		auto span = std::chrono::steady_clock::now() - Last;
-		DT = span.count() / 1000000000.0; //nanosecond to second
-		span = std::chrono::steady_clock::now() - Start;
+		auto now = std::chrono::steady_clock::now();
+		if (Last.time_since_epoch() == std::chrono::nanoseconds())
+		{
+			Start = now;
+			Last = now;
+		}
+		auto span = now - Last;
+		DT = std::fmin(span.count() / 1000000000.0, MaxDT); //nanosecond to second
+		span = now - Start;
 		RunTime = span.count() / 1000000000.0; //nanosecond to second
-		Last = std::chrono::steady_clock::now();
+		Last = now;
 	}
 }

@@ -33,8 +33,12 @@ namespace ASSB
 	class GameEngine
 	{
 		friend class ParticleComponent;
+		//no variables above this!
+		Graphics::GraphicsEngine Graphics;
 	public:
-		// Connstructor
+		Graphics::Camera Camera;
+
+		// Constructor
 		GameEngine(Graphics::Window& window);
 
 		// Member functions
@@ -64,11 +68,9 @@ namespace ASSB
 		bool Running;
 
 		// Graphics
-		Graphics::GraphicsEngine Graphics;
 		Graphics::Window& Window;
 		Graphics::ConstantBuffer<DirectX::XMMATRIX> Transform;
 		std::unique_ptr<Graphics::Mesh> Square;
-		Graphics::Camera Camera;
 		Graphics::Shader PixelShader;
 		Graphics::Shader VertexShader;
 		Graphics::Shader ParticleVertexShader;

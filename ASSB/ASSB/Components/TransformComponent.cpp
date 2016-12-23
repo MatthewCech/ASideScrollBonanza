@@ -5,13 +5,14 @@
 namespace ASSB
 {
 	// Default constructor 
-	TransformComponent::TransformComponent() : Position(), ScaleX(1), ScaleY(1), Rotation(0)
+	TransformComponent::TransformComponent(Globals::ObjectID owner) : Component(owner), Position(), ScaleX(1), ScaleY(1), Rotation(0)
 	{  }
 
 
 	// Copy constructor
 	TransformComponent::TransformComponent(const TransformComponent &rhs)
-		: Position(rhs.Position)
+		: Component(rhs.Owner)
+		, Position(rhs.Position)
 		, ScaleX(rhs.ScaleX)
 		, ScaleY(rhs.ScaleY)
 		, Rotation(rhs.Rotation)

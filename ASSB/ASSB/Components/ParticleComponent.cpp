@@ -3,12 +3,14 @@
 
 namespace ASSB
 {
-	ParticleComponent::ParticleComponent() : Buffer(GameEngine::Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Graphics)
+	ParticleComponent::ParticleComponent(Globals::ObjectID owner) : Component(owner), Buffer(GameEngine::Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Graphics)
 	{
 		Path = L"../../../Assets/None.png";
 	}
 
-	ParticleComponent::ParticleComponent(const ParticleComponent & rhs) : Buffer(GameEngine::Instance->Graphics)
+	ParticleComponent::ParticleComponent(const ParticleComponent & rhs) 
+		: Component(rhs.Owner)
+		, Buffer(GameEngine::Instance->Graphics)
 	{
 		*this = rhs;
 	}

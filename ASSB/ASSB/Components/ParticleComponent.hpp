@@ -11,7 +11,7 @@ namespace ASSB
 		ParticleBuffer Buffer;
 		Graphics::GraphicsEngine::BlendMode BlendMode;
 
-		ParticleComponent();
+		ParticleComponent(Globals::ObjectID owner);
 		ParticleComponent(const ParticleComponent &rhs);
 
 		ParticleComponent &operator=(const ParticleComponent &rhs);

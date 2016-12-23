@@ -10,8 +10,9 @@
 namespace ASSB
 {
 	// Constructor
-	SoundEmitterComponent::SoundEmitterComponent(std::string tag)
-		: af_(FileSystem::AudioPreloadingMapper::Retrieve(tag))
+	SoundEmitterComponent::SoundEmitterComponent(Globals::ObjectID owner, std::string tag)
+		: Component(owner)
+		, af_(FileSystem::AudioPreloadingMapper::Retrieve(tag))
 	{  }
 
 	
