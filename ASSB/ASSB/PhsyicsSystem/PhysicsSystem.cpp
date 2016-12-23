@@ -39,24 +39,24 @@ namespace ASSB
 		float playerX = GameEngine::Instance->GetComponent<TransformComponent>(GameEngine::Instance->GetIdOf("player"))->GetPosition().X;
 		float acceptableDelay = 2; // units behind player to allow
 		playerX -= acceptableDelay;
-//		Globals::ObjectID playerid = GameEngine::Instance->GetIdOf("player");
+		Globals::ObjectID playerid = GameEngine::Instance->GetIdOf("player");
 		std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>>::iterator playerIter;
 		for (auto iter{ input.begin() }; iter != input.end(); ++iter)
 		{
 			if (GameEngine::Instance->GetComponent<TransformComponent>(iter->first)->GetPosition().X < playerX)
 				continue;
-			//if (iter->first == playerid)
-			//{
-			//	playerIter = iter;
-			//	continue;
-			//}
+			if (iter->first == playerid)
+			{
+				playerIter = iter;
+				continue;
+			}
 			if (iter->second->GetCollisionType() == ASSB::NO_COLLISION)
 				continue;
 			else
 				map.push_back(iter);
 		}
 		//!TODO: FIX THIS CHEAP HACK!
-		//map.push_back(playerIter);
+		map.push_back(playerIter);
 
 		// Location updating
 		for (unsigned int i{ 0 }; i < map.size(); ++i)
@@ -170,7 +170,7 @@ namespace ASSB
 
 		// Offset into the other object:
 		float offR = r1 - l2;
-		float offL = l2 - r1;
+		float offL = r2 - l1;
 		float offT = b1 - t2;
 		float offB = b2 - t1;
 		absFloat(offR);
@@ -183,12 +183,12 @@ namespace ASSB
 		float finalOffset;
 		if (offR <= offL && offR <= offT && offR <= offB)
 		{
-			normal = Graphics::Vector4(-1, 0, 0);
+			normal = Graphics::Vector4(1, 0, 0);
 			finalOffset = -offR;
 		}
 		else if (offL <= offT && offL <= offB)
 		{
-			normal = Graphics::Vector4(1, 0, 0);
+			normal = Graphics::Vector4(-1, 0, 0);
 			finalOffset = -offL;
 		}
 		else if (offT <= offB)
@@ -221,7 +221,7 @@ namespace ASSB
 		//DEBUG_PRINT_VAR(staticObj.first);
 		UNUSED(staticObj);
 		// Excecute: Impulse, apply only to 1 side.
-		DEBUG_PRINT("Static Collision!");
+		//DEBUG_PRINT("Static Collision!");
 		ComponentHandle<TransformComponent> t1 = GameEngine::Instance->GetComponent<TransformComponent>(dynamicObj.first);
 		//ComponentHandle<TransformComponent> t2 = GameEngine::Instance->GetComponent<TransformComponent>(dynamicObj2.first);
 
@@ -250,7 +250,7 @@ namespace ASSB
 		Graphics::Vector4 impulseVector = info.Normal * impScalar;
 		dynamicObj.second->velocity_ += impulseVector;
 		//dynamicObj2.second->velocity_ += impulseVector;
-		DEBUG_PRINT("Static velocity correction Applied!");
+		//DEBUG_PRINT("Static velocity correction Applied!");
 	}
 
 	// Misleading qualifiers, not actually const for the Game Objects
