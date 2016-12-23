@@ -80,6 +80,8 @@ namespace ASSB
 
 	void PlayerManagerComponent::Update(UpdateEvent * e)
 	{
+		if (!active_)
+			return;
 		float dt = static_cast<float>(e->Time.DT);
 		ComponentHandle<RigidBodyComponent> rigidBody = GameEngine::Instance->GetComponent<RigidBodyComponent>(Owner);
 
