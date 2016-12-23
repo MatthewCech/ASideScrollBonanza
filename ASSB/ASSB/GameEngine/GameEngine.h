@@ -38,9 +38,12 @@ namespace ASSB
 		// Member functions
 		Globals::ObjectID GetIdOf(const std::string name);
 		Globals::ObjectID CreateGameObject(const std::string name = "");
+		Graphics::Texture& GetTexture(const std::wstring path);
 		void UpdateCamera();
 		void Loop();
-		Graphics::Texture& GetTexture(const std::wstring path);
+		void Run();
+		void Shutdown();
+
 
 		// Templatized Member Function
 		template <typename T>
@@ -51,6 +54,7 @@ namespace ASSB
 		// Static instance of the game engine
 		static GameEngine *Instance;
 
+		
 	private:
 		// Variables
 		Globals::ObjectID NextID;

@@ -2,6 +2,8 @@
 #include "GameEngine/GameEngine.h"
 #include "SpriteComponent.hpp"
 #include "FileSystem/ImagePreloadingMapper.hpp"
+#include "Events/UIChangeEvent.hpp"
+#include "Events/UISelectEvent.hpp"
 
 
 
@@ -40,6 +42,7 @@ namespace ASSB
 	// Selects the current index, dispatching the associated event.
 	void MenuComponent::Select()
 	{
+		Globals::EventSystemInstance.Dispatch(new UISelectEvent());
 		interactables_[static_cast<size_t>(selected_)].second->Dispatch();
 	}
 
@@ -92,6 +95,7 @@ namespace ASSB
 		if (selected_ >= static_cast<int>(interactables_.size()))
 		  selected_ = 0;
 
+		Globals::EventSystemInstance.Dispatch(new UIChangeEvent());
 		updateSelectionIndicator();
 	}
 
@@ -103,6 +107,7 @@ namespace ASSB
 		if (selected_ < 0)
 			selected_ = static_cast<int>(interactables_.size()) - 1;
 
+		Globals::EventSystemInstance.Dispatch(new UIChangeEvent());
 		updateSelectionIndicator();
 	}
 
@@ -142,7 +147,6 @@ namespace ASSB
 	}
 	void MenuComponent::SetSpacing(Graphics::Vector4 spacingVal)
 	{
-
 		spacing_ = spacingVal;
 	}
 	void MenuComponent::SetPosition(Graphics::Vector4 newPos)

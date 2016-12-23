@@ -5,9 +5,6 @@
 namespace ASSB
 {
 	// An event for 
-	class UISelectionChangedEvent : public EventSystem::Event
-	{
-	public:
-	private:
-	};
+	class UISelectEvent : public EventSystem::Event
+	{  };
 }
