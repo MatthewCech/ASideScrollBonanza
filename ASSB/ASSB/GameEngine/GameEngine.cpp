@@ -23,7 +23,8 @@ namespace ASSB
 		PixelShader(Graphics, "SpritePixel.cso", Graphics::ShaderType::Pixel),
 		VertexShader(Graphics, "SpriteVertex.cso", Graphics::ShaderType::Vertex),
 		ParticleVertexShader(Graphics, "ParticleVertex.cso", Graphics::ShaderType::Vertex),
-		ParticleGeoShader(Graphics, "ParticleGeo.cso", Graphics::ShaderType::Geometry)
+		ParticleGeoShader(Graphics, "ParticleGeo.cso", Graphics::ShaderType::Geometry),
+		ClearColor(1, 1, 1)
 	{
 		// Singleton enforcement
 		if (Instance == nullptr)
@@ -64,6 +65,7 @@ namespace ASSB
 		Square->Create(VertexShader);
 
 		Camera.SetPosition(Graphics::Vector4(0, 0, 10));
+		Globals::EventSystemInstance.Register(this, &GameEngine::OnSwitch);
 	}
 
 
@@ -120,12 +122,12 @@ namespace ASSB
 		//////////////////	//////////////////
 		std::vector<Globals::ObjectID> drawOrder;
 		std::vector<Globals::ObjectID> particles;
-		Graphics.ClearScreen();
+		Graphics.ClearScreen(ClearColor);
 
-		float screenXOffset = -0.5f * (Mouse::Current.ScreenXPos/ static_cast<float>(Window.Width) - 0.5f); 
+		/*float screenXOffset = -0.5f * (Mouse::Current.ScreenXPos / static_cast<float>(Window.Width) - 0.5f);
 		float screenYOffset = 0.5f * (Mouse::Current.ScreenYPos / static_cast<float>(Window.Height) - 0.5f);
 
-		Camera.SetLook(Graphics::Vector4(screenXOffset, screenYOffset, -1));
+		Camera.SetLook(Graphics::Vector4(screenXOffset, screenYOffset, -1));*/
 
 		Camera.Use();
 
@@ -141,7 +143,7 @@ namespace ASSB
 		}
 
 		//sort them
-		std::qsort(&drawOrder[0], drawOrder.size(), sizeof(Globals::ObjectID), 
+		std::qsort(&drawOrder[0], drawOrder.size(), sizeof(Globals::ObjectID),
 			[](const void* p1, const void* p2)
 		{
 			Globals::ObjectID id1 = *reinterpret_cast<const Globals::ObjectID*>(p1);
@@ -151,7 +153,7 @@ namespace ASSB
 			ComponentHandle<TransformComponent> trans2 = Instance->GetComponent<TransformComponent>(id2);
 
 			float val = trans1->GetPosition().Z - trans2->GetPosition().Z;
-			
+
 			if (val < 0)
 				return -1;
 			else if (val == 0)
@@ -196,7 +198,7 @@ namespace ASSB
 				part.life = (rand() / static_cast<float>(RAND_MAX)) * 20;
 			}
 		}*/
-		
+
 
 		/*for (size_t i = 0; i < testParticle.size(); ++i)
 		{
@@ -269,5 +271,17 @@ namespace ASSB
 	void GameEngine::Shutdown()
 	{
 		PostQuitMessage(0);
+	}
+
+	void GameEngine::OnSwitch(SwitchEvent * e)
+	{
+		if (e->White)
+		{
+			ClearColor = Graphics::Color(0, 0, 0);
+		}
+		else
+		{
+			ClearColor = Graphics::Color(1, 1, 1);
+		}
 	}
 }

@@ -4,6 +4,7 @@
 #include <memory>
 #include "Globals.hpp"
 #include "GameTime.h"
+#include "Events/SwitchEvent.hpp"
 
 // Graphics
 #include "Graphics/GraphicsEngine.h"
@@ -68,6 +69,7 @@ namespace ASSB
 		bool Running;
 
 		// Graphics
+		Graphics::Color ClearColor;
 		Graphics::Window& Window;
 		Graphics::ConstantBuffer<DirectX::XMMATRIX> Transform;
 		std::unique_ptr<Graphics::Mesh> Square;
@@ -93,6 +95,8 @@ namespace ASSB
 		GameEngine(const ASSB::GameEngine& other) = delete;
 
 		GameEngine& operator=(const GameEngine& other) = delete;
+
+		void OnSwitch(SwitchEvent* e);
 	};
 }
 
