@@ -171,25 +171,24 @@ namespace ASSB
 		t1->SetPosition(t1->GetPosition() - OffsetVec);
 		//t2->SetPosition(t2->GetPosition() - (OffsetVec * mass1 / massTotal));
 
-		/*
+
+		//const Graphics::Vector4 effectiveVelocity = dynamicObj.second->velocity_;
 		// Velocity Correction (assumption: Same mass, of "1")
 		const Graphics::Vector4 effectiveVelocity = dynamicObj.second->velocity_;
 		const float normalMag = dot(effectiveVelocity, info.Normal);
-		const float elasticity = 0; //!TODO: Tweak Elasticity! Value: (0-1)
-																	 // We don't care if we aren't going to collide.
+		const float elasticity = 0.5f; //!TODO: Tweak Elasticity! Value: (0-1)
+
 		if (normalMag > 0)
 			return;
 
 		// Calcualte and apply impulse. Normally: (-(1 + elasticity) * normalMag) / ((1/mass1) + (1/mass2).
 		// However, we are assuming it's a mass of 1.
-		float impScalar = -(1 + elasticity);
-		impScalar *= normalMag;
-		impScalar /= 1 / mass1 + 1 / mass2;
+		float impScalar = -elasticity * normalMag;
+		//impScalar /= 1 / mass1 + 1 / mass2;
 		Graphics::Vector4 impulseVector = info.Normal * impScalar;
-		dynamicObj.second->velocity_ -= impulseVector;
+		dynamicObj.second->velocity_ += impulseVector;
 		//dynamicObj2.second->velocity_ += impulseVector;
-		DEBUG_PRINT("Impulse Applied!");
-		*/
+		DEBUG_PRINT("Static velocity correction A\applied!");
 	}
 
 	// Misleading qualifiers, not actually const for the Game Objects
