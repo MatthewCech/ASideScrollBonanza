@@ -40,11 +40,11 @@ namespace EventSystem
   // Dispatches an event.
   // Event type is inferred based on the argument.
   template <typename EventType>
-  int EventSystem::Dispatch(EventType *e)
+  int EventSystem::Dispatch(EventType *e, bool cleanup)
   {
     int toRet{ systemMap_[typeid(EventType)].Dispatch(e) };
 
-    if(automaticCleanup_)
+    if(automaticCleanup_ && cleanup)
       delete e;
 
     return toRet;

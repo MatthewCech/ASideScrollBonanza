@@ -69,11 +69,11 @@ namespace ASSB
 
 		// Add components here
 		std::unordered_map<std::string, Globals::ObjectID> GameObjects;
-		std::unordered_map<Globals::ObjectID, TransformComponent> Transforms;
-		std::unordered_map<Globals::ObjectID, SoundEmitterComponent> SoundEmitters;
-		std::unordered_map<Globals::ObjectID, RigidBodyComponent> RigidBodies;
-		std::unordered_map<Globals::ObjectID, SpriteComponent> Sprites;
-		std::unordered_map<Globals::ObjectID, MenuManagerComponent> MenuManagers;
+		std::unordered_map<Globals::ObjectID, std::unique_ptr<TransformComponent>> Transforms;
+		std::unordered_map<Globals::ObjectID, std::unique_ptr<SoundEmitterComponent>> SoundEmitters;
+		std::unordered_map<Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> RigidBodies;
+		std::unordered_map<Globals::ObjectID, std::unique_ptr<SpriteComponent>> Sprites;
+		std::unordered_map<Globals::ObjectID, std::unique_ptr<MenuManagerComponent>> MenuManagers;
 		std::unordered_map<std::wstring, std::shared_ptr<Graphics::Texture>> Textures;
 		GameEngine(const ASSB::GameEngine& other) = delete;
 

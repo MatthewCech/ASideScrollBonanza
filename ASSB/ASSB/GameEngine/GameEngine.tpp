@@ -29,7 +29,7 @@ namespace ASSB
 	inline void GameEngine::AddComponent<TransformComponent>(Globals::ObjectID id)
 	{
 		//Transforms.emplace(NextID - 1, TransformComponent());
-		Transforms.emplace(id, TransformComponent());
+		Transforms.emplace(id, std::unique_ptr<TransformComponent>(new TransformComponent()));
 	}
 
 
@@ -42,7 +42,7 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<SoundEmitterComponent>(Globals::ObjectID id)
 	{
-		SoundEmitters.emplace(id, SoundEmitterComponent());
+		SoundEmitters.emplace(id, std::unique_ptr<SoundEmitterComponent>(new SoundEmitterComponent()));
 	}
 
 
@@ -55,7 +55,7 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<RigidBodyComponent>(Globals::ObjectID id)
 	{
-		RigidBodies.emplace(id, RigidBodyComponent());
+		RigidBodies.emplace(id, std::unique_ptr<RigidBodyComponent>(new RigidBodyComponent()));
 	}
 
 	//Sprite
@@ -67,7 +67,7 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<SpriteComponent>(Globals::ObjectID id)
 	{
-		Sprites.emplace(id, SpriteComponent());
+		Sprites.emplace(id, std::unique_ptr<SpriteComponent>(new SpriteComponent()));
 	}
 
 
@@ -80,6 +80,6 @@ namespace ASSB
 	template<>
 	inline void GameEngine::AddComponent<MenuManagerComponent>(Globals::ObjectID id)
 	{
-		MenuManagers.emplace(id, MenuManagerComponent());
+		MenuManagers.emplace(id, std::unique_ptr<MenuManagerComponent>(new MenuManagerComponent()));
 	}
 }

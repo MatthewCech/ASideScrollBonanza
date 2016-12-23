@@ -30,7 +30,7 @@ namespace ASSB
 		void DectementIndicated();
 		void Select();
 
-		void SetIndicatorTag(std::string indicator);
+		void SetIndicatorTag(std::string indicator, Graphics::Vector4 scale);
 		void SetVertical(bool isVertical);
 		bool IsVertical();
 		void SetIndicated(int index);

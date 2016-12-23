@@ -14,13 +14,14 @@ namespace EventSystem
 
 	// Templatized Management class for dealing with
 	// dispatching at a later time than they are passed to you.
+	// DOES NOT DISCARD EVENT
 	template <typename EventType>
 	class EventCarrier : public ECBase
 	{
 	public:
 		void Dispatch()
 		{
-			ASSB::Globals::EventSystemInstance.Dispatch<EventType>(ToDispatch);
+			ASSB::Globals::EventSystemInstance.Dispatch<EventType>(ToDispatch, false);
 		}
 		EventType *ToDispatch;
 	};
