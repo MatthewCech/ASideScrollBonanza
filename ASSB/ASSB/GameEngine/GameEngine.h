@@ -23,6 +23,7 @@
 #include "Components/RigidBodyComponent.hpp"
 #include "Components/SpriteComponent.hpp"
 #include "Components/MenuComponent.hpp"
+#include "Components/PlayerManagerComponent.hpp"
 
 
 
@@ -78,7 +79,8 @@ namespace ASSB
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<SoundEmitterComponent>> SoundEmitters;
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> RigidBodies;
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<SpriteComponent>> Sprites;
-		std::unordered_map<Globals::ObjectID, std::unique_ptr<MenuComponent>> MenuManagers;
+		std::unordered_map<Globals::ObjectID, std::unique_ptr<MenuComponent>> Menus;
+		std::unordered_map<Globals::ObjectID, std::unique_ptr<PlayerManagerComponent>> PlayerManagers;
 		std::unordered_map<std::wstring, std::shared_ptr<Graphics::Texture>> Textures;
 		GameEngine(const ASSB::GameEngine& other) = delete;
 
