@@ -111,6 +111,7 @@
     <ClCompile Include="FileSystem\LevelPreloader.cpp" />
     <ClCompile Include="GameEngine\GameEngine.cpp" />
     <ClCompile Include="GameEngine\GameTime.cpp" />
+    <ClCompile Include="GameEngine\MenuManager.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Input\Keyboard.cpp" />
     <ClCompile Include="Input\KeyboardState.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="Events\KeyboardEvent.hpp" />
     <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="Components\ParticleComponent.hpp" />
+    <ClInclude Include="Events\QuitRequestEvent.hpp" />
     <ClInclude Include="Events\UIChangeEvent.hpp" />
     <ClInclude Include="Events\UISelectEvent.hpp" />
     <ClInclude Include="Events\UpdateEvent.hpp" />
@@ -157,6 +159,7 @@
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
     <ClInclude Include="GameEngine\GameTime.h" />
+    <ClInclude Include="GameEngine\MenuManager.hpp" />
     <ClInclude Include="Input\Key.h" />
     <ClInclude Include="Globals.hpp" />
     <ClInclude Include="Input\Keyboard.h" />
@@ -202,6 +205,7 @@
     <None Include="EventSystem\DelegateMemberFunction.tpp" />
     <None Include="EventSystem\EventSystem.tpp" />
     <None Include="EventSystem\ObjectEventManager.tpp" />
+    <None Include="Events\ShutdownEvent.hpp" />
     <None Include="GameEngine\ComponentHandle.tpp" />
     <None Include="GameEngine\GameEngine.tpp" />
     <None Include="Shaders\Sprite.hlsli" />

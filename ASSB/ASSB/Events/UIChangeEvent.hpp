@@ -5,5 +5,7 @@
 
 namespace ASSB
 {
-	//class 
+	// Stub UI updating event
+	class UIChangeEvent : public EventSystem::Event
+	{  };
 }

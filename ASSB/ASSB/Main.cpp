@@ -1,19 +1,18 @@
+// Game and running
 #include "Graphics/Window.h"
 #include "GameEngine/GameEngine.h"
-#include "Components/SoundEmitterComponent.hpp"
-#include "Components/MenuComponent.hpp"
-#include "Components/PlayerManagerComponent.hpp"
-#include "Events/UISelectEvent.hpp"
+
+// Static classes and singletons
 #include "FileSystem/AudioPreloadingMapper.hpp"
 #include "FileSystem/ImagePreloadingMapper.hpp"
 #include "FileSystem/LevelPreloader.hpp"
+#include "GameEngine/MenuManager.hpp"
+
+// Tersting
 #include "Globals.hpp"
+#include "Components/PlayerManagerComponent.hpp"
 
 
-
-// Defines for testing
-#define ASSB_AMI_ ASSB::Globals::AudioMapperInstance
-#define ASSB_ESI_ ASSB::Globals::EventSystemInstance
 
 
 int main()
@@ -28,6 +27,9 @@ int main()
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/LevelTest.txt");
 	FileSystem::LevelPreloader::LoadFromFile("../../../Assets/Levels/SandboxLevel.txt");
 
+	// Post-preloading
+	ASSB::MenuManager Menus;
+
 	// Player
 	ASSB::Globals::ObjectID player = Engine.CreateGameObject("player");
 	Engine.AddComponent<ASSB::PlayerManagerComponent>(player);
@@ -35,44 +37,8 @@ int main()
 	ASSB::ComponentHandle<ASSB::PlayerManagerComponent> pmComp = Engine.GetComponent<ASSB::PlayerManagerComponent>(player);
 	pmComp->SetImage("icon", { .5f, .5f, 0 });
 	pmComp->SetActive(true);
-
-	// Menu System
-	ASSB::Globals::ObjectID obj = Engine.CreateGameObject();
-	Engine.AddComponent<ASSB::MenuComponent>(obj);
-	ASSB::ComponentHandle<ASSB::MenuComponent> comp = Engine.GetComponent<ASSB::MenuComponent>(obj);
-	comp->SetSpacing({ 0, -.5f, 0 });
-	comp->SetPosition({ 0, 2.5f, 0 });
-	comp->SetIndicatorTag("selectImage", { 1.75f, .4f, 0 });
-	comp->AddInteractable("buttonBase", { 1.5f,.3f,0 }, new ASSB::UISelectionChangedEvent());
-	comp->AddInteractable("buttonBase", { 1.5f,.3f,0 }, new ASSB::UISelectionChangedEvent());
-	comp->AddInteractable("buttonBase", { 1.5f,.3f,0 }, new ASSB::UISelectionChangedEvent());
 	
-	//Engine.AddComponent<
-	UNUSED(obj);
-	// Audio system test
-	ASSB::SoundEmitterComponent se("Select1");
-	se.PlayOnEvent<ASSB::UISelectionChangedEvent>();
-	ASSB_ESI_.Dispatch(new ASSB::UISelectionChangedEvent());
-
-	// Physics system test
-	bool run = true;
-	MSG msg;
-
-	// Primary loop
-	while (run)
-	{
-		while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-			if (msg.message == WM_QUIT)
-				run = false;
-		}
-
-		Engine.UpdateCamera();
-		Engine.Loop();
-	}
-
-
+	// Start the game.
+	Engine.Run();
 	return 0;
 }

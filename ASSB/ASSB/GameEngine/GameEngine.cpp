@@ -15,6 +15,7 @@ namespace ASSB
 	// Constructor
 	GameEngine::GameEngine(Graphics::Window & window)
 		: NextID(1),
+		Running(true),
 		Window(window),
 		Graphics(window),
 		Transform(Graphics, Graphics::ShaderType::Vertex, 1),
@@ -241,5 +242,32 @@ namespace ASSB
 			return *Textures[path];
 		}
 		return *(it->second);
+	}
+
+
+	// Message handling infinite game loop.
+	// Most logic in loop.
+	void GameEngine::Run()
+	{
+		MSG msg;
+		while (Running)
+		{
+			while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+				if (msg.message == WM_QUIT)
+					Running = false;
+			}
+
+			UpdateCamera();
+			Loop();
+		}
+	}
+
+
+	void GameEngine::Shutdown()
+	{
+		PostQuitMessage(0);
 	}
 }

@@ -9,6 +9,7 @@
 #include "EventSystem/EventCarrier.hpp"
 #include "Events/KeyboardEvent.hpp"
 #include "Graphics/Vector4.h"
+#include "FileSystem/ImagePreloadingMapper.hpp"
 
 
 
