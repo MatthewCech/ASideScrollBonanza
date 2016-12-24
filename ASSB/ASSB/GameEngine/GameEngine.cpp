@@ -272,6 +272,7 @@ namespace ASSB
 		// Automated Cleanup
 		Globals::EventSystemInstance.Upkeep();
 		FileSystem::LevelPreloadingMapper::CheckOldestLoaded();
+		FileSystem::LevelPreloadingMapper::ResolveNukes();
 	}
 
 	Graphics::Texture & GameEngine::GetTexture(const std::wstring path)

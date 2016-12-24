@@ -13,7 +13,9 @@
 namespace FileSystem
 {
 	// Static initialization
-	unsigned long long LevelPreloadingMapper::CurrentOffset = 0;
+	bool LevelPreloadingMapper::wasNuked_ = false;
+	const long long LevelPreloadingMapper::leftCullUnits_ = static_cast<long long >(11);
+	long long LevelPreloadingMapper::CurrentOffset = static_cast<long long >(-11);
 	std::unordered_map<std::string, std::string> LevelPreloadingMapper::associatedStrings_ = std::unordered_map<std::string, std::string>();
 	std::queue<ASSB::Globals::ObjectID> LevelPreloadingMapper::loadedHistory_ = std::queue<ASSB::Globals::ObjectID>();
 
@@ -78,7 +80,7 @@ namespace FileSystem
 
 
 	// Attempts to generate information for a level based on a filepath.
-	void LevelPreloadingMapper::LevelFromFile(std::string filepath, bool automaticOffset, unsigned long long offsetX)
+	void LevelPreloadingMapper::LevelFromFile(std::string filepath, bool automaticOffset, long long offsetX)
 	{
 		File f{ filepath };
 		if (!f.FileFound())
@@ -108,7 +110,7 @@ namespace FileSystem
 
 
 	// Parses an individual line into objects, just returns success or not.
-	bool LevelPreloadingMapper::ParseLine(std::string line, unsigned long long offsetX, int &width)
+	bool LevelPreloadingMapper::ParseLine(std::string line, long long offsetX, int &width)
 	{
 		// Split for block type and pos
 		const size_t splitLoc = line.find_first_of(":");
@@ -231,11 +233,19 @@ namespace FileSystem
 
 	void LevelPreloadingMapper::resetPosition()
 	{
-		CurrentOffset = 0;
+		CurrentOffset = static_cast<size_t>(-leftCullUnits_);
 	}
 
 	void LevelPreloadingMapper::NukeObjects()
 	{
+		wasNuked_ = true;
+	}
+
+	void LevelPreloadingMapper::ResolveNukes()
+	{
+		if (!wasNuked_)
+			return;
+
 		while (loadedHistory_.size() > 0)
 		{
 			ASSB::GameEngine::Instance->RemoveID(loadedHistory_.front());
@@ -243,6 +253,7 @@ namespace FileSystem
 		}
 
 		resetPosition();
+		wasNuked_ = false;
 	}
 
 	void LevelPreloadingMapper::CheckOldestLoaded()
@@ -254,7 +265,7 @@ namespace FileSystem
 		ASSB::Globals::ObjectID playerID = ASSB::GameEngine::Instance->GetIdOf("player");
 		ASSB::ComponentHandle<ASSB::TransformComponent> trID = ASSB::GameEngine::Instance->GetComponent<ASSB::TransformComponent>(id);
 		ASSB::ComponentHandle<ASSB::TransformComponent> trPlayer = ASSB::GameEngine::Instance->GetComponent<ASSB::TransformComponent>(playerID);
-		if (trID->GetPosition().X < trPlayer->GetPosition().X - 2)
+		if (trID->GetPosition().X < trPlayer->GetPosition().X - leftCullUnits_)
 		{
 			ASSB::GameEngine::Instance->RemoveID(id);
 			loadedHistory_.pop();
