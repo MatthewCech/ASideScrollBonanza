@@ -137,6 +137,12 @@ namespace ASSB
 		}
 	}
 
+	// Updates menu locations
+	void updateMenuLocations()
+	{
+
+	}
+
 	// Pause was hit on or off
 	void MenuManager::pauseToggle(PauseToggleEvent *e)
 	{

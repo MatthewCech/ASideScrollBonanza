@@ -115,11 +115,11 @@ namespace ASSB
 		// Physics
 		Physics.Update(RigidBodies, Time);
 
-		//////////////////
-		//
-		//        Graphics
-		//              //
-		//////////////////
+		//////////////////  //////////////////
+		//									//
+		//        Graphics	//        Graphics
+		//              //	//              //
+		//////////////////	//////////////////
 		std::vector<Globals::ObjectID> drawOrder;
 		std::vector<Globals::ObjectID> particles;
 		Graphics.ClearScreen(ClearColor);

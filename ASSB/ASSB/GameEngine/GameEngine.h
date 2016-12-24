@@ -14,7 +14,7 @@
 #include "Graphics/Texture.h"
 #include "Particles/ParticleBuffer.h"
 
-// Physics
+// Systems
 #include "PhsyicsSystem/PhysicsSystem.hpp"
 
 // Components
@@ -78,9 +78,9 @@ namespace ASSB
 		Graphics::Shader ParticleVertexShader;
 		Graphics::Shader ParticleGeoShader;
 
-
 		//Physics
 		PhysicsSystem Physics;
+	
 
 		// Add components here
 		std::unordered_map<std::string, Globals::ObjectID> GameObjects;

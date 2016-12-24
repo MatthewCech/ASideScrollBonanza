@@ -108,9 +108,10 @@
     <ClCompile Include="FileSystem\ImagePreloadingMapper.cpp" />
     <ClCompile Include="FileSystem\AudioPreloadingMapper.cpp" />
     <ClCompile Include="FileSystem\File.cpp" />
-    <ClCompile Include="FileSystem\LevelPreloader.cpp" />
+    <ClCompile Include="FileSystem\LevelPreloadingMapper.cpp" />
     <ClCompile Include="GameEngine\GameEngine.cpp" />
     <ClCompile Include="GameEngine\GameTime.cpp" />
+    <ClCompile Include="GameEngine\LevelQueue.cpp" />
     <ClCompile Include="GameEngine\MenuManager.cpp" />
     <ClCompile Include="GameEngine\Utilities.cpp" />
     <ClCompile Include="Globals.cpp" />
@@ -170,10 +171,11 @@
     <ClInclude Include="FileSystem\ImagePreloadingMapper.hpp" />
     <ClInclude Include="FileSystem\AudioPreloadingMapper.hpp" />
     <ClInclude Include="FileSystem\File.hpp" />
-    <ClInclude Include="FileSystem\LevelPreloader.hpp" />
+    <ClInclude Include="FileSystem\LevelPreloadingMapper.hpp" />
     <ClInclude Include="GameEngine\ComponentHandle.h" />
     <ClInclude Include="GameEngine\GameEngine.h" />
     <ClInclude Include="GameEngine\GameTime.h" />
+    <ClInclude Include="GameEngine\LevelQueue.hpp" />
     <ClInclude Include="GameEngine\MenuManager.hpp" />
     <ClInclude Include="GameEngine\Utilities.hpp" />
     <ClInclude Include="Input\Key.h" />
