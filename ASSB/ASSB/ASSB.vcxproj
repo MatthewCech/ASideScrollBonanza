@@ -119,8 +119,18 @@
     <ClCompile Include="Input\Mouse.cpp" />
     <ClCompile Include="Input\MouseState.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Particles\InitializeLifeRandom.cpp" />
+    <ClCompile Include="Particles\InitializePositionRandom.cpp" />
+    <ClCompile Include="Particles\Initializer.cpp" />
+    <ClCompile Include="Particles\InitializeSizeRandom.cpp" />
     <ClCompile Include="Particles\ParticleBuffer.cpp" />
+    <ClCompile Include="Particles\TerminateInstant.cpp" />
+    <ClCompile Include="Particles\Terminator.cpp" />
+    <ClCompile Include="Particles\UpdatePosition.cpp" />
+    <ClCompile Include="Particles\Updater.cpp" />
     <ClCompile Include="PhsyicsSystem\CollisionInfo.cpp" />
+    <ClCompile Include="Particles\EmitConstant.cpp" />
+    <ClCompile Include="Particles\Emitter.cpp" />
     <ClCompile Include="PhsyicsSystem\PhysicsSystem.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -173,8 +183,18 @@
     <ClInclude Include="Input\Mouse.h" />
     <ClInclude Include="Input\MouseButton.h" />
     <ClInclude Include="Input\MouseState.h" />
+    <ClInclude Include="Particles\InitializeLifeRandom.hpp" />
+    <ClInclude Include="Particles\InitializePositionRandom.hpp" />
+    <ClInclude Include="Particles\Initializer.hpp" />
+    <ClInclude Include="Particles\InitializeSizeRandom.hpp" />
     <ClInclude Include="Particles\ParticleBuffer.h" />
+    <ClInclude Include="Particles\Terminator.hpp" />
+    <ClInclude Include="Particles\TerminateInstant.hpp" />
+    <ClInclude Include="Particles\UpdatePosition.hpp" />
+    <ClInclude Include="Particles\Updater.hpp" />
     <ClInclude Include="PhsyicsSystem\CollisionInfo.hpp" />
+    <ClInclude Include="Particles\EmitConstant.hpp" />
+    <ClInclude Include="Particles\Emitter.hpp" />
     <ClInclude Include="PhsyicsSystem\PhysicsSystem.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>

@@ -35,6 +35,16 @@
     <ClCompile Include="GameEngine\MenuManager.cpp" />
     <ClCompile Include="Components\ParticleComponent.cpp" />
     <ClCompile Include="GameEngine\Utilities.cpp" />
+    <ClCompile Include="Particles\Emitter.cpp" />
+    <ClCompile Include="Particles\EmitConstant.cpp" />
+    <ClCompile Include="Particles\Initializer.cpp" />
+    <ClCompile Include="Particles\InitializeSizeRandom.cpp" />
+    <ClCompile Include="Particles\InitializePositionRandom.cpp" />
+    <ClCompile Include="Particles\Updater.cpp" />
+    <ClCompile Include="Particles\UpdatePosition.cpp" />
+    <ClCompile Include="Particles\InitializeLifeRandom.cpp" />
+    <ClCompile Include="Particles\Terminator.cpp" />
+    <ClCompile Include="Particles\TerminateInstant.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />
@@ -87,6 +97,16 @@
     <ClInclude Include="Events\PauseToggleEvent.hpp" />
     <ClInclude Include="Events\CollisionEvent.hpp" />
     <ClInclude Include="Events\SwitchEvent.hpp" />
+    <ClInclude Include="Particles\Emitter.hpp" />
+    <ClInclude Include="Particles\EmitConstant.hpp" />
+    <ClInclude Include="Particles\Initializer.hpp" />
+    <ClInclude Include="Particles\InitializeSizeRandom.hpp" />
+    <ClInclude Include="Particles\InitializePositionRandom.hpp" />
+    <ClInclude Include="Particles\Updater.hpp" />
+    <ClInclude Include="Particles\UpdatePosition.hpp" />
+    <ClInclude Include="Particles\InitializeLifeRandom.hpp" />
+    <ClInclude Include="Particles\Terminator.hpp" />
+    <ClInclude Include="Particles\TerminateInstant.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />

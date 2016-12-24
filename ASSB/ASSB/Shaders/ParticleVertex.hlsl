@@ -6,6 +6,7 @@ struct VertexShaderInput
 	float4 color : COLOR;
 	float rotation : ROTATION;
 	float scale : SCALE;
+    float life : LIFE;
 };
 
 cbuffer ViewProjectionConstantBuffer : register(b0)

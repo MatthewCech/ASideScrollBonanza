@@ -106,21 +106,24 @@ namespace ASSB
 
 	bool ParticleBuffer::Update()
 	{
-		std::qsort(&Particles[0], Particles.size(), sizeof(Particles[0]), 
-			[](const void * p1, const void * p2)
+		if (Particles.size())
 		{
-			const Particle& part1 = *reinterpret_cast<const Particle*>(p1);
-			const Particle& part2 = *reinterpret_cast<const Particle*>(p2);
+			std::qsort(&Particles[0], Particles.size(), sizeof(Particles[0]),
+				[](const void * p1, const void * p2)
+			{
+				const Particle& part1 = *reinterpret_cast<const Particle*>(p1);
+				const Particle& part2 = *reinterpret_cast<const Particle*>(p2);
 
-			float val = part1.Position[2] - part2.Position[2];
+				float val = part1.Position[2] - part2.Position[2];
 
-			if (val < 0)
-				return -1;
-			else if (val == 0)
-				return 0;
-			else
-				return 1;
-		});
+				if (val < 0)
+					return -1;
+				else if (val == 0)
+					return 0;
+				else
+					return 1;
+			});
+		}
 		//lock access to the buffer on the GPU
 		D3D11_MAPPED_SUBRESOURCE mappedResource{};
 		HRESULT res = Graphics->DeviceContext->Map(VertBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
