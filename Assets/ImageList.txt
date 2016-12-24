@@ -21,6 +21,10 @@ tile1D:../../../Assets/Images/block1FullD.png
 tile2D:../../../Assets/Images/block2FullD.png
 tile3D:../../../Assets/Images/block3FullD.png
 tile1L:../../../Assets/Images/block1FullL.png
+tile1tallD:../../../Assets/Images/block1tallD.png
+tile1tallL:../../../Assets/Images/block1tallL.png
 tile2L:../../../Assets/Images/block1FullL.png
 tile3L:../../../Assets/Images/block1FullL.png
+floor1L:../../../Assets/Images/block1TileL.png
+floor1D:../../../Assets/Images/block1TileD.png
 == I put this line in to stop it here.

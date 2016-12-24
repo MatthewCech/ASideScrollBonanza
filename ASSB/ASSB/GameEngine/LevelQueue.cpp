@@ -64,7 +64,7 @@ namespace ASSB
 	{
 		//GameEngine::Instance->Camera.
 		if (GameEngine::Instance->Camera.GetPosition().X + 13 > FileSystem::LevelPreloadingMapper::CurrentOffset)
-			if (FileSystem::LevelPreloadingMapper::CurrentOffset > 20)
+			if (FileSystem::LevelPreloadingMapper::CurrentOffset > 10)
 				loadRandom();
 			else
 				LoadDefault();
