@@ -17,6 +17,7 @@ namespace FileSystem
 		static bool Associate(std::string tag, std::string path);
 		static std::string Retrieve(std::string tag);
 		static const std::unordered_map<std::string, std::string> &DumpTags();
+		static void ResetPosition();
 
 	private:
 		// Variables

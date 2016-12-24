@@ -226,6 +226,11 @@ namespace FileSystem
 		return true;
 	}
 
+	void LevelPreloadingMapper::ResetPosition()
+	{
+		CurrentOffset = 0;
+	}
+
 	// Dumps all tags
 	const std::unordered_map<std::string, std::string> &LevelPreloadingMapper::DumpTags()
 	{
