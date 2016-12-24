@@ -47,7 +47,7 @@ int main()
 
 	// Post-preloading
 	ASSB::Utilities Utils;
-	ASSB::MenuManager Menus;
+
 
 	// Player
 	ASSB::Globals::ObjectID player = Engine.CreateGameObject("player");
@@ -106,6 +106,9 @@ int main()
 
 	//LevelGenerator.loadRandom();
 	
+	// Menu init
+	ASSB::MenuManager Menus;
+
 	// Start the game.
 	Engine.Run();
 	return 0;

@@ -67,6 +67,9 @@ namespace ASSB
 		Connect(this, &MenuManager::gameStart);
 		Connect(this, &MenuManager::handleKeyboard);
 		Connect(this, &MenuManager::pauseToggle);
+
+		// Dispatch
+		ASSB::Globals::EventSystemInstance.Dispatch(new PauseToggleEvent(true));
 	}
 
 	// Creates necessary SFX Objects
