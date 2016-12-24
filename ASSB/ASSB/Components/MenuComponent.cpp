@@ -119,7 +119,7 @@ namespace ASSB
 		ComponentHandle<TransformComponent> indicatorLoc = GameEngine::Instance->GetComponent<TransformComponent>(selectionIndicator_);
 		ComponentHandle<TransformComponent> interactableLoc = GameEngine::Instance->GetComponent<TransformComponent>(interactables_[static_cast<size_t>(selected_)].first);
 		//!TODO: ACTIONS SYSTEM FOR INTERPOLATION
-		Utilities::Instance->InterpolatePos(selectionIndicator_, interactableLoc->GetPosition() + Graphics::Vector4(0, 0, -0.6f), 80);
+		Utilities::Instance->InterpolatePos(selectionIndicator_, interactableLoc->GetPosition() + Graphics::Vector4(0, 0, 0.001f), 80);
 		//indicatorLoc->SetPosition(interactableLoc->GetPosition());
 	}
 

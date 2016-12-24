@@ -20,6 +20,7 @@
 #include "Particles/EmitConstant.hpp"
 #include "Particles/InitializeSizeRandom.hpp"
 #include "Particles/InitializePositionRandom.hpp"
+#include "Particles/InitializePositionRandomCam.hpp"
 #include "Particles/UpdatePosition.hpp"
 #include "Particles/InitializeLifeRandom.hpp"
 #include "Particles/TerminateInstant.hpp"
@@ -65,14 +66,22 @@ int main()
 	Engine.AddComponent<ASSB::ParticleComponent>(ParticleObject);
 	auto ParticleComp = Engine.GetComponent<ASSB::ParticleComponent>(ParticleObject);
 
-
+	ParticleComp->Path = L"../../../Assets/Images/snow.png";
 	ParticleComp->BlendMode = Graphics::GraphicsEngine::BlendMode::Multiply;
 	ParticleComp->Emitter = std::unique_ptr<ASSB::Emitter>(new ASSB::EmitConstant(ParticleObject, 40));
-	ParticleComp->Initializers.emplace_back(new ASSB::InitializeSizeRandom(ParticleObject, 0.1f, 2));
+	ParticleComp->Initializers.emplace_back(new ASSB::InitializeSizeRandom(ParticleObject, 0.05f, 0.2f));
 	ParticleComp->Initializers.emplace_back(new ASSB::InitializeLifeRandom(ParticleObject, 15, 20));
-	ParticleComp->Initializers.emplace_back(new ASSB::InitializePositionRandom(ParticleObject, Graphics::Vector4(-10, 10, -5), Graphics::Vector4(10, 10, 5)));
+	ParticleComp->Initializers.emplace_back(new ASSB::InitializePositionRandomCam(ParticleObject, Graphics::Vector4(-10, 15, -15), Graphics::Vector4(80, 15, 5)));
 	ParticleComp->Updaters.emplace_back(new ASSB::UpdatePosition(ParticleObject, Graphics::Vector4(-1, -2, 0)));
 	ParticleComp->Terminator = std::unique_ptr<ASSB::Terminator>(new ASSB::TerminateInstant(ParticleObject));
+
+	/*ParticleComp->BlendMode = Graphics::GraphicsEngine::BlendMode::Multiply;
+	ParticleComp->Emitter = std::unique_ptr<ASSB::Emitter>(new ASSB::EmitConstant(ParticleObject, 160));
+	ParticleComp->Initializers.emplace_back(new ASSB::InitializeSizeRandom(ParticleObject, 0.1f, 0.5f));
+	ParticleComp->Initializers.emplace_back(new ASSB::InitializeLifeRandom(ParticleObject, 2, 5));
+	ParticleComp->Initializers.emplace_back(new ASSB::InitializePositionRandomCam(ParticleObject, Graphics::Vector4(-10, 15, -15), Graphics::Vector4(50, 15, 5)));
+	ParticleComp->Updaters.emplace_back(new ASSB::UpdatePosition(ParticleObject, Graphics::Vector4(-20, -65, 0)));
+	ParticleComp->Terminator = std::unique_ptr<ASSB::Terminator>(new ASSB::TerminateInstant(ParticleObject));*/
 
 	//LevelGenerator.loadRandom();
 	

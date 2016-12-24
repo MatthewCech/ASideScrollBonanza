@@ -64,7 +64,7 @@ namespace ASSB
 		Square = std::unique_ptr<Graphics::Mesh>(new Graphics::Mesh(Graphics, verts, inds));
 		Square->Create(VertexShader);
 
-		Camera.SetPosition(Graphics::Vector4(0, 0, 10));
+		Camera.SetPosition(Graphics::Vector4(0, 0, 5));
 		Globals::EventSystemInstance.Register(this, &GameEngine::OnSwitch);
 	}
 
@@ -170,7 +170,9 @@ namespace ASSB
 			
 			ComponentHandle<TransformComponent> trans = GetComponent<TransformComponent>(id);
 			auto position = trans->GetPosition();
-			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { position.X, position.Y, position.Z });
+			auto& transf = Transform.GetDataForWrite();
+			transf = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { 0,0 });
+			transf = transf * DirectX::XMMatrixTranslation(position.X, position.Y, position.Z);
 			Transform.Use();
 			GetTexture(sprite->GetPath()).Use();
 
