@@ -9,7 +9,7 @@ namespace ASSB
 		if (path.size() > 0)
 		{
 			GameEngine::Instance->GetComponent<SpriteComponent>(id)->
-				Path = std::wstring(path.begin(), path.end());
+				AddPath(std::wstring(path.begin(), path.end()));
 		}
 		ComponentHandle<TransformComponent> transform = GameEngine::Instance->GetComponent<TransformComponent>(id);
 		transform->SetPosition(pos_ + spacing_ * static_cast<float>(interactables_.size()));

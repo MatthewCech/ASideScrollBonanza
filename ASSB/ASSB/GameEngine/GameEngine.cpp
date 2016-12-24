@@ -172,7 +172,7 @@ namespace ASSB
 			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { position.X, position.Y, position.Z });
 
 			Transform.Use();
-			GetTexture(sprite->Path).Use();
+			GetTexture(sprite->GetPath()).Use();
 
 			Graphics.Draw(*Square);
 		}

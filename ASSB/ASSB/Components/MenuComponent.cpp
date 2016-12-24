@@ -164,7 +164,7 @@ namespace ASSB
 			if (path.size() > 0)
 			{
 				GameEngine::Instance->GetComponent<SpriteComponent>(selectionIndicator_)->
-					Path = std::wstring(path.begin(), path.end());
+					AddPath(std::wstring(path.begin(), path.end()));
 				GameEngine::Instance->GetComponent<TransformComponent>(selectionIndicator_)->
 					SetScale(scale.X, scale.Y);
 			}

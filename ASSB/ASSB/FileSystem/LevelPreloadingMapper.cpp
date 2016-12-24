@@ -202,7 +202,7 @@ namespace FileSystem
 		std::string path = FileSystem::ImagePreloadingMapper::Retrieve(imageTag);
 		if (path.size() > 0)
 		{
-			ASSB::GameEngine::Instance->GetComponent<ASSB::SpriteComponent>(id)->Path = std::wstring(path.begin(), path.end());
+			ASSB::GameEngine::Instance->GetComponent<ASSB::SpriteComponent>(id)->AddPath(std::wstring(path.begin(), path.end()));
 		}
 
 		// Success(tm) if we made it here!
