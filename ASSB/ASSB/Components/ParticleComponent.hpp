@@ -21,6 +21,7 @@ namespace ASSB
 		std::wstring Path;
 		ParticleBuffer Buffer;
 		Graphics::GraphicsEngine::BlendMode BlendMode;
+		bool Visible;
 
 		ParticleComponent(Globals::ObjectID owner);
 		ParticleComponent(const ParticleComponent &rhs);

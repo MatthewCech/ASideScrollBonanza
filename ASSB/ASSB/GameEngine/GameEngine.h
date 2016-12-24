@@ -71,6 +71,7 @@ namespace ASSB
 
 		// Graphics
 		Graphics::Color ClearColor;
+		Graphics::Color ColorTo;
 		Graphics::Window& Window;
 		Graphics::ConstantBuffer<DirectX::XMMATRIX> Transform;
 		std::unique_ptr<Graphics::Mesh> Square;

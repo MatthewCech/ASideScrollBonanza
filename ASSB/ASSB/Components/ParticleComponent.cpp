@@ -9,6 +9,7 @@ namespace ASSB
 {
 	ParticleComponent::ParticleComponent(Globals::ObjectID owner) : Component(owner), Buffer(GameEngine::Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Instance->Graphics)
 	{
+		Visible = true;
 		Path = L"../../../Assets/None.png";
 		Connect(this, &ParticleComponent::Update);
 		Buffer.Create(GameEngine::Instance->ParticleVertexShader);
@@ -23,6 +24,7 @@ namespace ASSB
 
 	ParticleComponent & ASSB::ParticleComponent::operator=(const ParticleComponent & rhs)
 	{
+		Visible = rhs.Visible;
 		Buffer = rhs.Buffer;
 		Buffer.Create(*rhs.Buffer.pShader);
 		Path = rhs.Path;

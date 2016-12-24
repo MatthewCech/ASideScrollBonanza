@@ -24,7 +24,8 @@ namespace ASSB
 		VertexShader(Graphics, "SpriteVertex.cso", Graphics::ShaderType::Vertex),
 		ParticleVertexShader(Graphics, "ParticleVertex.cso", Graphics::ShaderType::Vertex),
 		ParticleGeoShader(Graphics, "ParticleGeo.cso", Graphics::ShaderType::Geometry),
-		ClearColor(1, 1, 1)
+		ClearColor(0.8f, 0.9f, 1),
+		ColorTo(0.8f, 0.9f, 1)
 	{
 		// Singleton enforcement
 		if (Instance == nullptr)
@@ -137,6 +138,23 @@ namespace ASSB
 		//////////////////	//////////////////
 		std::vector<Globals::ObjectID> drawOrder;
 		std::vector<Globals::ObjectID> particles;
+
+		Graphics::Color diff = ColorTo;
+		diff.A -= ClearColor.A;
+		diff.R -= ClearColor.R;
+		diff.G -= ClearColor.G;
+		diff.B -= ClearColor.B;
+
+		diff.A /= 10;
+		diff.R /= 10;
+		diff.G /= 10;
+		diff.B /= 10;
+
+		ClearColor.A += diff.A;
+		ClearColor.R += diff.R;
+		ClearColor.G += diff.G;
+		ClearColor.B += diff.B;
+
 		Graphics.ClearScreen(ClearColor);
 
 		/*float screenXOffset = -0.5f * (Mouse::Current.ScreenXPos / static_cast<float>(Window.Width) - 0.5f);
@@ -153,7 +171,8 @@ namespace ASSB
 			auto sprite = GetComponent<SpriteComponent>(id);
 			if (sprite && sprite->Visible)
 				drawOrder.push_back(id);
-			if (GetComponent<ParticleComponent>(id))
+			auto particle = GetComponent<ParticleComponent>(id);
+			if (particle && particle->Visible)
 				particles.push_back(id);
 		}
 
@@ -292,13 +311,20 @@ namespace ASSB
 
 	void GameEngine::OnSwitch(SwitchEvent * e)
 	{
+		auto snowSys = GetComponent<ParticleComponent>(GetIdOf("Snow System"));
+		auto rainSys = GetComponent<ParticleComponent>(GetIdOf("Rain System"));
+
 		if (e->White)
 		{
-			ClearColor = Graphics::Color(0, 0, 0);
+			ColorTo = Graphics::Color(0, 0, 0);
+			snowSys->Visible = true;
+			rainSys->Visible = false;
 		}
 		else
 		{
-			ClearColor = Graphics::Color(1, 1, 1);
+			ColorTo = Graphics::Color(0.8f, 0.9f, 1);
+			snowSys->Visible = false;
+			rainSys->Visible = true;
 		}
 	}
 }
