@@ -16,11 +16,12 @@ namespace ASSB
 		T* operator->();
 		const T& operator*() const;
 		T& operator*();
+
+		ComponentHandle& operator=(const ComponentHandle& other);
 	private:
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<T>>& Map;
 		Globals::ObjectID Id;
 
-		ComponentHandle& operator=(const ComponentHandle& other);
 	};
 }
 

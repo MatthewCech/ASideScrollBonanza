@@ -10,11 +10,19 @@
 #include "GameEngine/Utilities.hpp"
 #include "GameEngine/LevelQueue.hpp"
 
-// Tersting
+// Testing
 #include "Globals.hpp"
 #include "Components/PlayerManagerComponent.hpp"
 #include "Events/ShutdownEvent.hpp"
 #include <time.h>
+
+//particles
+#include "Particles/EmitConstant.hpp"
+#include "Particles/InitializeSizeRandom.hpp"
+#include "Particles/InitializePositionRandom.hpp"
+#include "Particles/UpdatePosition.hpp"
+#include "Particles/InitializeLifeRandom.hpp"
+#include "Particles/TerminateInstant.hpp"
 
 
 int main()
@@ -51,6 +59,20 @@ int main()
 	Engine.GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 3, 0 });
 	Engine.GetComponent<ASSB::RigidBodyComponent>(player)->SetStatic(false);
 	//Engine.GetComponent<ASSB::RigidBodyComponent>(player)->AddDispatchOnCollision(new ASSB::ShutdownEvent());
+
+	//particle rain/snow
+	ASSB::Globals::ObjectID ParticleObject = Engine.CreateGameObject("particle");
+	Engine.AddComponent<ASSB::ParticleComponent>(ParticleObject);
+	auto ParticleComp = Engine.GetComponent<ASSB::ParticleComponent>(ParticleObject);
+
+
+	ParticleComp->BlendMode = Graphics::GraphicsEngine::BlendMode::Multiply;
+	ParticleComp->Emitter = std::unique_ptr<ASSB::Emitter>(new ASSB::EmitConstant(ParticleObject, 40));
+	ParticleComp->Initializers.emplace_back(new ASSB::InitializeSizeRandom(ParticleObject, 0.1f, 2));
+	ParticleComp->Initializers.emplace_back(new ASSB::InitializeLifeRandom(ParticleObject, 15, 20));
+	ParticleComp->Initializers.emplace_back(new ASSB::InitializePositionRandom(ParticleObject, Graphics::Vector4(-10, 10, -5), Graphics::Vector4(10, 10, 5)));
+	ParticleComp->Updaters.emplace_back(new ASSB::UpdatePosition(ParticleObject, Graphics::Vector4(-1, -2, 0)));
+	ParticleComp->Terminator = std::unique_ptr<ASSB::Terminator>(new ASSB::TerminateInstant(ParticleObject));
 
 	//LevelGenerator.loadRandom();
 	

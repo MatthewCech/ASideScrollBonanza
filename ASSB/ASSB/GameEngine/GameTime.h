@@ -6,9 +6,9 @@ namespace ASSB
 	struct GameTime
 	{
 	public:
-		double MaxDT;
-		double DT;
-		double RunTime;
+		float MaxDT;
+		float DT;
+		float RunTime;
 		GameTime();
 
 		void Tick();

@@ -161,16 +161,16 @@ namespace ASSB
 			else
 				return 1;
 		});
-
+		
+		PixelShader.Use();
+		VertexShader.Use();
 		for (Globals::ObjectID id : drawOrder)
 		{
 			ComponentHandle<SpriteComponent> sprite = GetComponent<SpriteComponent>(id);
-			PixelShader.Use();
-			VertexShader.Use();
+			
 			ComponentHandle<TransformComponent> trans = GetComponent<TransformComponent>(id);
 			auto position = trans->GetPosition();
 			Transform.GetDataForWrite() = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { position.X, position.Y, position.Z });
-
 			Transform.Use();
 			GetTexture(sprite->GetPath()).Use();
 
@@ -214,15 +214,15 @@ namespace ASSB
 		}*/
 
 		//particles
-		ParticleGeoShader.Use();
 		ParticleVertexShader.Use();
+		ParticleGeoShader.Use();
 		for (Globals::ObjectID id : particles)
 		{
 			auto partComp = GetComponent<ParticleComponent>(id);
 
-			partComp->Buffer.Use();
-			GetTexture(partComp->Path).Use();
 			Graphics.SetBlendMode(partComp->BlendMode);
+			GetTexture(partComp->Path).Use();
+			partComp->Buffer.Use();
 			Graphics.DeviceContext->Draw(static_cast<UINT>(partComp->Buffer.size()), 0);
 		}
 		Graphics.SetBlendMode(Graphics::GraphicsEngine::BlendMode::Multiply);
