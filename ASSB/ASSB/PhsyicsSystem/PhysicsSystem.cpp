@@ -43,8 +43,9 @@ namespace ASSB
 		std::unordered_map<ASSB::Globals::ObjectID, std::unique_ptr<RigidBodyComponent>>::iterator playerIter;
 		for (auto iter{ input.begin() }; iter != input.end(); ++iter)
 		{
-			if (GameEngine::Instance->GetComponent<TransformComponent>(iter->first)->GetPosition().X < playerX)
-				continue;
+			if(iter->second->IsStatic() == true)
+				if (GameEngine::Instance->GetComponent<TransformComponent>(iter->first)->GetPosition().X < playerX)
+					continue;
 			if (iter->first == playerid)
 			{
 				playerIter = iter;
