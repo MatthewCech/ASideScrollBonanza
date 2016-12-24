@@ -110,7 +110,7 @@ int main()
 
 	// Post-everything Menu init
 	ASSB::MenuManager Menus;
-	Engine.Camera.SetPosition({ 2.25f, 1+.75f, 5.5f });
+	Engine.Camera.SetPosition({ 2.25f, 1.75f, 5.5f });
 
 	// Start the game.
 	Engine.Run();

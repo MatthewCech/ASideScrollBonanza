@@ -350,10 +350,10 @@ namespace ASSB
 		ASSB::Globals::ObjectID player = GetIdOf("player");
 		GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 1, 0 });
 
-		Camera.SetPosition({ 0,1, 0 });
+		Camera.SetPosition({ 2.25f, 1 + .75f, 5.5f });
 
 		ASSB::Globals::ObjectID PK = GetIdOf("PK");
 		auto TransComp = GetComponent<ASSB::TransformComponent>(PK);
-		TransComp->SetPosition(Graphics::Vector4(-10, 0, 0.001f));
+		TransComp->SetPosition(Graphics::Vector4(-15, 0, 0.001f));
 	}
 }
