@@ -22,20 +22,26 @@ namespace ASSB
 
 
 	// Set player image (utility function, consider moving)
-	void PlayerManagerComponent::SetImage(std::string imageTag, Graphics::Vector4 scale)
+	void PlayerManagerComponent::SetImage(std::string imageTagLight, std::string imageTagDark, Graphics::Vector4 scale)
 	{
 		Globals::ObjectID id = GameEngine::Instance->GetIdOf("player");
-		if (imageTag.size() > 0)
-		{
-			std::string path = FileSystem::ImagePreloadingMapper::Retrieve(imageTag);
-			if (path.size() > 0)
+		if (imageTagLight.size() > 0)
+			if(imageTagDark.size() > 0)
 			{
-				GameEngine::Instance->GetComponent<SpriteComponent>(id)->
-					AddPath(std::wstring(path.begin(), path.end()));
+				// Set assets
+				std::string pathLight = FileSystem::ImagePreloadingMapper::Retrieve(imageTagLight);
+				std::string pathDark = FileSystem::ImagePreloadingMapper::Retrieve(imageTagDark);
+				ComponentHandle<SpriteComponent> sprite = GameEngine::Instance->GetComponent<SpriteComponent>(id);
+				
+				// These are "backwards" because player light is world dark
+				sprite->AddAltPath(std::wstring(pathLight.begin(), pathLight.end()));
+				sprite->AddPath(std::wstring(pathDark.begin(), pathDark.end()));
+				sprite->SetSwappable(true);
+
+				// Set scale
 				GameEngine::Instance->GetComponent<TransformComponent>(id)->
 					SetScale(scale.X, scale.Y);
 			}
-		}
 	}
 
 	

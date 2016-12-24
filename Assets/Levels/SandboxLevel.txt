@@ -7,9 +7,9 @@
 5,0:tile1D'tile1L,cs
 6,0:tile1D'tile1L,cs
 6,1:tile1D'tile1L,cs
-2,1:grass1,-
-2.4,1:grass2,-
-3.1,1.5:tree1*2x2,-
-3.5,1:grass1,-
-4.5,1:grass1,-
-5,1:grass2,-
+2,1:grass1D'grass1L,-
+2.4,1:grass2D'grass2L,-
+3.1,1.5:tree1D'tree1L*2x2,-
+3.5,1:grass1D'grass1L,-
+4.5,1:grass1D'grass1L,-
+5,1:grass2D'grass2L,-

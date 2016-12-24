@@ -55,7 +55,7 @@ int main()
 	Engine.AddComponent<ASSB::PlayerManagerComponent>(player);
 	Engine.AddComponent<ASSB::RigidBodyComponent>(player);
 	ASSB::ComponentHandle<ASSB::PlayerManagerComponent> pmComp = Engine.GetComponent<ASSB::PlayerManagerComponent>(player);
-	pmComp->SetImage("icon", { .5f,1,0 });
+	pmComp->SetImage("player1L", "player1D", { .5f,1,0 });
 	pmComp->SetActive(false);
 	Engine.GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 3, 0 });
 	Engine.GetComponent<ASSB::RigidBodyComponent>(player)->SetStatic(false);

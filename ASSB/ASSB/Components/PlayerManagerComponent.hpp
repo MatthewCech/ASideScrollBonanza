@@ -21,7 +21,7 @@ namespace ASSB
 
 		// Member Functions
 		bool IsActive();
-		void SetImage(std::string tag, Graphics::Vector4 scale);
+		void SetImage(std::string tag, std::string tag2, Graphics::Vector4 scale);
 		void SetActive(bool isActive);
 
 	private:

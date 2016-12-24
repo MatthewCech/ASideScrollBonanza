@@ -1,4 +1,3 @@
-buttonBase:../../../Assets/Images/Menu/buttonBase.png
 exit:../../../Assets/Images/Menu/exit.png
 credits:../../../Assets/Images/Menu/credits.png
 options:../../../Assets/Images/Menu/options.png
@@ -6,13 +5,17 @@ quit:../../../Assets/Images/Menu/quit.png
 restart:../../../Assets/Images/Menu/restart.png
 resume:../../../Assets/Images/Menu/resume.png
 selectImage:../../../Assets/Images/Menu/selectImage.png
-start:../../../Assets/Images/Menu/start.png
 blank:../../../Assets/Images/blank.png
-grass1:../../../Assets/Images/grass1.png
-grass2:../../../Assets/Images/grass2.png
+grass1D:../../../Assets/Images/grass1D.png
+grass1L:../../../Assets/Images/grass1L.png
+grass2D:../../../Assets/Images/grass2D.png
+grass2L:../../../Assets/Images/grass2L.png
 icon:../../../Assets/Images/icon.png
-tree1:../../../Assets/Images/tree1.png
+player1D:../../../Assets/Images/player1D.png
+player1L:../../../Assets/Images/player1L.png
+start:../../../Assets/Images/Menu/start.png
+tree1D:../../../Assets/Images/tree1D.png
+tree1L:../../../Assets/Images/tree1L.png
 tile1D:../../../Assets/Images/tile1D.png
 tile1L:../../../Assets/Images/tile1L.png
-selectImage:../../../Assets/Images/selectImage.png
 == I put this line in to stop it here.
