@@ -9,7 +9,7 @@
 #include "Events/GameStartEvent.hpp"
 #include "Events/KeyboardEvent.hpp"
 #include "Events/PauseToggleEvent.hpp"
-
+#include "Components/SpriteComponent.hpp"
 
 
 namespace ASSB
@@ -76,6 +76,7 @@ namespace ASSB
 		Globals::ObjectID id = GameEngine::Instance->CreateGameObject();
 		GameEngine::Instance->AddComponent<SoundEmitterComponent>(id);
 		ComponentHandle<SoundEmitterComponent> se = GameEngine::Instance->GetComponent<SoundEmitterComponent>(id);
+		GameEngine::Instance->GetComponent<SpriteComponent>(id)->Visible = false;
 		se->SetSource("Select1");
 		se->PlayOnEvent<UIChangeEvent>();
 
@@ -83,6 +84,7 @@ namespace ASSB
 		Globals::ObjectID id2 = GameEngine::Instance->CreateGameObject();
 		GameEngine::Instance->AddComponent<SoundEmitterComponent>(id2);
 		ComponentHandle<SoundEmitterComponent> se2 = GameEngine::Instance->GetComponent<SoundEmitterComponent>(id2);
+		GameEngine::Instance->GetComponent<SpriteComponent>(id2)->Visible = false;
 		se2->SetSource("Confirm1");
 		se2->PlayOnEvent<UISelectEvent>();
 	}
