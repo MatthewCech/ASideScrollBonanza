@@ -122,6 +122,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Particles\InitializeLifeRandom.cpp" />
     <ClCompile Include="Particles\InitializePositionRandom.cpp" />
+    <ClCompile Include="Particles\InitializePositionRandomCam.cpp" />
     <ClCompile Include="Particles\Initializer.cpp" />
     <ClCompile Include="Particles\InitializeSizeRandom.cpp" />
     <ClCompile Include="Particles\ParticleBuffer.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Input\MouseState.h" />
     <ClInclude Include="Particles\InitializeLifeRandom.hpp" />
     <ClInclude Include="Particles\InitializePositionRandom.hpp" />
+    <ClInclude Include="Particles\InitializePositionRandomCam.hpp" />
     <ClInclude Include="Particles\Initializer.hpp" />
     <ClInclude Include="Particles\InitializeSizeRandom.hpp" />
     <ClInclude Include="Particles\ParticleBuffer.h" />

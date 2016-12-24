@@ -44,8 +44,9 @@
     <ClCompile Include="Particles\InitializeLifeRandom.cpp" />
     <ClCompile Include="Particles\Terminator.cpp" />
     <ClCompile Include="Particles\TerminateInstant.cpp" />
-    <ClCompile Include="GameEngine\LevelQueue.cpp" />
     <ClCompile Include="FileSystem\LevelPreloadingMapper.cpp" />
+    <ClCompile Include="GameEngine\LevelQueue.cpp" />
+    <ClCompile Include="Particles\InitializePositionRandomCam.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioSystem\AudioDefines.hpp" />
@@ -107,8 +108,9 @@
     <ClInclude Include="Particles\InitializeLifeRandom.hpp" />
     <ClInclude Include="Particles\Terminator.hpp" />
     <ClInclude Include="Particles\TerminateInstant.hpp" />
-    <ClInclude Include="GameEngine\LevelQueue.hpp" />
     <ClInclude Include="FileSystem\LevelPreloadingMapper.hpp" />
+    <ClInclude Include="GameEngine\LevelQueue.hpp" />
+    <ClInclude Include="Particles\InitializePositionRandomCam.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />
