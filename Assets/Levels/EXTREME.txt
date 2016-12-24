@@ -1,0 +1,17 @@
+0,0:tile3D'tile1L,cs
+1,0:tile3D'tile1L,cs
+2,0:tile3D'tile1L,cs
+3,0:tile3D'tile1L,cs
+4,0:tile3D'tile1L,cs
+5,0:tile3D'tile1L,cs
+6,0:tile3D'tile1L,cs
+7,0:tile3D'tile1L,cs
+8,0:tile3D'tile1L,cs
+9,0:tile3D'tile1L,cs
+10,0:tile3D'tile1L,cs
+11,0:tile3D'tile1L,cs
+12,0:tile3D'tile1L,cs
+6.5,1.5:tile2D'tile1L*5x2,cs
+5.5,4.5:tile3D'tile1L*1x3,cs
+9,3.5:tile1D'tile1L*1x3,cs
+4.5,5.5:tile2D'tile1L*2x1,cs

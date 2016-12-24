@@ -1,2 +1,4 @@
 default:../../../Assets/Levels/SandboxLevel.txt
 tallBlocked:../../../Assets/Levels/TallBlocked.txt
+switcheroo:../../../Assets/Levels/Switcheroo.txt
+EXTREME:../../../Assets/Levels/EXTREME.txt
