@@ -101,8 +101,8 @@ int main()
 	RigidComp->SetVelocity(Graphics::Vector4(4.8f, 0, 0));
 
 	auto TransComp = Engine.GetComponent<ASSB::TransformComponent>(PK);
-	TransComp->SetPosition(Graphics::Vector4(-15, 0, 0.001f));
-	TransComp->SetScale(1, 25);
+	TransComp->SetPosition(Graphics::Vector4(-20, 0, 0.001f));
+	TransComp->SetScale(10, 25);
 	
 	auto SpriteComp = Engine.GetComponent<ASSB::SpriteComponent>(PK);
 	std::string pkpath = FileSystem::ImagePreloadingMapper::Retrieve("death");

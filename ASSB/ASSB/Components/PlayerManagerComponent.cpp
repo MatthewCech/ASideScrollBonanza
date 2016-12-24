@@ -7,6 +7,11 @@
 #include "Events/UpdateEvent.hpp"
 #include "Events/SwitchEvent.hpp"
 #include "Events/LoseEvent.hpp"
+#include "SoundEmitterComponent.hpp"
+#include "SpriteComponent.hpp"
+#include "SoundEmitterComponent.hpp"
+#include "Events/PlayerBasedLossEvent.hpp"
+
 
 
 namespace ASSB
@@ -21,6 +26,22 @@ namespace ASSB
 		Connect(this, &PlayerManagerComponent::Collide);
 
 		JumpVel = 150;
+
+
+		Globals::ObjectID deathObj = GameEngine::Instance->CreateGameObject();
+		GameEngine::Instance->GetComponent<SpriteComponent>(deathObj)->Visible = false;
+		GameEngine::Instance->AddComponent<SoundEmitterComponent>(deathObj);
+		auto sec1 = GameEngine::Instance->GetComponent<SoundEmitterComponent>(deathObj);
+		sec1->SetSource("Death");
+		sec1->PlayOnEvent<PlayerBasedLossEvent>();
+
+		Globals::ObjectID switchObj = GameEngine::Instance->CreateGameObject();
+		GameEngine::Instance->GetComponent<SpriteComponent>(switchObj)->Visible = false;
+		GameEngine::Instance->AddComponent<SoundEmitterComponent>(switchObj);
+		auto sec2 = GameEngine::Instance->GetComponent<SoundEmitterComponent>(switchObj);
+		sec2->SetSource("Switch1");
+		sec2->PlayOnEvent<SwitchEvent>();
+
 	}
 
 
@@ -74,12 +95,12 @@ namespace ASSB
 
 		if (e->Down)
 		{
-			if (k == Key::Space && CanJump)
+			if (k == Key::Space && CanJump || k == Key::W && CanJump || k == Key::Numpad_8 && CanJump || k == Key::Up && CanJump)
 			{
 				IsJump = 0.15f;
 				CanJump = false;
 			}
-			else if (k == Key::Tab)
+			else if (k == Key::Tab || k == Key::LShift)
 			{
 				auto transform = GameEngine::Instance->GetComponent<TransformComponent>(Owner);
 				if (White)
@@ -98,7 +119,7 @@ namespace ASSB
 		}
 		else
 		{
-			if (k == Key::Space)
+			if (k == Key::Space|| k == Key::W || k == Key::Numpad_8 || k == Key::Up)
 			{
 				IsJump = 0;
 			}
@@ -166,7 +187,10 @@ namespace ASSB
 			Other = e->ID1;
 
 		if (GameEngine::Instance->GetNameOf(Other) == "PK")
+		{
 			Globals::EventSystemInstance.Dispatch(new LoseEvent(GameEngine::Instance->Time));
+			Globals::EventSystemInstance.Dispatch(new PlayerBasedLossEvent());
+		}
 
 		CanJump = true;
 	}

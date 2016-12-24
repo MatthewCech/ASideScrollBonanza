@@ -354,6 +354,6 @@ namespace ASSB
 
 		ASSB::Globals::ObjectID PK = GetIdOf("PK");
 		auto TransComp = GetComponent<ASSB::TransformComponent>(PK);
-		TransComp->SetPosition(Graphics::Vector4(-15, 0, 0.001f));
+		TransComp->SetPosition(Graphics::Vector4(-20, 0, 0.001f));
 	}
 }

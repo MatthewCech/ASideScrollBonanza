@@ -1,8 +1,9 @@
 Select1:../../../Assets/SFX/Select1.wav
 Confirm1:../../../Assets/SFX/Confirm1.wav
-Hit1:../../../Assets/SFX/Hit1.wav
-Hit2:../../../Assets/SFX/Hit2.wav
 JumpHigh1:../../../Assets/SFX/JumpHigh1.wav
 JumpHigh2:../../../Assets/SFX/JumpHigh2.wav
-Switch1:../../../Assets/SFX/Switch1.wav
+Switch1:../../../Assets/SFX/ResponseLow.wav
+Death:../../../Assets/SFX/Death.wav
 == I put this line in to stop it here.
+Hit2:../../../Assets/SFX/Hit2.wav
+Hit1:../../../Assets/SFX/Hit1.wav

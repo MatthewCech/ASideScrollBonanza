@@ -11,6 +11,7 @@ grass1D:../../../Assets/Images/grass1D.png
 grass1L:../../../Assets/Images/grass1L.png
 grass2D:../../../Assets/Images/grass2D.png
 grass2L:../../../Assets/Images/grass2L.png
+greyBlock:../../../Assets/Images/greyBlock.png
 icon:../../../Assets/Images/icon.png
 player1D:../../../Assets/Images/player1D.png
 player1L:../../../Assets/Images/player1L.png

@@ -11,6 +11,8 @@ namespace ASSB
 	class GameStartEvent;
 	class KeyboardEvent;
 	class PauseToggleEvent;
+	class LoseEvent;
+	class ReturnToMenuEvent;
 	class MenuManager : public EventSystem::ObjectEventManager
 	{
 	public:
@@ -34,6 +36,8 @@ namespace ASSB
 		void gameStart(GameStartEvent *e);
 		void handleKeyboard(KeyboardEvent *e);
 		void pauseToggle(PauseToggleEvent *e);
+		void playerLose(LoseEvent *e);
+		void menuReturn(ReturnToMenuEvent *e);
 
 		// Omit
 		MenuManager &operator=(const MenuManager &rhs) = delete;

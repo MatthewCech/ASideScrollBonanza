@@ -112,6 +112,8 @@
     <ClInclude Include="GameEngine\LevelQueue.hpp" />
     <ClInclude Include="Particles\InitializePositionRandomCam.hpp" />
     <ClInclude Include="Events\LoseEvent.hpp" />
+    <ClInclude Include="Events\ReturnToMenuEvent.hpp" />
+    <ClInclude Include="Events\PlayerBasedLossEvent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />

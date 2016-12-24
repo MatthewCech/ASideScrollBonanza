@@ -10,6 +10,7 @@
 #include "Events/KeyboardEvent.hpp"
 #include "Events/PauseToggleEvent.hpp"
 #include "Events/LoseEvent.hpp"
+#include "Events/ReturnToMenuEvent.hpp"
 #include "Components/SpriteComponent.hpp"
 
 
@@ -49,12 +50,12 @@ namespace ASSB
 		GameEngine::Instance->AddComponent<MenuComponent>(pause);
 		GameEngine::Instance->GetComponent<SpriteComponent>(pause)->Visible = false;
 		ASSB::ComponentHandle<MenuComponent> pauseComp = GameEngine::Instance->GetComponent<MenuComponent>(pause);
-		pauseComp->SetSpacing({ 0, -.4f, 0 });
-		pauseComp->SetPosition({ 1, 2, 0 });
-		pauseComp->SetIndicatorTag("selectImage", { 1.75f, .4f, 0 });
-		pauseComp->AddInteractable("resume", { 1.5f,.3f,0 }, new PauseToggleEvent(false));
-		pauseComp->AddInteractable("restart", { 1.5f,.3f,0 }, new LoseEvent(GameTime()));
-		pauseComp->AddInteractable("exit", { 1.5f,.3f,0 }, new ShutdownEvent());
+		pauseComp->SetSpacing({ 0, -.6f, 0 });
+		pauseComp->SetPosition({ 0, 3.75f, 0 });
+		pauseComp->SetIndicatorTag("selectImage", { 2.75f, .55f, 0 });
+		pauseComp->AddInteractable("resume", { 2.5f,.5f,0 }, new PauseToggleEvent(false));
+		pauseComp->AddInteractable("restart", { 2.5f,.5f,0 }, new LoseEvent(GameTime()));
+		pauseComp->AddInteractable("exit", { 2.5f,.5f,0 }, new ReturnToMenuEvent());
 		pauseComp->SetActive(false);
 		pauseComp->SetVisible(false);
 
@@ -68,6 +69,8 @@ namespace ASSB
 		Connect(this, &MenuManager::gameStart);
 		Connect(this, &MenuManager::handleKeyboard);
 		Connect(this, &MenuManager::pauseToggle);
+		Connect(this, &MenuManager::playerLose);
+		Connect(this, &MenuManager::menuReturn);
 
 		// Initial paused
 		ASSB::Globals::EventSystemInstance.Dispatch(new PauseToggleEvent(true));
@@ -143,6 +146,27 @@ namespace ASSB
 		}
 	}
 
+	void MenuManager::playerLose(LoseEvent *)
+	{
+		Globals::ObjectID id2 = GameEngine::Instance->GetIdOf("pauseMenu");
+		ComponentHandle<MenuComponent> menuComp = GameEngine::Instance->GetComponent<MenuComponent>(id2);
+		menuComp->SetPosition(GameEngine::Instance->Camera.GetPosition() + Graphics::Vector4(0, 2, 0));
+	}
+
+	void MenuManager::menuReturn(ReturnToMenuEvent *)
+	{
+		// Hide pause menu
+		Globals::ObjectID id1 = GameEngine::Instance->GetIdOf("pauseMenu");
+		GameEngine::Instance->GetComponent<MenuComponent>(id1)->SetActive(false);
+		GameEngine::Instance->GetComponent<MenuComponent>(id1)->SetVisible(false);
+		Globals::ObjectID id2 = GameEngine::Instance->GetIdOf("mainMenu");
+		GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetActive(true);
+		GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetVisible(true);
+		// Show main menu
+		onMainMenu_ = true;
+		Globals::EventSystemInstance.Dispatch(new LoseEvent(GameTime()));
+	}
+
 
 	// Pause was hit on or off
 	void MenuManager::pauseToggle(PauseToggleEvent *e)
@@ -159,7 +183,7 @@ namespace ASSB
 			ComponentHandle<MenuComponent> menuComp = GameEngine::Instance->GetComponent<MenuComponent>(id2);
 			menuComp->SetActive(true);
 			menuComp->SetVisible(true);
-			menuComp->SetPosition(GameEngine::Instance->Camera.GetPosition());
+			menuComp->SetPosition(GameEngine::Instance->Camera.GetPosition() + Graphics::Vector4(0,2,0));
 		}
 		else
 		{
