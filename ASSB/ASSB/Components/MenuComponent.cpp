@@ -16,7 +16,7 @@ namespace ASSB
 		, active_(true)
 		, selected_(0)
 		, spacing_({ 0, -1, 0 })
-		, pos_({ 0, 0, 0 })
+		, pos_({ 0, 0, .05f })
 		, selectionIndicator_()
 		, interactables_()
 		, vertical_(vertical)
@@ -119,7 +119,7 @@ namespace ASSB
 		ComponentHandle<TransformComponent> indicatorLoc = GameEngine::Instance->GetComponent<TransformComponent>(selectionIndicator_);
 		ComponentHandle<TransformComponent> interactableLoc = GameEngine::Instance->GetComponent<TransformComponent>(interactables_[static_cast<size_t>(selected_)].first);
 		//!TODO: ACTIONS SYSTEM FOR INTERPOLATION
-		Utilities::Instance->InterpolatePos(selectionIndicator_, interactableLoc->GetPosition() + Graphics::Vector4(0, 0, -0.001f), 80);
+		Utilities::Instance->InterpolatePos(selectionIndicator_, interactableLoc->GetPosition() - Graphics::Vector4(0, 0, .01f), 80);
 		//indicatorLoc->SetPosition(interactableLoc->GetPosition());
 	}
 
@@ -192,6 +192,7 @@ namespace ASSB
 	{
 		pos_.X = newPos.X;
 		pos_.Y = newPos.Y;
+		pos_.Z = 0.5f;
 		updateSpacing();
 	}
 	Graphics::Vector4 MenuComponent::GetPosition()
