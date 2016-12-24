@@ -138,7 +138,8 @@ namespace ASSB
 			auto sprite = GetComponent<SpriteComponent>(id);
 			if (sprite && sprite->Visible)
 				drawOrder.push_back(id);
-			if (GetComponent<ParticleComponent>(id))
+			auto particle = GetComponent<ParticleComponent>(id);
+			if (particle && particle->Visible)
 				particles.push_back(id);
 		}
 
@@ -277,13 +278,20 @@ namespace ASSB
 
 	void GameEngine::OnSwitch(SwitchEvent * e)
 	{
+		auto snowSys = GetComponent<ParticleComponent>(GetIdOf("Snow System"));
+		auto rainSys = GetComponent<ParticleComponent>(GetIdOf("Rain System"));
+
 		if (e->White)
 		{
 			ClearColor = Graphics::Color(0, 0, 0);
+			snowSys->Visible = true;
+			rainSys->Visible = false;
 		}
 		else
 		{
 			ClearColor = Graphics::Color(1, 1, 1);
+			snowSys->Visible = false;
+			rainSys->Visible = true;
 		}
 	}
 }
