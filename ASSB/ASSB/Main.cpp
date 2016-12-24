@@ -91,6 +91,19 @@ int main()
 	ParticleComp->Updaters.emplace_back(new ASSB::UpdatePosition(ParticleObject, Graphics::Vector4(-20, -55, 0)));
 	ParticleComp->Terminator = std::unique_ptr<ASSB::Terminator>(new ASSB::TerminateInstant(ParticleObject));
 
+	//player killer
+
+	ASSB::Globals::ObjectID PK = Engine.CreateGameObject("PK");
+	Engine.AddComponent<ASSB::RigidBodyComponent>(PK);
+	auto RigidComp = Engine.GetComponent<ASSB::RigidBodyComponent>(PK);
+	RigidComp->SetCollisionType(ASSB::CollisionType::GHOSTING);
+	RigidComp->SetStatic(false);
+	RigidComp->SetVelocity(Graphics::Vector4(4.8f, 0, 0));
+
+	auto TransComp = Engine.GetComponent<ASSB::TransformComponent>(PK);
+	TransComp->SetPosition(Graphics::Vector4(-10, 0, 0));
+	TransComp->SetScale(1, 20);
+
 	//LevelGenerator.loadRandom();
 	
 	// Start the game.
