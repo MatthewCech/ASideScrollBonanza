@@ -18,6 +18,8 @@ namespace ASSB
 		Connect(this, &PlayerManagerComponent::keyDownEvent);
 		Connect(this, &PlayerManagerComponent::Update);
 		Connect(this, &PlayerManagerComponent::Collide);
+
+		JumpVel = 150;
 	}
 
 
@@ -82,10 +84,12 @@ namespace ASSB
 				if (White)
 				{//make black
 					transform->SetScale(0.5, 1);
+					JumpVel = 150;
 				}
 				else
 				{//make white
 					transform->SetScale(0.25, 0.5);
+					JumpVel = 110;
 				}
 				White = !White;
 				Globals::EventSystemInstance.Dispatch(new SwitchEvent(White));
@@ -113,7 +117,7 @@ namespace ASSB
 
 		if (IsJump > 0)
 		{
-			velocity.Y += 150 * dt;
+			velocity.Y += JumpVel * dt;
 			IsJump -= dt;
 		}
 
@@ -127,9 +131,9 @@ namespace ASSB
 		Graphics::Vector4 campos = GameEngine::Instance->Camera.GetPosition();
 		Graphics::Vector4 pPos = GameEngine::Instance->GetComponent<TransformComponent>(Owner)->GetPosition();
 
-		campos.X = pPos.X;
+		campos.X = pPos.X + 2;
 
-		float diff = pPos.Y - campos.Y;
+		float diff = pPos.Y - campos.Y + 1;
 		diff /= 20;
 
 		campos.Y += diff;

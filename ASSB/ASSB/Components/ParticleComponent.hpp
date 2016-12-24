@@ -23,6 +23,7 @@ namespace ASSB
 		Graphics::GraphicsEngine::BlendMode BlendMode;
 		bool Visible;
 
+
 		ParticleComponent(Globals::ObjectID owner);
 		ParticleComponent(const ParticleComponent &rhs);
 
