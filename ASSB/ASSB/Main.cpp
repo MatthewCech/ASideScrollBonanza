@@ -84,11 +84,11 @@ int main()
 
 	ParticleComp->Path = L"../../../Assets/Images/rain.png";
 	ParticleComp->BlendMode = Graphics::GraphicsEngine::BlendMode::Multiply;
-	ParticleComp->Emitter = std::unique_ptr<ASSB::Emitter>(new ASSB::EmitConstant(ParticleObject, 160));
+	ParticleComp->Emitter = std::unique_ptr<ASSB::Emitter>(new ASSB::EmitConstant(ParticleObject, 560));
 	ParticleComp->Initializers.emplace_back(new ASSB::InitializeSizeRandom(ParticleObject, 0.3f, 0.3f));
-	ParticleComp->Initializers.emplace_back(new ASSB::InitializeLifeRandom(ParticleObject, 2, 5));
+	ParticleComp->Initializers.emplace_back(new ASSB::InitializeLifeRandom(ParticleObject, 2, 2));
 	ParticleComp->Initializers.emplace_back(new ASSB::InitializePositionRandomCam(ParticleObject, Graphics::Vector4(-10, 15, -15), Graphics::Vector4(50, 15, 5)));
-	ParticleComp->Updaters.emplace_back(new ASSB::UpdatePosition(ParticleObject, Graphics::Vector4(-20, -65, 0)));
+	ParticleComp->Updaters.emplace_back(new ASSB::UpdatePosition(ParticleObject, Graphics::Vector4(-20, -55, 0)));
 	ParticleComp->Terminator = std::unique_ptr<ASSB::Terminator>(new ASSB::TerminateInstant(ParticleObject));
 
 	//LevelGenerator.loadRandom();
