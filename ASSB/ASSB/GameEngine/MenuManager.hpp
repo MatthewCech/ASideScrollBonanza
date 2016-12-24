@@ -27,7 +27,6 @@ namespace ASSB
 
 		// Member functions
 		void initializeSFX();
-		void updateMenuLocations();
 
 		// Event related functions
 		void quitRequest(QuitRequestEvent *e);

@@ -113,6 +113,9 @@ namespace ASSB
 	// Updates location of selection indicator to position of the new item
 	void MenuComponent::updateSelectionIndicator()
 	{
+		if (interactables_.size() == 0)
+			return;
+
 		ComponentHandle<TransformComponent> indicatorLoc = GameEngine::Instance->GetComponent<TransformComponent>(selectionIndicator_);
 		ComponentHandle<TransformComponent> interactableLoc = GameEngine::Instance->GetComponent<TransformComponent>(interactables_[static_cast<size_t>(selected_)].first);
 		//!TODO: ACTIONS SYSTEM FOR INTERPOLATION
@@ -167,6 +170,7 @@ namespace ASSB
 					AddPath(std::wstring(path.begin(), path.end()));
 				GameEngine::Instance->GetComponent<TransformComponent>(selectionIndicator_)->
 					SetScale(scale.X, scale.Y);
+				updateSelectionIndicator();
 			}
 		}
 	}

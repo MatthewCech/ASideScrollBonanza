@@ -137,11 +137,6 @@ namespace ASSB
 		}
 	}
 
-	// Updates menu locations
-	void updateMenuLocations()
-	{
-
-	}
 
 	// Pause was hit on or off
 	void MenuManager::pauseToggle(PauseToggleEvent *e)
@@ -152,8 +147,10 @@ namespace ASSB
 		{
 			// Show menu and stop player
 			GameEngine::Instance->GetComponent<PlayerManagerComponent>(id)->SetActive(false);
-			GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetActive(true);
-			GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetVisible(true);
+			ComponentHandle<MenuComponent> menuComp = GameEngine::Instance->GetComponent<MenuComponent>(id2);
+			menuComp->SetActive(true);
+			menuComp->SetVisible(true);
+			menuComp->SetPosition(GameEngine::Instance->Camera.GetPosition());
 		}
 		else
 		{
