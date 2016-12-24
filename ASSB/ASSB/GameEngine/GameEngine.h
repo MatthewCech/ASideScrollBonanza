@@ -68,6 +68,7 @@ namespace ASSB
 		Globals::ObjectID NextID;
 		GameTime Time;
 		bool Running;
+		bool EnvironmentIsLight;
 
 		// Graphics
 		Graphics::Color ClearColor;

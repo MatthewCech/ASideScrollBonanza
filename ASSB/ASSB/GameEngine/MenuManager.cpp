@@ -52,8 +52,8 @@ namespace ASSB
 		pauseComp->SetPosition({ 1, 2, 0 });
 		pauseComp->SetIndicatorTag("selectImage", { 1.75f, .4f, 0 });
 		pauseComp->AddInteractable("resume", { 1.5f,.3f,0 }, new PauseToggleEvent(false));
-		pauseComp->AddInteractable("restart", { 1.5f,.3f,0 }, new QuitRequestEvent());
-		pauseComp->AddInteractable("exit", { 1.5f,.3f,0 }, new QuitRequestEvent());
+		//pauseComp->AddInteractable("restart", { 1.5f,.3f,0 }, new QuitRequestEvent());
+		pauseComp->AddInteractable("exit", { 1.5f,.3f,0 }, new ShutdownEvent());
 		pauseComp->SetActive(false);
 		pauseComp->SetVisible(false);
 

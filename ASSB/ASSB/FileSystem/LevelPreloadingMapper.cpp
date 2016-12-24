@@ -202,13 +202,15 @@ namespace FileSystem
 		size_t tickLoc = imageTag.find_first_of("'");
 		if (tickLoc != std::string::npos)
 		{
-			std::string light = FileSystem::ImagePreloadingMapper::Retrieve(imageTag.substr(0, tickLoc));
-			std::string dark = FileSystem::ImagePreloadingMapper::Retrieve(imageTag.substr(tickLoc + 1));
+			std::string dark = FileSystem::ImagePreloadingMapper::Retrieve(imageTag.substr(0, tickLoc));
+			std::string light = FileSystem::ImagePreloadingMapper::Retrieve(imageTag.substr(tickLoc + 1));
 			if (light.size() > 0)
 				if (dark.size() > 0)
 				{
-					ASSB::GameEngine::Instance->GetComponent<ASSB::SpriteComponent>(id)->AddPath(std::wstring(light.begin(), light.end()));
-					ASSB::GameEngine::Instance->GetComponent<ASSB::SpriteComponent>(id)->AddAltPath(std::wstring(dark.begin(), dark.end()));
+					ASSB::ComponentHandle<ASSB::SpriteComponent> spriteComp = ASSB::GameEngine::Instance->GetComponent<ASSB::SpriteComponent>(id);
+					spriteComp->AddPath(std::wstring(light.begin(), light.end()));
+					spriteComp->AddAltPath(std::wstring(dark.begin(), dark.end()));
+					spriteComp->SetSwappable(true);
 				}
 		}
 		else

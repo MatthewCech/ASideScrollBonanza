@@ -9,6 +9,6 @@ namespace ASSB
 	{
 	public:
 		SwitchEvent(bool white) : White(white) { }
-		bool White;
+		bool White; //COLOR OF THE CHARACTER
 	};
 }

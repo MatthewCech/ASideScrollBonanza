@@ -16,6 +16,7 @@ namespace ASSB
 	GameEngine::GameEngine(Graphics::Window & window)
 		: NextID(1),
 		Running(true),
+		EnvironmentIsLight(true),
 		Window(window),
 		Graphics(window),
 		Transform(Graphics, Graphics::ShaderType::Vertex, 1),
@@ -208,7 +209,7 @@ namespace ASSB
 			transf = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { 0,0 });
 			transf = transf * DirectX::XMMatrixTranslation(position.X, position.Y, position.Z);
 			Transform.Use();
-			GetTexture(sprite->GetPath()).Use();
+			GetTexture(sprite->GetPath(EnvironmentIsLight)).Use();
 
 			Graphics.Draw(*Square);
 		}
@@ -313,7 +314,7 @@ namespace ASSB
 	{
 		auto snowSys = GetComponent<ParticleComponent>(GetIdOf("Snow System"));
 		auto rainSys = GetComponent<ParticleComponent>(GetIdOf("Rain System"));
-
+		EnvironmentIsLight = !e->White;
 		if (e->White)
 		{
 			ColorTo = Graphics::Color(0, 0, 0);
