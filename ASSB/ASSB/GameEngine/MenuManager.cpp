@@ -9,6 +9,7 @@
 #include "Events/GameStartEvent.hpp"
 #include "Events/KeyboardEvent.hpp"
 #include "Events/PauseToggleEvent.hpp"
+#include "Events/LoseEvent.hpp"
 #include "Components/SpriteComponent.hpp"
 
 
@@ -52,7 +53,7 @@ namespace ASSB
 		pauseComp->SetPosition({ 1, 2, 0 });
 		pauseComp->SetIndicatorTag("selectImage", { 1.75f, .4f, 0 });
 		pauseComp->AddInteractable("resume", { 1.5f,.3f,0 }, new PauseToggleEvent(false));
-		//pauseComp->AddInteractable("restart", { 1.5f,.3f,0 }, new QuitRequestEvent());
+		pauseComp->AddInteractable("restart", { 1.5f,.3f,0 }, new LoseEvent(GameTime()));
 		pauseComp->AddInteractable("exit", { 1.5f,.3f,0 }, new ShutdownEvent());
 		pauseComp->SetActive(false);
 		pauseComp->SetVisible(false);
@@ -68,7 +69,7 @@ namespace ASSB
 		Connect(this, &MenuManager::handleKeyboard);
 		Connect(this, &MenuManager::pauseToggle);
 
-		// Dispatch
+		// Initial paused
 		ASSB::Globals::EventSystemInstance.Dispatch(new PauseToggleEvent(true));
 	}
 
@@ -107,15 +108,15 @@ namespace ASSB
 	}
 
 	// Start the game
-	void MenuManager::gameStart(GameStartEvent *e)
+	void MenuManager::gameStart(GameStartEvent *)
 	{
 		Globals::ObjectID id = GameEngine::Instance->GetIdOf("player");
 		Globals::ObjectID id2 = GameEngine::Instance->GetIdOf("mainMenu");
 		GameEngine::Instance->GetComponent<PlayerManagerComponent>(id)->SetActive(true);
 		GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetActive(false);
 		GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetVisible(false);
+		ASSB::Globals::EventSystemInstance.Dispatch(new PauseToggleEvent(false));
 		onMainMenu_ = false;
-		UNUSED(e);
 	}
 
 	// Catch relevant keyboard input
@@ -146,6 +147,9 @@ namespace ASSB
 	// Pause was hit on or off
 	void MenuManager::pauseToggle(PauseToggleEvent *e)
 	{
+		if (onMainMenu_)
+			return;
+
 		Globals::ObjectID id = GameEngine::Instance->GetIdOf("player");
 		Globals::ObjectID id2 = GameEngine::Instance->GetIdOf("pauseMenu");
 		if(e->Paused)
