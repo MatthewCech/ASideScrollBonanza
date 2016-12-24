@@ -68,6 +68,7 @@ namespace ASSB
 
 		Camera.SetPosition(Graphics::Vector4(0, 0, 5));
 		Globals::EventSystemInstance.Register(this, &GameEngine::OnSwitch);
+		Globals::EventSystemInstance.Register(this, &GameEngine::OnDeath);
 	}
 
 
@@ -93,6 +94,15 @@ namespace ASSB
 			return NULL;
 		else
 			return GameObjects[name];
+	}
+
+	const std::string & GameEngine::GetNameOf(Globals::ObjectID id)
+	{
+		//check if it exists
+		if (GameObjectNames.find(id) == GameObjectNames.end())
+			throw std::exception("THAT DOESN'T EXIST");
+		else
+			return GameObjectNames[id];
 	}
 
 
@@ -332,5 +342,18 @@ namespace ASSB
 			snowSys->Visible = false;
 			rainSys->Visible = true;
 		}
+	}
+
+	void GameEngine::OnDeath(LoseEvent *)
+	{
+		FileSystem::LevelPreloadingMapper::NukeObjects();
+		ASSB::Globals::ObjectID player = GetIdOf("player");
+		GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 3, 0 });
+
+		Camera.SetPosition({ 0,0, 5 });
+
+		ASSB::Globals::ObjectID PK = GetIdOf("PK");
+		auto TransComp = GetComponent<ASSB::TransformComponent>(PK);
+		TransComp->SetPosition(Graphics::Vector4(-10, 0, 0.001f));
 	}
 }

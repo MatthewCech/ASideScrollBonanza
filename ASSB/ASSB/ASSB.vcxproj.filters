@@ -111,6 +111,7 @@
     <ClInclude Include="FileSystem\LevelPreloadingMapper.hpp" />
     <ClInclude Include="GameEngine\LevelQueue.hpp" />
     <ClInclude Include="Particles\InitializePositionRandomCam.hpp" />
+    <ClInclude Include="Events\LoseEvent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />

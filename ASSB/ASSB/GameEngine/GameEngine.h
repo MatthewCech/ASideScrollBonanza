@@ -5,6 +5,7 @@
 #include "Globals.hpp"
 #include "GameTime.h"
 #include "Events/SwitchEvent.hpp"
+#include "Events/LoseEvent.hpp"
 
 // Graphics
 #include "Graphics/GraphicsEngine.h"
@@ -38,12 +39,14 @@ namespace ASSB
 		Graphics::GraphicsEngine Graphics;
 	public:
 		Graphics::Camera Camera;
+		GameTime Time;
 
 		// Constructor
 		GameEngine(Graphics::Window& window);
 
 		// Member functions
 		Globals::ObjectID GetIdOf(const std::string name);
+		const std::string &GetNameOf(Globals::ObjectID id);
 		Globals::ObjectID CreateGameObject(const std::string name = "");
 		Graphics::Texture& GetTexture(const std::wstring path);
 		void RemoveID(Globals::ObjectID id);
@@ -66,7 +69,6 @@ namespace ASSB
 	private:
 		// Variables
 		Globals::ObjectID NextID;
-		GameTime Time;
 		bool Running;
 		bool EnvironmentIsLight;
 
@@ -100,6 +102,7 @@ namespace ASSB
 		GameEngine& operator=(const GameEngine& other) = delete;
 
 		void OnSwitch(SwitchEvent* e);
+		void OnDeath(LoseEvent* e);
 	};
 }
 
