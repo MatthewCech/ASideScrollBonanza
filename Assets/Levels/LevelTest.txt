@@ -1,9 +1,0 @@
--.2,1.2:Default*2x2,d
-.5,0:Default,d
-2,1:Default*3x4,d
-3,3:Default,d
-8,-3:Default,d
-4.2,0:Default,d
-4,-4:Default,d
-6.4,-3:Default,d
-7.5,2:Default,d

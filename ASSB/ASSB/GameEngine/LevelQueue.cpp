@@ -69,9 +69,14 @@ namespace ASSB
 		UNUSED(e);
 	}
 
+
+	//!TODO: CHEATS! TESTING AND WHATNOT
 	void LevelQueue::keyboard(KeyboardEvent *e)
 	{
 		if (e->Down && e->Key == Key::L)
 			loadRandom();
+
+		if (e->Down && e->Key == Key::N)
+			FileSystem::LevelPreloadingMapper::NukeObjects();
 	}
 }

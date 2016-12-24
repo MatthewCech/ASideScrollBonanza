@@ -19,7 +19,6 @@ namespace FileSystem
 		static bool Associate(std::string tag, std::string path);
 		static std::string Retrieve(std::string tag);
 		static const std::unordered_map<std::string, std::string> &DumpTags();
-		static void ResetPosition();
 		static void NukeObjects();
 		static void CheckOldestLoaded();
 
@@ -28,5 +27,8 @@ namespace FileSystem
 		static bool ParseLine(std::string line, unsigned long long offsetX, int &width);
 		static std::unordered_map<std::string, std::string> associatedStrings_;
 		static std::queue<ASSB::Globals::ObjectID> loadedHistory_;
+
+		// Private member functions
+		static void resetPosition();
 	};
 }

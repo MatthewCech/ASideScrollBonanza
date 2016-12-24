@@ -229,14 +229,20 @@ namespace FileSystem
 		return true;
 	}
 
-	void LevelPreloadingMapper::ResetPosition()
+	void LevelPreloadingMapper::resetPosition()
 	{
 		CurrentOffset = 0;
 	}
 
 	void LevelPreloadingMapper::NukeObjects()
 	{
+		while (loadedHistory_.size() > 0)
+		{
+			ASSB::GameEngine::Instance->RemoveID(loadedHistory_.front());
+			loadedHistory_.pop();
+		}
 
+		resetPosition();
 	}
 
 	void LevelPreloadingMapper::CheckOldestLoaded()
