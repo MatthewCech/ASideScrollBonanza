@@ -57,7 +57,7 @@ int main()
 	ASSB::ComponentHandle<ASSB::PlayerManagerComponent> pmComp = Engine.GetComponent<ASSB::PlayerManagerComponent>(player);
 	pmComp->SetImage("player1L", "player1D", { .5f,1,0 });
 	pmComp->SetActive(false);
-	Engine.GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 3, 0 });
+	Engine.GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 1, 0 });
 	Engine.GetComponent<ASSB::RigidBodyComponent>(player)->SetStatic(false);
 	//Engine.GetComponent<ASSB::RigidBodyComponent>(player)->AddDispatchOnCollision(new ASSB::ShutdownEvent());
 
@@ -101,13 +101,16 @@ int main()
 	RigidComp->SetVelocity(Graphics::Vector4(4.8f, 0, 0));
 
 	auto TransComp = Engine.GetComponent<ASSB::TransformComponent>(PK);
-	TransComp->SetPosition(Graphics::Vector4(-10, 0, 0.001f));
-	TransComp->SetScale(1, 20);
-
-	//LevelGenerator.loadRandom();
+	TransComp->SetPosition(Graphics::Vector4(-15, 0, 0.001f));
+	TransComp->SetScale(1, 25);
 	
-	// Menu init
+	auto SpriteComp = Engine.GetComponent<ASSB::SpriteComponent>(PK);
+	std::string pkpath = FileSystem::ImagePreloadingMapper::Retrieve("death");
+	SpriteComp->AddPath(std::wstring(pkpath.begin(), pkpath.end()));
+
+	// Post-everything Menu init
 	ASSB::MenuManager Menus;
+	Engine.Camera.SetPosition({ 2.25f, 1+.75f, 5.5f });
 
 	// Start the game.
 	Engine.Run();

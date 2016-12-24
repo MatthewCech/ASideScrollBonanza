@@ -60,13 +60,14 @@ namespace ASSB
 	}
 
 	// Update tick
-	void LevelQueue::update(UpdateEvent *e)
+	void LevelQueue::update(UpdateEvent *)
 	{
 		//GameEngine::Instance->Camera.
 		if (GameEngine::Instance->Camera.GetPosition().X + 13 > FileSystem::LevelPreloadingMapper::CurrentOffset)
-			loadRandom();
-
-		UNUSED(e);
+			if (FileSystem::LevelPreloadingMapper::CurrentOffset > 20)
+				loadRandom();
+			else
+				LoadDefault();
 	}
 
 

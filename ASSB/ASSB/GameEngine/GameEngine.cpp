@@ -66,7 +66,7 @@ namespace ASSB
 		Square = std::unique_ptr<Graphics::Mesh>(new Graphics::Mesh(Graphics, verts, inds));
 		Square->Create(VertexShader);
 
-		Camera.SetPosition(Graphics::Vector4(0, 0, 5));
+		Camera.SetPosition(Graphics::Vector4(0, 0, 5.5f));
 		Globals::EventSystemInstance.Register(this, &GameEngine::OnSwitch);
 		Globals::EventSystemInstance.Register(this, &GameEngine::OnDeath);
 	}
@@ -348,9 +348,9 @@ namespace ASSB
 	{
 		FileSystem::LevelPreloadingMapper::NukeObjects();
 		ASSB::Globals::ObjectID player = GetIdOf("player");
-		GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 3, 0 });
+		GetComponent<ASSB::TransformComponent>(player)->SetPosition({ 0, 1, 0 });
 
-		Camera.SetPosition({ 0,0, 5 });
+		Camera.SetPosition({ 0,1, 0 });
 
 		ASSB::Globals::ObjectID PK = GetIdOf("PK");
 		auto TransComp = GetComponent<ASSB::TransformComponent>(PK);

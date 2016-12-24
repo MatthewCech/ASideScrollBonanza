@@ -36,13 +36,13 @@ namespace ASSB
 		GameEngine::Instance->AddComponent<MenuComponent>(obj);
 		GameEngine::Instance->GetComponent<SpriteComponent>(obj)->Visible = false;
 		ASSB::ComponentHandle<MenuComponent> comp = GameEngine::Instance->GetComponent<MenuComponent>(obj);
-		comp->SetSpacing({ 0, -.4f, 0 });
-		comp->SetPosition({ -0.5f, 3.0f, 0 });
-		comp->SetIndicatorTag("selectImage", { 1.75f, .4f, 0 });
-		comp->AddInteractable("start", { 1.5f,.3f,0 }, new GameStartEvent());
-		comp->AddInteractable("options", { 1.5f,.3f,0 }, new QuitRequestEvent());
-		comp->AddInteractable("credits", { 1.5f,.3f,0 }, new QuitRequestEvent());
-		comp->AddInteractable("quit", { 1.5f,.3f,0 }, new ShutdownEvent());
+		comp->SetSpacing({ 0, -.6f, 0 });
+		comp->SetPosition({ -0.75f, 4.0f, 0 });
+		comp->SetIndicatorTag("selectImage", { 2.75f, .55f, 0 });
+		comp->AddInteractable("start", { 2.5f,.5f,0 }, new GameStartEvent());
+		comp->AddInteractable("options", { 2.5f,.5f,0 }, new QuitRequestEvent());
+		comp->AddInteractable("credits", { 2.5f,.5f,0 }, new QuitRequestEvent());
+		comp->AddInteractable("quit", { 2.5f,.5f,0 }, new ShutdownEvent());
 		
 		// Pause Menu System
 		ASSB::Globals::ObjectID pause = GameEngine::Instance->CreateGameObject("pauseMenu");

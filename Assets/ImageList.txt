@@ -6,6 +6,7 @@ restart:../../../Assets/Images/Menu/restart.png
 resume:../../../Assets/Images/Menu/resume.png
 selectImage:../../../Assets/Images/Menu/selectImage.png
 blank:../../../Assets/Images/blank.png
+death:../../../Assets/Images/death.png
 grass1D:../../../Assets/Images/grass1D.png
 grass1L:../../../Assets/Images/grass1L.png
 grass2D:../../../Assets/Images/grass2D.png

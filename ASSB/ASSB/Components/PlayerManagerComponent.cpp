@@ -132,9 +132,9 @@ namespace ASSB
 		Graphics::Vector4 campos = GameEngine::Instance->Camera.GetPosition();
 		Graphics::Vector4 pPos = GameEngine::Instance->GetComponent<TransformComponent>(Owner)->GetPosition();
 
-		campos.X = pPos.X + 2;
+		campos.X = pPos.X + 2.0f;
 
-		float diff = pPos.Y - campos.Y + 1;
+		float diff = pPos.Y - campos.Y + .75f;
 		diff /= 20;
 
 		campos.Y += diff;
