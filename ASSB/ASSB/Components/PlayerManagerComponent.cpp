@@ -6,6 +6,7 @@
 #include "Events/KeyboardEvent.hpp"
 #include "Events/UpdateEvent.hpp"
 #include "Events/SwitchEvent.hpp"
+#include "Events/LoseEvent.hpp"
 
 
 namespace ASSB
@@ -155,9 +156,6 @@ namespace ASSB
 
 	void PlayerManagerComponent::Collide(CollisionEvent * e)
 	{
-		if (!active_)
-			return;
-
 		if (e->ID1 != Owner && e->ID2 != Owner)
 			return;
 
@@ -166,6 +164,9 @@ namespace ASSB
 			Other = e->ID2;
 		else
 			Other = e->ID1;
+
+		if (GameEngine::Instance->GetNameOf(Other) == "PK")
+			Globals::EventSystemInstance.Dispatch(new LoseEvent(GameEngine::Instance->Time));
 
 		CanJump = true;
 	}

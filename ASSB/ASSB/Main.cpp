@@ -101,7 +101,7 @@ int main()
 	RigidComp->SetVelocity(Graphics::Vector4(4.8f, 0, 0));
 
 	auto TransComp = Engine.GetComponent<ASSB::TransformComponent>(PK);
-	TransComp->SetPosition(Graphics::Vector4(-10, 0, 0));
+	TransComp->SetPosition(Graphics::Vector4(-10, 0, 0.001f));
 	TransComp->SetScale(1, 20);
 
 	//LevelGenerator.loadRandom();
