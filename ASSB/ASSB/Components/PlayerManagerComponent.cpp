@@ -31,7 +31,7 @@ namespace ASSB
 			if (path.size() > 0)
 			{
 				GameEngine::Instance->GetComponent<SpriteComponent>(id)->
-					Path = std::wstring(path.begin(), path.end());
+					AddPath(std::wstring(path.begin(), path.end()));
 				GameEngine::Instance->GetComponent<TransformComponent>(id)->
 					SetScale(scale.X, scale.Y);
 			}

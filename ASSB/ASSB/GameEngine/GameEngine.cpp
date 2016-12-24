@@ -174,7 +174,7 @@ namespace ASSB
 			transf = DirectX::XMMatrixAffineTransformation2D({ trans->GetScaleX(), -trans->GetScaleY(),1 }, { 0,0 }, trans->GetRotation(), { 0,0 });
 			transf = transf * DirectX::XMMatrixTranslation(position.X, position.Y, position.Z);
 			Transform.Use();
-			GetTexture(sprite->Path).Use();
+			GetTexture(sprite->GetPath()).Use();
 
 			Graphics.Draw(*Square);
 		}

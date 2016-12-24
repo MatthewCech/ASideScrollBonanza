@@ -14,6 +14,7 @@
 #include "Globals.hpp"
 #include "Components/PlayerManagerComponent.hpp"
 #include "Events/ShutdownEvent.hpp"
+#include <time.h>
 
 //particles
 #include "Particles/EmitConstant.hpp"
@@ -25,15 +26,13 @@
 #include "Particles/TerminateInstant.hpp"
 
 
-
 int main()
 {
 	// Seed random
-	//!TODO: Seed properly
-	srand(9001);
+	srand(static_cast<unsigned int>(time(0)));
 
 	// Window and engine creation
-	Graphics::Window window(L"OWO");
+	Graphics::Window window(L"OWO WHAT\"S THIS");
 	ASSB::GameEngine Engine(window);
 	ASSB::LevelQueue LevelGenerator;
 
