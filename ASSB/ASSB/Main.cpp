@@ -64,6 +64,7 @@ int main()
 	//particle rain/snow
 	ASSB::Globals::ObjectID ParticleObject = Engine.CreateGameObject("Snow System");
 	Engine.AddComponent<ASSB::ParticleComponent>(ParticleObject);
+	Engine.GetComponent<ASSB::SpriteComponent>(ParticleObject)->Visible = false;
 	auto ParticleComp = Engine.GetComponent<ASSB::ParticleComponent>(ParticleObject);
 
 	ParticleComp->Path = L"../../../Assets/Images/snow.png";
@@ -78,6 +79,7 @@ int main()
 
 	ParticleObject = Engine.CreateGameObject("Rain System");
 	Engine.AddComponent<ASSB::ParticleComponent>(ParticleObject);
+	Engine.GetComponent<ASSB::SpriteComponent>(ParticleObject)->Visible = false;
 	ParticleComp = Engine.GetComponent<ASSB::ParticleComponent>(ParticleObject);
 
 	ParticleComp->Path = L"../../../Assets/Images/rain.png";
