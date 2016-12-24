@@ -11,7 +11,13 @@
 10,0:floor1D'floor1L,cs
 11,0:floor1D'floor1L,cs
 12,0:floor1D'floor1L,cs
-6.5,1.5:floor1D'floor1L*5x2,cs
-5.5,4.5:floor1D'floor1L*1x3,cs
-9,3.5:floor1D'floor1L*1x3,cs
-4.5,5.5:floor1D'floor1L*2x1,cs
+7,1.5:tile1wideD'tile1wideL*5x2,cs
+6,4.5:tile1tallD'tile1tallL*1x3,cs
+9,3.75:tile1tallD'tile1tallL*1x2.5,cs
+5,5.5:tile2D'tile1L*1x1,cs
+3.9,1:grass2D'grass2L,-
+2.9,1:grass2D'grass2L,-
+1.3,1:grass2D'grass2L,-
+1.6,1:grass1D'grass1L,-
+4.3,1.5:tree1D'tree1L*2x2,-
+8.4,3:grass2D'grass2L,-

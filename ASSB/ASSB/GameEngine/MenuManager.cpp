@@ -2,6 +2,7 @@
 #include "Globals.hpp"
 #include <exception>
 #include "GameEngine/GameEngine.h"
+#include "GameEngine/Utilities.hpp"
 #include "Events/UIChangeEvent.hpp"
 #include "Events/UISelectEvent.hpp"
 #include "Events/ShutdownEvent.hpp"
@@ -11,7 +12,9 @@
 #include "Events/PauseToggleEvent.hpp"
 #include "Events/LoseEvent.hpp"
 #include "Events/ReturnToMenuEvent.hpp"
+#include "Events/MenuShowCreditsEvent.hpp"
 #include "Components/SpriteComponent.hpp"
+
 
 
 namespace ASSB
@@ -25,12 +28,22 @@ namespace ASSB
 		: EventSystem::ObjectEventManager(Globals::EventSystemInstance)
 		, onMainMenu_(true)
 		, onPauseMenu_(false)
+		, creditsShowing_(false)
 	{
 		// Singleton enforcement
 		if (Instance == nullptr)
 			Instance = this;
 		else
 			throw std::exception("One set of menus is enough, don't you think?");
+
+		// Credits init
+		ASSB::Globals::ObjectID credits = GameEngine::Instance->CreateGameObject("credits");
+		auto creditsSprite = GameEngine::Instance->GetComponent<ASSB::SpriteComponent>(credits);
+		std::string creditsPath = FileSystem::ImagePreloadingMapper::Retrieve("gameCredits");
+		creditsSprite->AddPath(std::wstring(creditsPath.begin(), creditsPath.end()));
+		GameEngine::Instance->GetComponent<ASSB::TransformComponent>(credits)->SetScale(6, 3);
+		GameEngine::Instance->GetComponent<ASSB::TransformComponent>(credits)->SetPosition({ 2.25f, -10.0f , 0.51f });
+		creditsSprite->Visible = false;
 
 		// Main Menu System
 		ASSB::Globals::ObjectID obj = GameEngine::Instance->CreateGameObject("mainMenu");
@@ -41,10 +54,10 @@ namespace ASSB
 		comp->SetPosition({ -0.75f, 4.0f, 0 });
 		comp->SetIndicatorTag("selectImage", { 2.75f, .55f, 0 });
 		comp->AddInteractable("start", { 2.5f,.5f,0 }, new GameStartEvent());
-		comp->AddInteractable("options", { 2.5f,.5f,0 }, new QuitRequestEvent());
-		comp->AddInteractable("credits", { 2.5f,.5f,0 }, new QuitRequestEvent());
+		//comp->AddInteractable("options", { 2.5f,.5f,0 }, new ());
+		comp->AddInteractable("credits", { 2.5f,.5f,0 }, new MenuShowCreditsEvent());
 		comp->AddInteractable("quit", { 2.5f,.5f,0 }, new ShutdownEvent());
-		
+
 		// Pause Menu System
 		ASSB::Globals::ObjectID pause = GameEngine::Instance->CreateGameObject("pauseMenu");
 		GameEngine::Instance->AddComponent<MenuComponent>(pause);
@@ -71,6 +84,8 @@ namespace ASSB
 		Connect(this, &MenuManager::pauseToggle);
 		Connect(this, &MenuManager::playerLose);
 		Connect(this, &MenuManager::menuReturn);
+		Connect(this, &MenuManager::uiUpdate);
+		Connect(this, &MenuManager::showCredits);
 
 		// Initial paused
 		ASSB::Globals::EventSystemInstance.Dispatch(new PauseToggleEvent(true));
@@ -96,18 +111,33 @@ namespace ASSB
 		se2->PlayOnEvent<UISelectEvent>();
 	}
 
+	void MenuManager::showCredits()
+	{
+		Globals::ObjectID id = GameEngine::Instance->GetIdOf("credits");
+		Utilities::Instance->InterpolatePos(id, { 2.25f, 1.75f , 0.51f }, 250);
+		GameEngine::Instance->GetComponent<ASSB::SpriteComponent>(id)->Visible = true;
+		creditsShowing_ = true;
+	}
+
+	void MenuManager::hideCredits()
+	{
+		Globals::ObjectID id = GameEngine::Instance->GetIdOf("credits");
+		Utilities::Instance->InterpolatePos(id, { 2.25f, -10.0f , 0.1f }, 250);
+		GameEngine::Instance->GetComponent<ASSB::SpriteComponent>(id)->Visible = false;
+		creditsShowing_ = false;
+	}
+
 	// Game will prompt for confirmation of action;
 	void MenuManager::quitRequest(QuitRequestEvent *e)
 	{
-		// confirm?
+		//!TODO: confirm?
 		UNUSED(e);
 	}
 
 	// Game window will be terminated.
-	void MenuManager::shutdownRequest(ShutdownEvent *e)
+	void MenuManager::shutdownRequest(ShutdownEvent *)
 	{
 		GameEngine::Instance->Shutdown();
-		UNUSED(e);
 	}
 
 	// Start the game
@@ -164,6 +194,7 @@ namespace ASSB
 		GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetVisible(true);
 		// Show main menu
 		onMainMenu_ = true;
+		onPauseMenu_ = false;
 		Globals::EventSystemInstance.Dispatch(new LoseEvent(GameTime()));
 	}
 
@@ -176,14 +207,15 @@ namespace ASSB
 
 		Globals::ObjectID id = GameEngine::Instance->GetIdOf("player");
 		Globals::ObjectID id2 = GameEngine::Instance->GetIdOf("pauseMenu");
-		if(e->Paused)
+		if (e->Paused)
 		{
 			// Show menu and stop player
 			GameEngine::Instance->GetComponent<PlayerManagerComponent>(id)->SetActive(false);
 			ComponentHandle<MenuComponent> menuComp = GameEngine::Instance->GetComponent<MenuComponent>(id2);
 			menuComp->SetActive(true);
 			menuComp->SetVisible(true);
-			menuComp->SetPosition(GameEngine::Instance->Camera.GetPosition() + Graphics::Vector4(0,2,0));
+			menuComp->SetPosition(GameEngine::Instance->Camera.GetPosition() + Graphics::Vector4(0, 2, 0));
+			onPauseMenu_ = true;
 		}
 		else
 		{
@@ -191,6 +223,22 @@ namespace ASSB
 			GameEngine::Instance->GetComponent<PlayerManagerComponent>(id)->SetActive(true);
 			GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetActive(false);
 			GameEngine::Instance->GetComponent<MenuComponent>(id2)->SetVisible(false);
+			onPauseMenu_ = false;
 		}
+	}
+
+
+	// Credits related
+	void MenuManager::showCredits(MenuShowCreditsEvent *)
+	{
+		if (!creditsShowing_)
+			showCredits();
+		else
+			hideCredits();
+	}
+	void MenuManager::uiUpdate(UIChangeEvent *)
+	{
+		if (creditsShowing_)
+			hideCredits();
 	}
 }

@@ -7,5 +7,9 @@
 6,0:floor1D'floor1L,cs
 7,0:floor1D'floor1L,cs
 8,0:floor1D'floor1L,cs
-5.5,1.5:floor1D'floor1L*2x2,cs
-6,4:floor1D'floor1L*1x2,cs
+5.5,1.5:tile1D'tile1L*2x2,cs
+6,4:tile1tallD'tile1tallL*1x2,cs
+5.7,3:grass1D'grass1L,-
+4.2,1:grass1D'grass1L,-
+2.2,1:grass1D'grass1L,-
+1.9,1:grass2D'grass2L,-

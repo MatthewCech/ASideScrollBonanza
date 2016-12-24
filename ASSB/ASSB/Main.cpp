@@ -32,7 +32,7 @@ int main()
 	srand(static_cast<unsigned int>(time(0)));
 
 	// Window and engine creation
-	Graphics::Window window(L"OWO WHAT\"S THIS");
+	Graphics::Window window(L"Partial Shift");
 	ASSB::GameEngine Engine(window);
 	ASSB::LevelQueue LevelGenerator;
 
@@ -98,10 +98,10 @@ int main()
 	auto RigidComp = Engine.GetComponent<ASSB::RigidBodyComponent>(PK);
 	RigidComp->SetCollisionType(ASSB::CollisionType::GHOSTING);
 	RigidComp->SetStatic(false);
-	RigidComp->SetVelocity(Graphics::Vector4(4.8f, 0, 0));
+	RigidComp->SetVelocity(Graphics::Vector4(4.75f, 0, 0));
 
 	auto TransComp = Engine.GetComponent<ASSB::TransformComponent>(PK);
-	TransComp->SetPosition(Graphics::Vector4(-20, 0, 0.001f));
+	TransComp->SetPosition(Graphics::Vector4(-16, 0, 0.06f));
 	TransComp->SetScale(10, 25);
 	
 	auto SpriteComp = Engine.GetComponent<ASSB::SpriteComponent>(PK);

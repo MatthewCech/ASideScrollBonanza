@@ -162,6 +162,7 @@
     <ClInclude Include="Events\GameStartEvent.hpp" />
     <ClInclude Include="Events\KeyboardEvent.hpp" />
     <ClInclude Include="Events\LoseEvent.hpp" />
+    <ClInclude Include="Events\MenuShowCreditsEvent.hpp" />
     <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="Components\ParticleComponent.hpp" />
     <ClInclude Include="Events\PauseToggleEvent.hpp" />

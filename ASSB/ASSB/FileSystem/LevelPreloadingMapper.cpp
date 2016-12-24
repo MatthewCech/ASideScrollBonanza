@@ -14,8 +14,8 @@ namespace FileSystem
 {
 	// Static initialization
 	bool LevelPreloadingMapper::wasNuked_ = false;
-	const long long LevelPreloadingMapper::leftCullUnits_ = static_cast<long long >(11);
-	long long LevelPreloadingMapper::CurrentOffset = static_cast<long long >(-11);
+	const long long LevelPreloadingMapper::leftCullUnits_ = static_cast<long long >(13);
+	long long LevelPreloadingMapper::CurrentOffset = static_cast<long long >(-13);
 	std::unordered_map<std::string, std::string> LevelPreloadingMapper::associatedStrings_ = std::unordered_map<std::string, std::string>();
 	std::queue<ASSB::Globals::ObjectID> LevelPreloadingMapper::loadedHistory_ = std::queue<ASSB::Globals::ObjectID>();
 
@@ -190,6 +190,7 @@ namespace FileSystem
 			{
 				if (flag == 'g' || flag == 'c')
 				{
+					tComp->SetPosition(tComp->GetPosition() + Graphics::Vector4(0, 0, 0.005f));
 					ASSB::GameEngine::Instance->AddComponent<ASSB::RigidBodyComponent>(id);
 					ASSB::ComponentHandle<ASSB::RigidBodyComponent> rigidBody = ASSB::GameEngine::Instance->GetComponent<ASSB::RigidBodyComponent>(id);
 					rigidBody->SetStatic(true);

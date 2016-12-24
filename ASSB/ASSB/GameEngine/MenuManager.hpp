@@ -13,12 +13,14 @@ namespace ASSB
 	class PauseToggleEvent;
 	class LoseEvent;
 	class ReturnToMenuEvent;
+	class MenuShowCreditsEvent;
+	class UIChangeEvent;
 	class MenuManager : public EventSystem::ObjectEventManager
 	{
 	public:
 		// Constructor
 		MenuManager();
-		
+
 		// Static instance of Menu Manager
 		static MenuManager *Instance;
 
@@ -26,9 +28,12 @@ namespace ASSB
 		// Variables
 		bool onMainMenu_;
 		bool onPauseMenu_;
+		bool creditsShowing_;
 
 		// Member functions
 		void initializeSFX();
+		void showCredits();
+		void hideCredits();
 
 		// Event related functions
 		void quitRequest(QuitRequestEvent *e);
@@ -38,6 +43,8 @@ namespace ASSB
 		void pauseToggle(PauseToggleEvent *e);
 		void playerLose(LoseEvent *e);
 		void menuReturn(ReturnToMenuEvent *e);
+		void showCredits(MenuShowCreditsEvent *e);
+		void uiUpdate(UIChangeEvent *e);
 
 		// Omit
 		MenuManager &operator=(const MenuManager &rhs) = delete;

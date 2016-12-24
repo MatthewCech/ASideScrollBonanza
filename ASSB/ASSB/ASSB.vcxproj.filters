@@ -114,6 +114,7 @@
     <ClInclude Include="Events\LoseEvent.hpp" />
     <ClInclude Include="Events\ReturnToMenuEvent.hpp" />
     <ClInclude Include="Events\PlayerBasedLossEvent.hpp" />
+    <ClInclude Include="Events\MenuShowCreditsEvent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Components\SoundEmitterComponent.tpp" />

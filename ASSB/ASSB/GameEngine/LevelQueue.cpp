@@ -63,7 +63,7 @@ namespace ASSB
 	void LevelQueue::update(UpdateEvent *)
 	{
 		//GameEngine::Instance->Camera.
-		if (GameEngine::Instance->Camera.GetPosition().X + 13 > FileSystem::LevelPreloadingMapper::CurrentOffset)
+		if (GameEngine::Instance->Camera.GetPosition().X + 14 > FileSystem::LevelPreloadingMapper::CurrentOffset)
 			if (FileSystem::LevelPreloadingMapper::CurrentOffset > 10)
 				loadRandom();
 			else
