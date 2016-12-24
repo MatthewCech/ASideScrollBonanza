@@ -128,6 +128,18 @@ namespace ASSB
 
 		campos.Y += diff;
 
+		//!TODO:BETTER ALTERNATIVE? Currently, Force player location above 0;
+		ComponentHandle<TransformComponent> tComp = GameEngine::Instance->GetComponent<TransformComponent>(Owner);
+		if (tComp->GetPosition().Y < (.5 + .2f))
+		{
+			Graphics::Vector4 toFix = tComp->GetPosition();
+			Graphics::Vector4 velToFix = rigidBody->GetVelocity();
+			toFix.Y = .75f;
+			velToFix.Y = 0;
+			rigidBody->SetVelocity(velToFix);
+			tComp->SetPosition(toFix);
+		}
+
 		GameEngine::Instance->Camera.SetPosition(campos);
 	}
 

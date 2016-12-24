@@ -69,6 +69,20 @@ namespace ASSB
 	}
 
 
+	void GameEngine::RemoveID(Globals::ObjectID id)
+	{
+		Transforms.erase(id);
+		SoundEmitters.erase(id);
+		RigidBodies.erase(id);
+		Sprites.erase(id);
+		Menus.erase(id);
+		PlayerManagers.erase(id);
+		ParticleSystems.erase(id);
+		GameObjects.erase(GameObjectNames.at(id));
+		GameObjectNames.erase(id);
+	}
+
+
 	// Gets the ID of the name
 	Globals::ObjectID GameEngine::GetIdOf(const std::string name)
 	{
@@ -89,6 +103,7 @@ namespace ASSB
 			name = std::to_string(NextID + 1);
 
 		GameObjects.emplace(std::pair<std::string, Globals::ObjectID>(name, NextID++));
+		GameObjectNames.emplace(std::pair<Globals::ObjectID, std::string>(NextID - 1, name));
 		AddComponent<TransformComponent>(NextID - 1);
 		AddComponent<SpriteComponent>(NextID - 1);
 

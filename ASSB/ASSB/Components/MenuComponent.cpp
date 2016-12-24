@@ -119,7 +119,7 @@ namespace ASSB
 		ComponentHandle<TransformComponent> indicatorLoc = GameEngine::Instance->GetComponent<TransformComponent>(selectionIndicator_);
 		ComponentHandle<TransformComponent> interactableLoc = GameEngine::Instance->GetComponent<TransformComponent>(interactables_[static_cast<size_t>(selected_)].first);
 		//!TODO: ACTIONS SYSTEM FOR INTERPOLATION
-		Utilities::Instance->InterpolatePos(selectionIndicator_, interactableLoc->GetPosition() + Graphics::Vector4(0, 0, 0.001f), 80);
+		Utilities::Instance->InterpolatePos(selectionIndicator_, interactableLoc->GetPosition() + Graphics::Vector4(0, 0, -0.001f), 80);
 		//indicatorLoc->SetPosition(interactableLoc->GetPosition());
 	}
 
@@ -156,6 +156,8 @@ namespace ASSB
 			GameEngine::Instance->GetComponent<TransformComponent>(interactables_[i].first)->
 				SetPosition(pos_ + spacing_ * static_cast<float>(i));
 		}
+		if (interactables_.size() > 0)
+			updateSelectionIndicator();
 	}
 
 	// Getters and Setters
@@ -188,7 +190,9 @@ namespace ASSB
 	}
 	void MenuComponent::SetPosition(Graphics::Vector4 newPos)
 	{
-		pos_ = newPos;
+		pos_.X = newPos.X;
+		pos_.Y = newPos.Y;
+		updateSpacing();
 	}
 	Graphics::Vector4 MenuComponent::GetPosition()
 	{

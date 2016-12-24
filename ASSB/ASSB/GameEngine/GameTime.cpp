@@ -4,8 +4,7 @@
 namespace ASSB
 {
 	GameTime::GameTime() : MaxDT(0.1f)
-	{
-	}
+	{  }
 
 	void GameTime::Tick()
 	{

@@ -1,1 +1,2 @@
 default:../../../Assets/Levels/SandboxLevel.txt
+tallBlocked:../../../Assets/Levels/TallBlocked.txt

@@ -46,6 +46,7 @@ namespace ASSB
 		Globals::ObjectID GetIdOf(const std::string name);
 		Globals::ObjectID CreateGameObject(const std::string name = "");
 		Graphics::Texture& GetTexture(const std::wstring path);
+		void RemoveID(Globals::ObjectID id);
 		void UpdateCamera();
 		void Loop();
 		void Run();
@@ -80,10 +81,10 @@ namespace ASSB
 
 		//Physics
 		PhysicsSystem Physics;
-	
 
 		// Add components here
 		std::unordered_map<std::string, Globals::ObjectID> GameObjects;
+		std::unordered_map<Globals::ObjectID, std::string> GameObjectNames;
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<TransformComponent>> Transforms;
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<SoundEmitterComponent>> SoundEmitters;
 		std::unordered_map<Globals::ObjectID, std::unique_ptr<RigidBodyComponent>> RigidBodies;
