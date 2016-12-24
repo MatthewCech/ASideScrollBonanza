@@ -3,7 +3,7 @@
 #include "Input/Keyboard.h"
 #include "Input/Mouse.h"
 #include "Events/UpdateEvent.hpp"
-
+#include "FileSystem/LevelPreloadingMapper.hpp"
 #include <cstdlib>
 
 namespace ASSB
@@ -268,6 +268,10 @@ namespace ASSB
 		Graphics.Present();
 		Mouse::PrepairForNextFrame();
 		Keyboard::PrepairForNextFrame();
+
+		// Automated Cleanup
+		Globals::EventSystemInstance.Upkeep();
+		FileSystem::LevelPreloadingMapper::CheckOldestLoaded();
 	}
 
 	Graphics::Texture & GameEngine::GetTexture(const std::wstring path)

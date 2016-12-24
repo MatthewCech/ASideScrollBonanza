@@ -2,6 +2,8 @@
 #include "FileSystem\File.hpp"
 #include <string>
 #include <unordered_map>
+#include <queue>
+#include "Globals.hpp"
 
 
 namespace FileSystem
@@ -18,10 +20,13 @@ namespace FileSystem
 		static std::string Retrieve(std::string tag);
 		static const std::unordered_map<std::string, std::string> &DumpTags();
 		static void ResetPosition();
+		static void NukeObjects();
+		static void CheckOldestLoaded();
 
 	private:
 		// Variables
 		static bool ParseLine(std::string line, unsigned long long offsetX, int &width);
 		static std::unordered_map<std::string, std::string> associatedStrings_;
+		static std::queue<ASSB::Globals::ObjectID> loadedHistory_;
 	};
 }

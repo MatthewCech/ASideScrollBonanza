@@ -15,6 +15,8 @@ namespace FileSystem
 	// Static initialization
 	unsigned long long LevelPreloadingMapper::CurrentOffset = 0;
 	std::unordered_map<std::string, std::string> LevelPreloadingMapper::associatedStrings_ = std::unordered_map<std::string, std::string>();
+	std::queue<ASSB::Globals::ObjectID> LevelPreloadingMapper::loadedHistory_ = std::queue<ASSB::Globals::ObjectID>();
+
 
 	// Associate tags
 	bool LevelPreloadingMapper::Associate(std::string tag, std::string path)// , AudioSystem &a)
@@ -223,12 +225,34 @@ namespace FileSystem
 		}
 
 		// Success(tm) if we made it here!
+		loadedHistory_.push(id);
 		return true;
 	}
 
 	void LevelPreloadingMapper::ResetPosition()
 	{
 		CurrentOffset = 0;
+	}
+
+	void LevelPreloadingMapper::NukeObjects()
+	{
+
+	}
+
+	void LevelPreloadingMapper::CheckOldestLoaded()
+	{
+		if (loadedHistory_.size() == 0)
+			return;
+
+		ASSB::Globals::ObjectID id = loadedHistory_.front();
+		ASSB::Globals::ObjectID playerID = ASSB::GameEngine::Instance->GetIdOf("player");
+		ASSB::ComponentHandle<ASSB::TransformComponent> trID = ASSB::GameEngine::Instance->GetComponent<ASSB::TransformComponent>(id);
+		ASSB::ComponentHandle<ASSB::TransformComponent> trPlayer = ASSB::GameEngine::Instance->GetComponent<ASSB::TransformComponent>(playerID);
+		if (trID->GetPosition().X < trPlayer->GetPosition().X - 2)
+		{
+			ASSB::GameEngine::Instance->RemoveID(id);
+			loadedHistory_.pop();
+		}
 	}
 
 	// Dumps all tags
